@@ -51,9 +51,12 @@ function M.config()
 		"html",
 		"sumneko_lua",
 		"jsonls",
+		"tailwindcss",
 	})
 
+	----------------------------------
 	-- Mappings
+	----------------------------------
 	local cmp = require("cmp")
 	local cmp_select = { behavior = cmp.SelectBehavior.Select }
 	local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -74,35 +77,48 @@ function M.config()
 		["<C-Space>"] = cmp.mapping.complete({}),
 	})
 
-	lsp.setup_nvim_cmp({
-		mapping = cmp_mappings,
-		-- setting ions
-		formatting = {
-			format = require("lspkind").cmp_format(require("smaili.plugins.lsp.icons")),
-		},
-	})
-
+	----------------------------------
 	-- Configure servers
+	----------------------------------
 	loadServerConfigs(lsp)
 
-	-- UI
-	--icons
-	require("smaili.plugins.lsp.icons")
-
+	----------------------------------
+	-- On Attach
+	----------------------------------
 	lsp.on_attach(function(_, bufnr)
-		-- Load mappings
+		----------------------------------
+		-- Load mappings on attach
+		----------------------------------
 		require("smaili.plugins.lsp.mappings")(bufnr)
 	end)
 
+	----------------------------------
+	-- LSP SETUP
+	----------------------------------
 	lsp.setup()
 
-	-- Setting up formatter;
+	----------------------------------
+	-- Setting up formatter
+	----------------------------------
 	require("smaili.plugins.lsp.formatting")
 
-  -- Add border to the cmp
+	----------------------------------
+	-- Add cmp config
+	----------------------------------
+	local lspkind = require("lspkind")
 	local cmp_config = lsp.defaults.cmp_config({
+		mapping = cmp_mappings,
 		window = {
 			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		},
+		formatting = {
+			format = lspkind.cmp_format({
+				mode = "symbol_text",
+				before = function(entry, vim_item)
+					return vim_item
+				end,
+			}),
 		},
 	})
 	cmp.setup(cmp_config)
