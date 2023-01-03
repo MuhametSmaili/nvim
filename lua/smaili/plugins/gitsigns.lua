@@ -9,7 +9,7 @@ local function keymaps()
 	return {
 		n = {
 			["<leader>gd"] = { gitsigns.diffthis, desc = "View git diff" },
-			["<leader>gb"] = { gitsigns.blame_line, desc = "View git blame" },
+			["<leader>gl"] = { gitsigns.blame_line, desc = "View git blame" },
 		},
 	}
 end
@@ -43,7 +43,7 @@ function M.config()
 		current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 		current_line_blame_opts = {
 			virt_text = true,
-			virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+			virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
 			delay = 1000,
 			ignore_whitespace = false,
 		},

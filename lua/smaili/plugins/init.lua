@@ -22,14 +22,7 @@ return {
 		event = "VeryLazy",
 	},
 
-	-- Comment
-	{
-		"numToStr/comment.nvim",
-		config = true,
-		event = "BufReadPost",
-	},
-
-	-- Vim-surround
+  -- Vim-surround
 	{
 		"tpope/vim-surround",
 		event = "VeryLazy",

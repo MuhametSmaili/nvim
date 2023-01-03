@@ -2,7 +2,8 @@
 -- Dracula theme
 ------------------------------
 local M = {
-	"dracula/vim",
+	-- "dracula/vim",
+  "Mofiqul/dracula.nvim",
 	name = "dracula",
 	lazy = false,
 	priority = 1000,
