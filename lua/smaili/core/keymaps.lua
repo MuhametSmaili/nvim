@@ -6,6 +6,7 @@ local keymap = vim.api.nvim_set_keymap
 -- LEADER KEY
 ------------------------------
 keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+keymap("", "<C-z>", "<Nop>", { noremap = true, silent = true }) -- turn off ctrl-z
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -95,6 +96,7 @@ M.keyMaps = {
 		["<leader>tf"] = { ":ToggleTerm direction=float<CR>", desc = "Toggle terminal float" },
 		["<leader>th"] = { ":ToggleTerm direction=horizontal<CR>", desc = "Toggle terminal horizontal" },
 		-- ["<C-`>"] = ":ToggleTerm",
+    
 	},
 
 	-------------------------------------
