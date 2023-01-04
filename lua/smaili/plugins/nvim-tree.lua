@@ -16,9 +16,11 @@ function M.config()
 		view = {
 			adaptive_size = true,
 			side = "right",
+			hide_root_folder = true,
 		},
 		renderer = {
 			highlight_opened_files = "all",
+      highlight_modified = "all",
 		},
 		update_focused_file = {
 			enable = true,

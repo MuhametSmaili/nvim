@@ -37,21 +37,13 @@ return {
 	-- jsonschema-store
 	{ "b0o/schemastore.nvim" },
 
-	-- Buffer
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = { "famiu/bufdelete.nvim" },
-		config = true,
-		event = "BufReadPost",
-	},
-
 	-- Better UI
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 	},
 
-	--Lsp figet
+	--Lsp-figet
 	{
 		"j-hui/fidget.nvim",
 		config = true,
