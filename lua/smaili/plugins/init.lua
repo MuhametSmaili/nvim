@@ -30,7 +30,8 @@ return {
 
 	-- Track time - nvim-wakatime
 	{
-		-- "wakatime/vim-wakatime",
+		"wakatime/vim-wakatime",
+		event = "VeryLazy",
 	},
 
 	-- jsonschema-store

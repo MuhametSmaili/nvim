@@ -39,5 +39,5 @@ require("lazy").setup("smaili.plugins", {
 		},
 	  },
 	},
-	debug = true,
+	debug = false,
 })
