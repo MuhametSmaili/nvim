@@ -22,7 +22,13 @@ return {
 		event = "VeryLazy",
 	},
 
-  -- Vim-surround
+	{
+		"NvChad/nvim-colorizer.lua",
+    config = true,
+		event = "VeryLazy",
+	},
+
+	-- Vim-surround
 	{
 		"tpope/vim-surround",
 		event = "VeryLazy",
@@ -56,5 +62,5 @@ return {
 	},
 
 	-- GIT
-	{"mbbill/undotree", event = "VeryLazy"}
+	{ "mbbill/undotree", event = "VeryLazy" },
 }

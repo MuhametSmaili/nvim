@@ -15,40 +15,34 @@ function M.config()
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
+			globalstatus = true,
 			component_separators = "|",
 			section_separators = "",
 		},
 		sections = {
-			lualine_c = { my_filename },
+			lualine_c = {
+				{ my_filename, path = 1, symbols = { modified = " ", readonly = "", unnamed = " " } },
+				{
+					function()
+						local navic = require("nvim-navic")
+						local ret = navic.get_location()
+						return ret:len() > 2000 and "navic error" or ret
+					end,
+					cond = function()
+						if package.loaded["nvim-navic"] then
+							local navic = require("nvim-navic")
+							return navic.is_available()
+						end
+					end,
+					color = { fg = "#8be9fd" },
+				},
+			},
 		},
 		inactive_sections = {
 			lualine_c = { my_filename },
 		},
+		extensions = { "nvim-tree" },
 	})
 end
-
--- TODO configure and recheck
-function PrintDiagnostics(opts, bufnr, line_nr, client_id)
-	bufnr = bufnr or 0
-	line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
-	opts = opts or { ["lnum"] = line_nr }
-
-	local line_diagnostics = vim.diagnostic.get(bufnr, opts)
-	if vim.tbl_isempty(line_diagnostics) then
-		return
-	end
-
-	local diagnostic_message = ""
-	for i, diagnostic in ipairs(line_diagnostics) do
-		diagnostic_message = diagnostic_message .. string.format("%d: %s", i, diagnostic.message or "")
-		print(diagnostic_message)
-		if i ~= #line_diagnostics then
-			diagnostic_message = diagnostic_message .. "\n"
-		end
-	end
-	vim.api.nvim_echo({ { diagnostic_message, "Normal" } }, false, {})
-end
-
-vim.cmd([[ autocmd! CursorHold * lua PrintDiagnostics() ]])
 
 return M

@@ -21,10 +21,9 @@ local M = {
 		"jose-elias-alvarez/null-ls.nvim",
 		"jayp0521/mason-null-ls.nvim",
 		-- Snippets
-		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
-		-- Icons
-		"onsails/lspkind.nvim",
+		-- Show code context
+		"SmiteshP/nvim-navic",
 	},
 	event = "BufReadPost",
 }
@@ -85,11 +84,19 @@ function M.config()
 	----------------------------------
 	-- On Attach
 	----------------------------------
-	lsp.on_attach(function(_, bufnr)
+	lsp.on_attach(function(client, bufnr)
 		----------------------------------
 		-- Load mappings on attach
 		----------------------------------
 		require("smaili.plugins.lsp.mappings")(bufnr)
+
+		----------------------------------
+		-- Load plugin for showing current code context
+		----------------------------------
+		local activeServer = client.name
+		if activeServer == "tsserver" or activeServer == "sumneko_lua" or activeServer == "jsonls" then
+			require("nvim-navic").attach(client, bufnr)
+		end
 	end)
 
 	----------------------------------
@@ -105,7 +112,7 @@ function M.config()
 	----------------------------------
 	-- Add cmp config
 	----------------------------------
-	local lspkind = require("lspkind")
+	local kind_icons = require("smaili.plugins.lsp.icons")
 	local cmp_config = lsp.defaults.cmp_config({
 		mapping = cmp_mappings,
 		window = {
@@ -113,12 +120,10 @@ function M.config()
 			documentation = cmp.config.window.bordered(),
 		},
 		formatting = {
-			format = lspkind.cmp_format({
-				mode = "symbol_text",
-				before = function(entry, vim_item)
-					return vim_item
-				end,
-			}),
+			format = function(_, vim_item)
+				vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+				return vim_item
+			end,
 		},
 	})
 	cmp.setup(cmp_config)

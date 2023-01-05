@@ -10,7 +10,6 @@ local M = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		"p00f/nvim-ts-rainbow",
 		"windwp/nvim-ts-autotag",
 	},
 }
@@ -34,6 +33,7 @@ function M.config()
 			"bash",
 			"markdown",
 			"markdown_inline",
+			"query",
 		},
 		context_commentstring = { -- for comment -> nvim-ts-context-commentstring
 			enable = true,
@@ -41,15 +41,8 @@ function M.config()
 		autotag = { enable = true }, -- nvim-ts-autotag
 		highlight = {
 			enable = true,
+			disable = { "tsx" },
 			additional_vim_regex_highlighting = false,
-		},
-		rainbow = { -- for nvim-ts-rainbow
-			enable = true,
-			-- disable = { "tsx", "jsx" },
-			extended_mode = true,
-			max_file_lines = 1000, -- Do not enable for files with more than n lines, int
-			-- colors = {}, -- table of hex strings
-			-- termcolors = {} -- table of colour name strings
 		},
 		indent = {
 			enable = true,
@@ -108,9 +101,6 @@ function M.config()
 			},
 		},
 	})
-
-	local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-	parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 end
 
 return M
