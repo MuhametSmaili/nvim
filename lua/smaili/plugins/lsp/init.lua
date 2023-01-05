@@ -21,8 +21,9 @@ local M = {
 		"jose-elias-alvarez/null-ls.nvim",
 		"jayp0521/mason-null-ls.nvim",
 		-- Snippets
+		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
-		-- Show code context
+		-- show code context
 		"SmiteshP/nvim-navic",
 	},
 	event = "BufReadPost",
