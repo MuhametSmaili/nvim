@@ -69,7 +69,6 @@ local function telescope_keymap()
 end
 
 function M.config()
-	local builtin = require("telescope.builtin")
 	local actions = require("telescope.actions")
 
 	--use FZF if available

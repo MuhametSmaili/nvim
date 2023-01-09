@@ -4,11 +4,6 @@
 return {
 	-- Colorshema
 	{
-		"folke/tokyonight.nvim",
-		event = "VeryLazy",
-	},
-
-	{
 		name = "dracula_pro",
 		dir = "~/.local/share/nvim/site/pack/themes/start/dracula_pro",
 	},
@@ -24,7 +19,7 @@ return {
 
 	{
 		"NvChad/nvim-colorizer.lua",
-    config = true,
+		config = true,
 		event = "VeryLazy",
 	},
 
@@ -61,6 +56,6 @@ return {
 		event = "VeryLazy",
 	},
 
-	-- GIT
+	-- Undo tree visualization 
 	{ "mbbill/undotree", event = "VeryLazy" },
 }

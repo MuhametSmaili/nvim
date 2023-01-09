@@ -68,7 +68,7 @@ M.keyMaps = {
 		["<leader>c"] = ":Bdelete<CR>",
 
 		-- SUDO save
-		["<leader>W"] = ":w !sudo tee % > /dev/null",
+		-- ["<leader>W"] = ":w !sudo -S tee % <CR>",
 
 		------------------------------
 		-- Open neo tree

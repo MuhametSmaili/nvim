@@ -8,10 +8,9 @@ function M.config()
 	require("bufferline").setup({
 		options = {
 			diagnostics = "nvim_lsp",
-			-- diagnostics_indicator = function(count, level)
-			-- 	local icon = level:match("error") and "" or ""
-			-- 	return count .. " " .. icon
-			-- end,
+			offsets = {
+				{ filetype = "NvimTree", separator = true, text = "" },
+			},
 		},
 	})
 end

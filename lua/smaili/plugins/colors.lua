@@ -1,5 +1,5 @@
 ------------------------------
--- Dracula theme
+-- Theme
 ------------------------------
 local M = {
 	{
@@ -10,7 +10,6 @@ local M = {
 		config = function()
 			vim.cmd([[let g:dracula_colorterm = 0]])
 			vim.cmd([[colorscheme dracula]])
-
       -- Colors for the cmp
 			vim.cmd([[
           " gray
