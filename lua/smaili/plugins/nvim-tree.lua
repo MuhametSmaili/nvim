@@ -17,10 +17,12 @@ function M.config()
 			adaptive_size = true,
 			side = "right",
 			hide_root_folder = true,
+			number = true,
+			relativenumber = true,
 		},
 		renderer = {
 			highlight_opened_files = "all",
-      highlight_modified = "all",
+			highlight_modified = "all",
 		},
 		update_focused_file = {
 			enable = true,
@@ -28,10 +30,19 @@ function M.config()
 			update_root = false,
 			ignore_list = {},
 		},
+		actions = {
+			open_file = {
+				quit_on_open = true,
+			},
+		},
 		-- filters = {
 		--  dotfiles = true,
 		---},
 	})
+	local api = require("nvim-tree.api")
+	api.events.subscribe(api.events.Event.FileCreated, function(file)
+		vim.cmd("edit " .. file.fname)
+	end)
 end
 
 return M

@@ -3,7 +3,6 @@ local M = {}
 -- Set keympas from a table
 -- used in different files for setting keympas, to have the keympas to the plugin file
 function M.set_keymappings(keymaps)
-	-- Map through the keys
 
 	local default_options = {
 		n = {
@@ -15,6 +14,7 @@ function M.set_keymappings(keymaps)
 		},
 	}
 
+  -- Map through the keys
 	for vimMode, keyMaps in pairs(keymaps) do
 		local base_options = default_options[vimMode] or default_options["n"]
 

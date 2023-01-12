@@ -10,7 +10,7 @@ local M = {
 		config = function()
 			vim.cmd([[let g:dracula_colorterm = 0]])
 			vim.cmd([[colorscheme dracula]])
-      -- Colors for the cmp
+			-- Colors for the cmp
 			vim.cmd([[
           " gray
           highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -28,6 +28,10 @@ local M = {
           highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
           highlight! link CmpItemKindProperty CmpItemKindKeyword
           highlight! link CmpItemKindUnit CmpItemKindKeyword
+
+          highlight! CmpItemKindModule guibg=NONE guifg=#f1fa8c
+          highlight! CmpItemKindConstant guibg=NONE guifg=#ff79c6
+          highlight! CmpItemKindColor guibg=NONE guifg=#f8f8f2 
       ]])
 		end,
 	},

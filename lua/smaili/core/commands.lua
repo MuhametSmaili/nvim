@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 		vim.api.nvim_exec('silent! normal! g`"zv', false)
 	end,
 })
--- au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 -- Format cuurent buffer using null-ls
 vim.api.nvim_create_user_command("FormatCurrentBuffer", function()
@@ -31,3 +30,6 @@ vim.api.nvim_create_user_command("FormatCurrentBuffer", function()
 		end,
 	})
 end, {})
+
+-- Enable code higlighting for markdown files
+vim.cmd("let g:markdown_fenced_languages = ['html', 'javascript', 'typescript', 'vim', 'lua', 'css']")
