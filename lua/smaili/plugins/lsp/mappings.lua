@@ -3,13 +3,14 @@ return function(bufnr)
 
 	local keymaps = {
 		n = {
-      ------------------------------
-      -- LSP
-      ------------------------------
+			------------------------------
+			-- LSP
+			------------------------------
 			["<leader>lr"] = { vim.lsp.buf.rename, desc = "Rename", buffer = bufnr },
 			["<leader>la"] = { vim.lsp.buf.code_action, desc = "Action", buffer = bufnr },
 			["<leader>lD"] = { vim.lsp.buf.type_definition, desc = "Type definition", buffer = bufnr },
 			["<leader>ls"] = { builtin.lsp_document_symbols, desc = "Document Symbols" },
+			["<leader>li"] = { builtin.lsp_incoming_calls, desc = "List incoming calls" },
 			["<leader>lws"] = { builtin.lsp_dynamic_workspace_symbols, desc = "Workspace Symbols", buffer = bufnr },
 			["<leader>lf"] = { ":FormatCurrentBuffer<CR>", desc = "Format document", buffer = bufnr },
 			["<leader>ld"] = {
@@ -20,15 +21,15 @@ return function(bufnr)
 				buffer = bufnr,
 			},
 
-      ------------------------------
-      -- Hover
-      ------------------------------
+			------------------------------
+			-- Hover
+			------------------------------
 			["K"] = { vim.lsp.buf.hover, desc = "Hover Documentation", buffer = bufnr },
 			["<C-k>"] = { vim.lsp.buf.signature_help, desc = "Signature Documentation", buffer = bufnr },
 
-      ------------------------------
+			------------------------------
 			-- workspace
-      ------------------------------
+			------------------------------
 			["<leader>lwa"] = { vim.lsp.buf.add_workspace_folder, desc = "Workspace Add Folder", buffer = bufnr },
 			["<leader>lwr"] = { vim.lsp.buf.remove_workspace_folder, desc = "Workspace Remove Folder" },
 			["<leader>lwl"] = {
@@ -47,5 +48,4 @@ return function(bufnr)
 	}
 
 	require("smaili.utils").set_keymappings(keymaps)
-
 end

@@ -8,6 +8,7 @@ local M = {
 	cmd = { "Telescope" },
 	dependencies = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ "nvim-telescope/telescope-project.nvim" },
 	},
 	event = "VeryLazy",
 }
@@ -41,8 +42,8 @@ local function telescope_keymap()
 			-- Search
 			------------------------------
 			["<leader>sf"] = { builtin.find_files, desc = "Search Files" },
-      ["<leader>so"] = { builtin.oldfiles, desc = "Search old files" },
-      ["<leader>sb"] = { builtin.buffers, desc = "Search buffers" },
+			["<leader>so"] = { builtin.oldfiles, desc = "Search old files" },
+			["<leader>sb"] = { builtin.buffers, desc = "Search buffers" },
 			["<leader>sh"] = { builtin.help_tags, desc = "Search for help" },
 			["<leader>sm"] = { builtin.man_pages, desc = "Search manual" },
 			["<leader>sk"] = { builtin.keymaps, desc = "Search keymaps" },
@@ -62,6 +63,20 @@ local function telescope_keymap()
 				end,
 				desc = "Search words in all files",
 			},
+
+			------------------------------
+			-- Project
+			------------------------------
+			["<leader>p"] = { ":lua require'telescope'.extensions.project.project{}<CR>", desc = "Search for projects" },
+
+			------------------------------
+			-- Find
+			------------------------------
+			["<leader>fr"] = { builtin.registers, desc = "Find registers" },
+			["<leader>fk"] = { builtin.registers, desc = "Find keymaps" },
+			["<leader>fo"] = { builtin.registers, desc = "Find vim options" },
+			["<leader>fc"] = { builtin.registers, desc = "Find available colorschemes" },
+			-- ["<leader>fk"] = { builtin.registers, desc = "Find keymaps" },
 		},
 	}
 
@@ -73,6 +88,7 @@ function M.config()
 
 	--use FZF if available
 	pcall(require("telescope").load_extension, "fzf")
+	pcall(require("telescope").load_extension("project"))
 
 	-- Set keymaps
 	telescope_keymap()
@@ -106,6 +122,13 @@ function M.config()
 					["<C-u>"] = actions.preview_scrolling_up,
 					["<C-d>"] = actions.preview_scrolling_down,
 				},
+			},
+		},
+		extensions = {
+			project = {
+				hidden_files = true,
+				search_by = "title",
+				sync_with_nvim_tree = true,
 			},
 		},
 	})

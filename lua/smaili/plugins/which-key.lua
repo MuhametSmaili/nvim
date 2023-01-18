@@ -19,6 +19,7 @@ function M.config()
 			s = { name = "Search" },
 			t = { name = "Terminal" },
 			l = { name = "LSP", { w = "Workspace" } },
+			f = { name = "Find" },
 			u = {
 				name = "UI",
 				-- p = "Toggle paste mode",
