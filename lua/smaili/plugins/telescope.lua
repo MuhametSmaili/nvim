@@ -23,7 +23,9 @@ local function telescope_keymap()
 			------------------------------
 			["<C-p>"] = {
 				function()
-					if pcall(builtin.git_files) then
+					if pcall(function()
+						builtin.git_files({ show_untracked = true })
+					end) then
 					else
 						builtin.find_files()
 					end
@@ -73,9 +75,9 @@ local function telescope_keymap()
 			-- Find
 			------------------------------
 			["<leader>fr"] = { builtin.registers, desc = "Find registers" },
-			["<leader>fk"] = { builtin.registers, desc = "Find keymaps" },
-			["<leader>fo"] = { builtin.registers, desc = "Find vim options" },
-			["<leader>fc"] = { builtin.registers, desc = "Find available colorschemes" },
+			-- ["<leader>fk"] = { builtin.registers, desc = "Find keymaps" },
+			-- ["<leader>fo"] = { builtin.registers, desc = "Find vim options" },
+			-- ["<leader>fc"] = { builtin.registers, desc = "Find available colorschemes" },
 			-- ["<leader>fk"] = { builtin.registers, desc = "Find keymaps" },
 		},
 	}
