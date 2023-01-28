@@ -23,9 +23,12 @@ local function telescope_keymap()
 			------------------------------
 			["<C-p>"] = {
 				function()
-					if pcall(function()
-						builtin.git_files({ show_untracked = true })
-					end) then
+					if
+						pcall(function()
+							-- builtin.git_files({ show_untracked = true })
+							builtin.git_files()
+						end)
+					then
 					else
 						builtin.find_files()
 					end
@@ -46,6 +49,7 @@ local function telescope_keymap()
 			["<leader>sf"] = { builtin.find_files, desc = "Search Files" },
 			["<leader>so"] = { builtin.oldfiles, desc = "Search old files" },
 			["<leader>sb"] = { builtin.buffers, desc = "Search buffers" },
+			["<leader><Tab>"] = { builtin.buffers, desc = "Search buffers" },
 			["<leader>sh"] = { builtin.help_tags, desc = "Search for help" },
 			["<leader>sm"] = { builtin.man_pages, desc = "Search manual" },
 			["<leader>sk"] = { builtin.keymaps, desc = "Search keymaps" },
@@ -89,8 +93,8 @@ function M.config()
 	local actions = require("telescope.actions")
 
 	--use FZF if available
-	pcall(require("telescope").load_extension, "fzf")
-	pcall(require("telescope").load_extension("project"))
+	-- pcall(require("telescope").load_extension, "fzf")
+	-- pcall(require("telescope").load_extension("project"))
 
 	-- Set keymaps
 	telescope_keymap()
@@ -131,6 +135,13 @@ function M.config()
 				hidden_files = true,
 				search_by = "title",
 				sync_with_nvim_tree = true,
+			},
+			fzf = {
+				fuzzy = true, -- false will only do exact matching
+				override_generic_sorter = true, -- override the generic sorter
+				override_file_sorter = true, -- override the file sorter
+				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+				-- the default case_mode is "smart_case"
 			},
 		},
 	})

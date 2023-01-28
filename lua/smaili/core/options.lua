@@ -43,7 +43,7 @@ local options = {
 	------------------------------
 	-- UI options
 	------------------------------
-	cmdheight = 2, -- more space in the neovim command line for displaying messages
+	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	pumheight = 10, -- pop up menu height
 	showtabline = 2, -- always show tabs
 	mouse = "a", -- allow the mouse to be used in neovim

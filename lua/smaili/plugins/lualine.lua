@@ -31,6 +31,10 @@ function M.config()
 					cond = function()
 						if package.loaded["nvim-navic"] then
 							local navic = require("nvim-navic")
+							navic.setup({
+								icons = require("smaili.plugins.lsp.icons"),
+								separator = " ",
+							})
 							return navic.is_available()
 						end
 					end,
@@ -38,8 +42,20 @@ function M.config()
 				},
 			},
 		},
+		-- inactive_winbar = {
+		-- 	-- 	lualine_a = { my_filename },
+		-- 	lualine_z = {
+		-- 		{
+		-- 			my_filename,
+		-- 			path = 0,
+		-- 			symbols = { modified = " ", readonly = "", unnamed = " " },
+		-- 		},
+		-- 	},
+		-- },
 		inactive_sections = {
-			lualine_c = { my_filename },
+			-- lualine_c = { my_filename },
+			lualine_c = { "filename" },
+			lualine_x = { "testinggggg" },
 		},
 		extensions = { "nvim-tree" },
 	})

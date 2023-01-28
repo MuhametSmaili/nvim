@@ -45,6 +45,9 @@ return function(bufnr)
 			["<gD>"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration" },
 			["<gI>"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation" },
 		},
+		i = {
+			["<C-k>"] = { vim.lsp.buf.signature_help, desc = "Signature Documentation", buffer = bufnr },
+		},
 	}
 
 	require("smaili.utils").set_keymappings(keymaps)

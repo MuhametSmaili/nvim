@@ -25,6 +25,8 @@ local M = {
 		"rafamadriz/friendly-snippets",
 		-- show code context
 		"SmiteshP/nvim-navic",
+		-- signature help
+		"ray-x/lsp_signature.nvim",
 	},
 	event = "BufReadPost",
 }
@@ -92,6 +94,11 @@ function M.config()
 		require("smaili.plugins.lsp.mappings")(bufnr)
 
 		----------------------------------
+		-- Load signature help
+		----------------------------------
+		require("lsp_signature").on_attach({}, bufnr)
+
+		----------------------------------
 		-- Load plugin for showing current code context
 		----------------------------------
 		local activeServer = client.name
@@ -103,6 +110,10 @@ function M.config()
 	----------------------------------
 	-- LSP SETUP
 	----------------------------------
+	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	-- 	border = "rounded",
+	-- 	close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
+	-- })
 	lsp.setup()
 
 	----------------------------------
@@ -110,6 +121,17 @@ function M.config()
 	----------------------------------
 	require("smaili.plugins.lsp.formatting")
 
+	--icons test
+	local diagnosticsIcons = {
+		Error = " ",
+		Warn = " ",
+		Hint = " ",
+		Info = " ",
+	}
+	for name, icon in pairs(diagnosticsIcons) do
+		name = "DiagnosticSign" .. name
+		vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+	end
 	----------------------------------
 	-- Add cmp config
 	----------------------------------

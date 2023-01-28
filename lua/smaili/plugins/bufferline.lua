@@ -11,6 +11,7 @@ function M.config()
 			offsets = {
 				{ filetype = "NvimTree", separator = true, text = "" },
 			},
+			buffer_close_icon = "",
 		},
 	})
 end

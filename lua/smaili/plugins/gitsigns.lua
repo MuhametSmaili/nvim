@@ -23,6 +23,16 @@ function M.config()
 	local gitsigns = require("gitsigns")
 
 	gitsigns.setup({
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "契" },
+				topdelete = { text = "契" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+		},
 		current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 	})
 
