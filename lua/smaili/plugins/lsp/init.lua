@@ -26,7 +26,7 @@ local M = {
 		-- show code context
 		"SmiteshP/nvim-navic",
 		-- signature help
-		"ray-x/lsp_signature.nvim",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
 	event = "BufReadPost",
 }
@@ -96,7 +96,7 @@ function M.config()
 		----------------------------------
 		-- Load signature help
 		----------------------------------
-		require("lsp_signature").on_attach({}, bufnr)
+		-- require("lsp_signature").on_attach({}, bufnr)
 
 		----------------------------------
 		-- Load plugin for showing current code context
@@ -138,6 +138,13 @@ function M.config()
 	local kind_icons = require("smaili.plugins.lsp.icons")
 	local cmp_config = lsp.defaults.cmp_config({
 		mapping = cmp_mappings,
+		-- sources = {
+		-- 	{ name = "nvim_lsp", keyword_length = 3 },
+		-- 	{ name = "nvim_lsp_signature_help" },
+		-- 	{ name = "nvim_lsp", keyword_length = 3 },
+		-- 	{ name = "buffer", keyword_length = 3 },
+		-- 	{ name = "luasnip", keyword_length = 2 },
+		-- },
 		window = {
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),

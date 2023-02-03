@@ -8,7 +8,7 @@ local M = {
 		"nvim-tree/nvim-web-devicons",
 	},
 	lazy = false,
-	envent = "VeryLazy",
+	event = "VeryLazy",
 }
 
 function M.config()
