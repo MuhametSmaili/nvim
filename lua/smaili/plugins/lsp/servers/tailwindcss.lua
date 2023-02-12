@@ -3,7 +3,7 @@ local M = {
 }
 
 M.config = {
-	filetypes = { "javascriptreact", "typescriptreact" },
+	filetypes = { "javascriptreact", "typescriptreact", "astro" },
 	autostart = true,
 }
 

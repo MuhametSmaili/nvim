@@ -26,7 +26,9 @@ local function telescope_keymap()
 					if
 						pcall(function()
 							-- builtin.git_files({ show_untracked = true })
-							builtin.git_files()
+							-- builtin.git_files()
+              --
+						builtin.find_files()
 						end)
 					then
 					else

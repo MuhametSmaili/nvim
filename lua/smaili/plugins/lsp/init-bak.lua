@@ -24,8 +24,7 @@ local M = {
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
 		-- show code context
-		-- "SmiteshP/nvim-navic",
-		"glepnir/lspsaga.nvim",
+		"SmiteshP/nvim-navic",
 		-- signature help
 		-- "hrsh7th/cmp-nvim-lsp-signature-help",
 	},
@@ -85,9 +84,6 @@ function M.config()
 	----------------------------------
 	loadServerConfigs(lsp)
 
-	-- TODO -> lspsaga
-	require("lspsaga").setup({})
-
 	----------------------------------
 	-- On Attach
 	----------------------------------
@@ -105,10 +101,10 @@ function M.config()
 		----------------------------------
 		-- Load plugin for showing current code context
 		----------------------------------
-		-- local activeServer = client.name
-		-- if activeServer == "tsserver" or activeServer == "sumneko_lua" or activeServer == "jsonls" then
-		-- 	require("nvim-navic").attach(client, bufnr)
-		-- end
+		local activeServer = client.name
+		if activeServer == "tsserver" or activeServer == "sumneko_lua" or activeServer == "jsonls" then
+			require("nvim-navic").attach(client, bufnr)
+		end
 	end)
 
 	----------------------------------

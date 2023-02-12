@@ -96,7 +96,6 @@ M.keyMaps = {
 		["<leader>tf"] = { ":ToggleTerm direction=float<CR>", desc = "Toggle terminal float" },
 		["<leader>th"] = { ":ToggleTerm direction=horizontal<CR>", desc = "Toggle terminal horizontal" },
 		-- ["<C-`>"] = ":ToggleTerm",
-    
 	},
 
 	-------------------------------------
