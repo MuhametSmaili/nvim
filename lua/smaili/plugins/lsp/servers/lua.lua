@@ -1,5 +1,5 @@
 local M = {
-	name = "sumneko_lua",
+	name = "lua_ls",
 }
 
 M.config = {
@@ -7,7 +7,7 @@ M.config = {
 	settings = {
 		Lua = {
 			diagnostics = {
-				globals = { "vim" },
+				globals = { "vim", "smaili" },
 			},
 		},
 	},

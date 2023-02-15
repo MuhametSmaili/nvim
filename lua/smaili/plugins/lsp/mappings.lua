@@ -51,16 +51,16 @@ return function(bufnr)
 			},
 
 			-- G
-			-- ["<gd>"] = { vim.lsp.buf.definition, desc = "[G]oto [D]efinition", buffer = bufnr },
-			["<gd>"] = { "<cmd>Lspsaga peek_definition<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
-			["<gr>"] = { builtin.lsp_references, desc = "[G]oto [R]eferences" },
-			["<gD>"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration" },
-			["<gI>"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation" },
+			["<gd>"] = { vim.lsp.buf.definition, desc = "[G]oto [D]efinition", buffer = bufnr },
+			-- ["<gd>"] = { "<cmd>Lspsaga peek_definition<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
+			["<gr>"] = { builtin.lsp_references, desc = "[G]oto [R]eferences", buffer = bufnr },
+			["<gD>"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration", buffer = bufnr },
+			["<gI>"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },
 		},
 		i = {
 			["<C-k>"] = { vim.lsp.buf.signature_help, desc = "Signature Documentation", buffer = bufnr },
 		},
 	}
 
-	require("smaili.utils").set_keymappings(keymaps)
+	smaili.set_keymappings(keymaps)
 end

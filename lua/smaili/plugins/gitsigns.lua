@@ -35,7 +35,7 @@ function M.config()
 	})
 
 	-- Git signs
-	require("smaili.utils").set_keymappings(keymaps())
+	smaili.set_keymappings(keymaps())
 end
 
 return M

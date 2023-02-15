@@ -11,6 +11,8 @@ local M = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"windwp/nvim-ts-autotag",
+		"nvim-treesitter/playground",
+		-- "mrjones2014/nvim-ts-rainbow",
 	},
 }
 
@@ -23,6 +25,8 @@ function M.config()
 			"tsx",
 			"lua",
 			"json",
+			"json5",
+			"jsonc",
 			"prisma",
 			"sql",
 			"gitcommit",
@@ -41,7 +45,7 @@ function M.config()
 		autotag = { enable = true }, -- nvim-ts-autotag
 		highlight = {
 			enable = true,
-			disable = { "tsx" },
+			-- disable = { "tsx", "astro" },
 			additional_vim_regex_highlighting = false,
 		},
 		indent = {
@@ -54,6 +58,24 @@ function M.config()
 				node_incremental = "<c-space>",
 				scope_incremental = "<c-s>",
 				node_decremental = "<c-backspace>",
+			},
+		},
+		playground = {
+			enable = true,
+			disable = {},
+			updatetime = 25,
+			persist_queries = false,
+			keybindings = {
+				toggle_query_editor = "o",
+				toggle_hl_groups = "i",
+				toggle_injected_languages = "t",
+				toggle_anonymous_nodes = "a",
+				toggle_language_display = "I",
+				focus_language = "f",
+				unfocus_language = "F",
+				update = "R",
+				goto_node = "<cr>",
+				show_help = "?",
 			},
 		},
 		textobjects = {
@@ -100,6 +122,14 @@ function M.config()
 				},
 			},
 		},
+		-- rainbow = {
+		-- 	enable = true,
+		-- 	disable = { "jsx", "tsx" },
+		-- 	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+		-- 	max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		-- 	-- colors = {}, -- table of hex strings
+		-- 	-- termcolors = {} -- table of colour name strings
+		-- },
 	})
 end
 

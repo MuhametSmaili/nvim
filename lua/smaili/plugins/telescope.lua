@@ -27,8 +27,8 @@ local function telescope_keymap()
 						pcall(function()
 							-- builtin.git_files({ show_untracked = true })
 							-- builtin.git_files()
-              --
-						builtin.find_files()
+							--
+							builtin.find_files()
 						end)
 					then
 					else
@@ -88,7 +88,8 @@ local function telescope_keymap()
 		},
 	}
 
-	require("smaili.utils").set_keymappings(keymaps)
+	-- require("smaili.utils").set_keymappings(keymaps)
+	smaili.set_keymappings(keymaps)
 end
 
 function M.config()

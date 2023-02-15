@@ -157,4 +157,4 @@ M.keyMaps = {
 ------------------------------
 -- Set keymaps
 ------------------------------
-require("smaili.utils").set_keymappings(M.keyMaps)
+smaili.set_keymappings(M.keyMaps)

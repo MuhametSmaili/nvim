@@ -22,8 +22,12 @@ vim.opt.runtimepath:prepend(lazypath)
 -- Load plugins
 require("lazy").setup("smaili.plugins", {
 	defaults = { lazy = true },
-	install = { colorscheme = { "dracula", "tokyonight" } },
+	-- install = { colorscheme = { "dracula", "tokyonight" } },
 	checker = { enabled = true },
+	dev = {
+		path = "~/.local/share/nvim/projects",
+		fallback = false,
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {

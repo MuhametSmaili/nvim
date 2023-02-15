@@ -2,12 +2,6 @@
 -- Plugins
 --------------------------------------------------------
 return {
-	-- Colorshema
-	{
-		name = "dracula_pro",
-		dir = "~/.local/share/nvim/site/pack/themes/start/dracula_pro",
-	},
-
 	-- Autoclose
 	{
 		"m4xshen/autoclose.nvim",

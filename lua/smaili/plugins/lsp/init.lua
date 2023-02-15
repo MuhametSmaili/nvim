@@ -52,9 +52,12 @@ function M.config()
 		"tsserver",
 		"eslint",
 		"html",
-		"sumneko_lua",
+		-- "sumneko_lua", -- Deprecated
+		"lua_ls",
 		"jsonls",
 		"tailwindcss",
+		"dockerls",
+		"docker_compose_language_service",
 	})
 
 	----------------------------------
@@ -126,12 +129,8 @@ function M.config()
 	require("smaili.plugins.lsp.formatting")
 
 	--icons test
-	local diagnosticsIcons = {
-		Error = " ",
-		Warn = " ",
-		Hint = " ",
-		Info = " ",
-	}
+	local diagnosticsIcons = smaili.icons.diagnostics
+
 	for name, icon in pairs(diagnosticsIcons) do
 		name = "DiagnosticSign" .. name
 		vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
@@ -139,7 +138,7 @@ function M.config()
 	----------------------------------
 	-- Add cmp config
 	----------------------------------
-	local kind_icons = require("smaili.plugins.lsp.icons")
+	local kind_icons = smaili.icons.lsp
 	local cmp_config = lsp.defaults.cmp_config({
 		mapping = cmp_mappings,
 		-- sources = {
