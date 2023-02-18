@@ -5,9 +5,7 @@ return {
 	-- Autoclose
 	{
 		"m4xshen/autoclose.nvim",
-		config = function()
-			require("autoclose").setup({})
-		end,
+		opts = {},
 		event = "VeryLazy",
 	},
 
@@ -33,10 +31,10 @@ return {
 	{ "b0o/schemastore.nvim" },
 
 	-- Better UI
-	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-	},
+	-- {
+	-- 	"stevearc/dressing.nvim",
+	-- 	event = "VeryLazy",
+	-- },
 
 	--Lsp-figet
 	{
@@ -50,6 +48,6 @@ return {
 		event = "VeryLazy",
 	},
 
-	-- Undo tree visualization 
+	-- Undo tree visualization
 	{ "mbbill/undotree", event = "VeryLazy" },
 }

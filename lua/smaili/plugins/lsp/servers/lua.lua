@@ -3,11 +3,16 @@ local M = {
 }
 
 M.config = {
-
 	settings = {
 		Lua = {
+			workspace = {
+				checkThirdParty = false,
+			},
+			completion = {
+				callSnippet = "Replace",
+			},
 			diagnostics = {
-				globals = { "vim", "smaili" },
+				globals = { "vim" },
 			},
 		},
 	},

@@ -25,17 +25,17 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { comma
 -- 	end,
 -- })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	group = smailiGroup,
-	callback = function()
-		local mark = vim.api.nvim_buf_get_mark(0, '"')
-		local lcount = vim.api.nvim_buf_line_count(0)
-		if mark[1] > 0 and mark[1] <= lcount then
-			pcall(vim.api.nvim_win_set_cursor, 0, mark)
-		end
-	end,
-})
-
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+-- 	group = smailiGroup,
+-- 	callback = function()
+-- 		local mark = vim.api.nvim_buf_get_mark(0, '"')
+-- 		local lcount = vim.api.nvim_buf_line_count(0)
+-- 		if mark[1] > 0 and mark[1] <= lcount then
+-- 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+-- 		end
+-- 	end,
+-- })
+--
 autocmd("BufReadPost", {
 	callback = function()
 		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
@@ -46,7 +46,7 @@ autocmd("BufReadPost", {
 	desc = "Go To The Last Cursor Position",
 })
 
--- Format cuurent buffer using null-ls
+-- Format current buffer using null-ls
 vim.api.nvim_create_user_command("FormatCurrentBuffer", function()
 	vim.lsp.buf.format({
 		filter = function(client)

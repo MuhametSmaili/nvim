@@ -1,165 +1,177 @@
--------------------------------------------------
--- name : lsp-zero
--- url  : https://github.com/nvim-tree/nvim-tree.lua
--------------------------------------------------
-
-local M = {
-	"VonHeikemen/lsp-zero.nvim",
-	dependencies = {
-		-- LSP Support
+return {
+	{ -- LSP
 		"neovim/nvim-lspconfig",
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		-- Autocompletion
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"saadparwaiz1/cmp_luasnip",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-nvim-lua",
-		-- Formatter & linter
-		"jose-elias-alvarez/null-ls.nvim",
-		"jayp0521/mason-null-ls.nvim",
-		-- Snippets
-		"L3MON4D3/LuaSnip",
-		"rafamadriz/friendly-snippets",
-		-- show code context
-		-- "SmiteshP/nvim-navic",
-		"glepnir/lspsaga.nvim",
-		-- signature help
-		-- "hrsh7th/cmp-nvim-lsp-signature-help",
-	},
-	event = "BufReadPost",
-}
-
--- Load configuration of server(s) inside `servers` directory
-local function loadServerConfigs(lsp)
-	for _, file in
-		ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/smaili/plugins/lsp/servers", [[v:val =~ '\.lua$']]))
-	do
-		local server = require("smaili.plugins.lsp.servers." .. file:gsub("%.lua$", ""))
-		lsp.configure(server.name, server.config)
-	end
-end
-
--- LSP configuration
-function M.config()
-	local lsp = require("lsp-zero")
-
-	lsp.preset("recommended")
-
-	lsp.ensure_installed({
-		"tsserver",
-		"eslint",
-		"html",
-		-- "sumneko_lua", -- Deprecated
-		"lua_ls",
-		"jsonls",
-		"tailwindcss",
-		"dockerls",
-		"docker_compose_language_service",
-	})
-
-	----------------------------------
-	-- Mappings
-	----------------------------------
-	local cmp = require("cmp")
-	local cmp_select = { behavior = cmp.SelectBehavior.Select }
-	local cmp_mappings = lsp.defaults.cmp_mappings({
-		["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
-		["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			local luasnip = require("luasnip")
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			else
-				fallback()
+		event = "BufReadPost",
+		dependencies = {
+			{ "williamboman/mason.nvim", opts = {} }, -- installing LSPs automaticlly
+			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
+			"folke/neodev.nvim", -- extra documentation
+			{ "j-hui/fidget.nvim", opts = {} }, -- status for lsp
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp",
+			{ "glepnir/lspsaga.nvim", opts = {} },
+			-- Autocompletion
+			-- "hrsh7th/cmp-nvim-lua",
+		},
+		opts = {
+			diagnostics = {
+				underline = true,
+				update_in_insert = false,
+				virtual_text = { spacing = 4, prefix = "●" },
+				severity_sort = true,
+			},
+			autoformat = true,
+			servers = {
+				"tsserver",
+				"eslint",
+				"html",
+				"lua_ls",
+				"jsonls",
+				"tailwindcss",
+				"dockerls",
+				"docker_compose_language_service",
+				"astro",
+				"vimls",
+				"cssls",
+				"astro",
+			},
+		},
+		config = function(plugin, opts)
+			----------------------------------
+			-- Diagnostics
+			----------------------------------
+			for name, icon in pairs(smaili.icons.diagnostics) do
+				name = "DiagnosticSign" .. name
+				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 			end
-		end, { "i", "s" }),
-		["<C-Space>"] = cmp.mapping.complete({}),
-	})
+			vim.diagnostic.config(opts.diagnostics)
 
-	----------------------------------
-	-- Configure servers
-	----------------------------------
-	loadServerConfigs(lsp)
+			----------------------------------
+			-- Server configuration
+			----------------------------------
+			-- Load server configurations from files
+			----------------------------------
+			-- Every file configuration should have at least these two keys
+			--  name -> the server name
+			--  config -> the config of the server
+			--  we configure servers on seperate files, if we do not want to change the
+			--  default behaviour then we can just add to the opts.servers the server name
+			local servers = {}
+			for _, file in
+				ipairs(
+					vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/smaili/plugins/lsp/servers", [[v:val =~ '\.lua$']])
+				)
+			do
+				local server = require("smaili.plugins.lsp.servers." .. file:gsub("%.lua$", ""))
+				-- lsp.configure(server.name, server.config)
+				servers[server.name] = server.config
+			end
 
-	-- TODO -> lspsaga
-	require("lspsaga").setup({})
+			----------------------------------
+			-- ON ATTACH
+			----------------------------------
+			local on_attach = function(_, bufnr)
+				----------------------------------
+				-- Load key mappings
+				----------------------------------
+				require("smaili.plugins.lsp.mappings")(bufnr)
+			end
 
-	----------------------------------
-	-- On Attach
-	----------------------------------
-	lsp.on_attach(function(client, bufnr)
-		----------------------------------
-		-- Load mappings on attach
-		----------------------------------
-		require("smaili.plugins.lsp.mappings")(bufnr)
+			----------------------------------
+			-- Add servers automaticlly
+			----------------------------------
+			local capabilities =
+				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-		----------------------------------
-		-- Load signature help
-		----------------------------------
-		-- require("lsp_signature").on_attach({}, bufnr)
-
-		----------------------------------
-		-- Load plugin for showing current code context
-		----------------------------------
-		-- local activeServer = client.name
-		-- if activeServer == "tsserver" or activeServer == "sumneko_lua" or activeServer == "jsonls" then
-		-- 	require("nvim-navic").attach(client, bufnr)
-		-- end
-	end)
-
-	----------------------------------
-	-- LSP SETUP
-	----------------------------------
-	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	-- 	border = "rounded",
-	-- 	close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
-	-- })
-	lsp.setup()
-
-	----------------------------------
-	-- Setting up formatter
-	----------------------------------
-	require("smaili.plugins.lsp.formatting")
-
-	--icons test
-	local diagnosticsIcons = smaili.icons.diagnostics
-
-	for name, icon in pairs(diagnosticsIcons) do
-		name = "DiagnosticSign" .. name
-		vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-	end
-	----------------------------------
-	-- Add cmp config
-	----------------------------------
-	local kind_icons = smaili.icons.lsp
-	local cmp_config = lsp.defaults.cmp_config({
-		mapping = cmp_mappings,
-		-- sources = {
-		-- 	{ name = "nvim_lsp", keyword_length = 3 },
-		-- 	{ name = "nvim_lsp_signature_help" },
-		-- 	{ name = "nvim_lsp", keyword_length = 3 },
-		-- 	{ name = "buffer", keyword_length = 3 },
-		-- 	{ name = "luasnip", keyword_length = 2 },
-		-- },
-		window = {
-			completion = cmp.config.window.bordered(),
-			documentation = cmp.config.window.bordered(),
+			require("mason-lspconfig").setup({ ensure_installed = opts.servers })
+			require("mason-lspconfig").setup_handlers({
+				function(server_name)
+					local server_opts = servers[server_name] or {}
+					server_opts["capabilities"] = capabilities
+					server_opts["on_attach"] = on_attach
+					require("lspconfig")[server_name].setup(server_opts)
+				end,
+			})
+		end,
+	},
+	{ -- Autocompletion
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			{ "L3MON4D3/LuaSnip", opts = {} }, -- TODO check and fix this for adding friendly snippet
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
 		},
-		formatting = {
-			format = function(_, vim_item)
-				vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-				return vim_item
-			end,
-		},
-	})
-	cmp.setup(cmp_config)
-end
+		opts = function()
+			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 
-return M
+			return {
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
+				formatting = {
+					format = function(_, item)
+						item.kind = string.format("%s %s", smaili.icons.lsp[item.kind], item.kind)
+						return item
+					end,
+				},
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
+				}),
+				mapping = cmp.mapping.preset.insert({
+					["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+					["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete({}),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				}),
+			}
+		end,
+	},
+	{ -- formatter
+		"jose-elias-alvarez/null-ls.nvim",
+		dependencies = {
+			"jayp0521/mason-null-ls.nvim",
+		},
+		event = "BufReadPost",
+		config = function()
+			----------------------------------
+			-- Setting up formatter
+			----------------------------------
+			require("smaili.plugins.lsp.formatting")
+		end,
+	},
+}

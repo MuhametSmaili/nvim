@@ -39,6 +39,12 @@ return function(bufnr)
 			["<C-k>"] = { vim.lsp.buf.signature_help, desc = "Signature Documentation", buffer = bufnr },
 
 			------------------------------
+			-- Diagnostic key
+			------------------------------
+			["[d"] = { "<cmd>vim.diagnostic.goto_prev<cr>" },
+			["]d"] = { "<cmd>vim.diagnostic.goto_prev<cr>" },
+
+			------------------------------
 			-- workspace
 			------------------------------
 			["<leader>lwa"] = { vim.lsp.buf.add_workspace_folder, desc = "Workspace Add Folder", buffer = bufnr },
@@ -51,8 +57,8 @@ return function(bufnr)
 			},
 
 			-- G
-			["<gd>"] = { vim.lsp.buf.definition, desc = "[G]oto [D]efinition", buffer = bufnr },
-			-- ["<gd>"] = { "<cmd>Lspsaga peek_definition<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
+			-- ["<gd>"] = { vim.lsp.buf.definition, desc = "[G]oto [D]efinition", buffer = bufnr },
+			["<gd>"] = { "<cmd>Lspsaga peek_definition<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
 			["<gr>"] = { builtin.lsp_references, desc = "[G]oto [R]eferences", buffer = bufnr },
 			["<gD>"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration", buffer = bufnr },
 			["<gI>"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },

@@ -24,12 +24,13 @@ function M.config()
 			"typescript",
 			"tsx",
 			"lua",
+			"jsdoc",
 			"json",
 			"json5",
 			"jsonc",
 			"prisma",
 			"sql",
-			"gitcommit",
+			"regex",
 			"html",
 			"css",
 			"jsdoc",
@@ -38,8 +39,13 @@ function M.config()
 			"markdown",
 			"markdown_inline",
 			"query",
+			"vim",
+			"gitignore",
+			"gitcommit",
+			"diff",
+			"git_rebase",
 		},
-		context_commentstring = { -- for comment -> nvim-ts-context-commentstring
+		context_commentstring = { -- nvim-ts-context-commentstring
 			enable = true,
 		},
 		autotag = { enable = true }, -- nvim-ts-autotag
@@ -59,6 +65,11 @@ function M.config()
 				scope_incremental = "<c-s>",
 				node_decremental = "<c-backspace>",
 			},
+		},
+		query_linter = {
+			enable = true,
+			use_virtual_text = true,
+			-- lint_events = { "BufWrite", "CursorHold" },
 		},
 		playground = {
 			enable = true,
