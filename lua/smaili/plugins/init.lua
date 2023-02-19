@@ -31,10 +31,10 @@ return {
 	{ "b0o/schemastore.nvim" },
 
 	-- Better UI
-	-- {
-	-- 	"stevearc/dressing.nvim",
-	-- 	event = "VeryLazy",
-	-- },
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+	},
 
 	--Lsp-figet
 	{

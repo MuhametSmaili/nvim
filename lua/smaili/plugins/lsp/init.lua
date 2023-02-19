@@ -9,9 +9,15 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} }, -- status for lsp
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp",
-			{ "glepnir/lspsaga.nvim", opts = {} },
-			-- Autocompletion
-			-- "hrsh7th/cmp-nvim-lua",
+			{
+				"glepnir/lspsaga.nvim",
+				opts = {
+					code_action = {
+						show_server_name = true,
+						extend_gitsigns = false,
+					},
+				},
+			},
 		},
 		opts = {
 			diagnostics = {
@@ -74,7 +80,7 @@ return {
 				----------------------------------
 				-- Load key mappings
 				----------------------------------
-				require("smaili.plugins.lsp.mappings")(bufnr)
+				require("smaili.plugins.lsp.key-mappings")(bufnr)
 			end
 
 			----------------------------------
@@ -94,7 +100,10 @@ return {
 			})
 		end,
 	},
-	{ -- Autocompletion
+	-- ===========================
+	-- Autocompletion
+	-- ===========================
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -161,7 +170,10 @@ return {
 			}
 		end,
 	},
-	{ -- formatter
+	-- ===========================
+	-- Formatter
+	-- ===========================
+	{
 		"jose-elias-alvarez/null-ls.nvim",
 		dependencies = {
 			"jayp0521/mason-null-ls.nvim",
