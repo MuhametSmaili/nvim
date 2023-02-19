@@ -1,5 +1,11 @@
-# A VeryLazy NEOVIM config
+# Neovim configuration
+
 
 
 - A personal neovim configuration
+
+
+
+![Neovim config](./neovim.png)
+
 
