@@ -9,11 +9,11 @@ return {
 		event = "VeryLazy",
 	},
 
-	{
-		"NvChad/nvim-colorizer.lua",
-		config = true,
-		event = "VeryLazy",
-	},
+	-- {
+	-- 	"NvChad/nvim-colorizer.lua",
+	-- 	config = true,
+	-- 	event = "VeryLazy",
+	-- },
 
 	-- Vim-surround
 	{
@@ -33,18 +33,6 @@ return {
 	-- Better UI
 	{
 		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-	},
-
-	--Lsp-figet
-	{
-		"j-hui/fidget.nvim",
-		config = true,
-		event = "VeryLazy",
-	},
-	{
-		"folke/neodev.nvim",
-		config = true,
 		event = "VeryLazy",
 	},
 

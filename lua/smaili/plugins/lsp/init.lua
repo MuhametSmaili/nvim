@@ -16,15 +16,20 @@ return {
 						show_server_name = true,
 						extend_gitsigns = false,
 					},
+					lightbulb = {
+						enable = false,
+					},
+					diagnostic = {
+						on_insert = false,
+						on_insert_follow = false,
+					},
 				},
 			},
 		},
 		opts = {
 			diagnostics = {
-				underline = true,
 				update_in_insert = false,
-				virtual_text = { spacing = 4, prefix = "●" },
-				severity_sort = true,
+				virtual_text = false,
 			},
 			autoformat = true,
 			servers = {
