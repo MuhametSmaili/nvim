@@ -31,14 +31,14 @@ require("lazy").setup("smaili.plugins", {
 	performance = {
 		rtp = {
 			disabled_plugins = {
-				"gzip",
 				-- "matchit",
 				-- "matchparen",
+        "gzip",
 				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",
 				"tutor",
-				-- "zipPlugin",
+				"zipPlugin",
 			},
 		},
 	},

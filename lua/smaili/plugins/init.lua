@@ -18,7 +18,7 @@ return {
 	-- Vim-surround
 	{
 		"tpope/vim-surround",
-		keys = { { "ys" }, { "S", mode = "v" } },
+		keys = { { "ys" }, { "S", mode = "v" }, { "cs" } },
 	},
 
 	-- Track time - nvim-wakatime

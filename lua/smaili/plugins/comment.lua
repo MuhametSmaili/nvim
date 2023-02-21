@@ -1,7 +1,7 @@
 local M = {
 	"numToStr/comment.nvim",
 	dependencies = {},
-	keys = { { "gc" } },
+	keys = { { "gc" }, { "gc", mode = "v" } },
 }
 
 function M.config()
