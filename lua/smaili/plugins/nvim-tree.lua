@@ -7,8 +7,9 @@ local M = {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	lazy = false,
-	event = "VeryLazy",
+	keys = {
+		{ "<leader>e", ":NvimTreeToggle<CR>", desc = "Toggle tree" },
+	},
 }
 
 function M.config()
@@ -19,6 +20,9 @@ function M.config()
 			hide_root_folder = true,
 			number = true,
 			relativenumber = true,
+      float = {
+        enable = true
+      }
 		},
 		renderer = {
 			highlight_opened_files = "all",
@@ -39,6 +43,7 @@ function M.config()
 		--  dotfiles = true,
 		---},
 	})
+  -- Open file when we create
 	local api = require("nvim-tree.api")
 	api.events.subscribe(api.events.Event.FileCreated, function(file)
 		vim.cmd("edit " .. file.fname)

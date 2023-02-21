@@ -4,7 +4,7 @@
 -------------------------------------------------
 local M = {
 	"lukas-reineke/indent-blankline.nvim",
-	event = "VeryLazy",
+	event = { "BufReadPost" },
 }
 
 function M.config()

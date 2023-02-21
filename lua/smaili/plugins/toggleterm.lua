@@ -1,17 +1,15 @@
 -------------------------------------------------
--- name : toggleterm-nvim 
+-- name : toggleterm-nvim
 -- url  : https://github.com/akinsho/toggleterm.nvim
 -------------------------------------------------
 
-local M = {
+return {
 	"akinsho/toggleterm.nvim",
-	event = "VeryLazy",
-}
-
-function M.config()
-	require("toggleterm").setup({
+	keys = {
+		{ "<leader>tf", ":ToggleTerm direction=float<CR>", desc = "Toggle terminal float" },
+		{ "<C-`>", ":ToggleTerm direction=float<CR>", desc = "Toggle terminal float" },
+	},
+	opts = {
 		open_mapping = [[<c-`>]],
-	})
-end
-
-return M
+	},
+}

@@ -16,7 +16,8 @@ local M = {
 		},
 		{ "nvim-telescope/telescope-project.nvim" },
 	},
-	event = "VeryLazy",
+	-- event = "VeryLazy",
+	keys = { { "<C-p>" } },
 }
 
 local function telescope_keymap()
@@ -87,7 +88,6 @@ local function telescope_keymap()
 			-- Find
 			------------------------------
 			["<leader>fr"] = { builtin.registers, desc = "Find registers" },
-
 		},
 	}
 

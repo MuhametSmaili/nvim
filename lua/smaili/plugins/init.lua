@@ -6,7 +6,7 @@ return {
 	{
 		"m4xshen/autoclose.nvim",
 		opts = {},
-		event = "VeryLazy",
+		event = "BufReadPost",
 	},
 
 	-- {
@@ -18,7 +18,7 @@ return {
 	-- Vim-surround
 	{
 		"tpope/vim-surround",
-		event = "VeryLazy",
+		keys = { { "ys" }, { "S", mode = "v" } },
 	},
 
 	-- Track time - nvim-wakatime
@@ -33,9 +33,14 @@ return {
 	-- Better UI
 	{
 		"stevearc/dressing.nvim",
-		event = "VeryLazy",
+		event = "BufReadPost",
 	},
 
 	-- Undo tree visualization
-	{ "mbbill/undotree", event = "VeryLazy" },
+	{
+		"mbbill/undotree",
+		keys = {
+			{ "<leader>gu", "<cmd>UndotreeToggle<CR>", desc = "Toggle undotree" },
+		},
+	},
 }
