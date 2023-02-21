@@ -1,7 +1,7 @@
 local M = {
 	"folke/which-key.nvim",
 	config = true,
-	event = "VeryLazy",
+	keys = { { "<leader>" } },
 }
 
 function M.config()

@@ -6,7 +6,7 @@ return {
 	{
 		"m4xshen/autoclose.nvim",
 		opts = {},
-		event = "BufReadPost",
+		event = "InsertEnter",
 	},
 
 	-- {

@@ -1,6 +1,6 @@
 local M = {
 	"lewis6991/gitsigns.nvim",
-	event = "VeryLazy",
+	event = "BufReadPost",
 }
 
 local function keymaps()
