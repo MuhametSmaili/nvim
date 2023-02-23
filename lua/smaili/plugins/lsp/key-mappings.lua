@@ -31,8 +31,9 @@ return function(bufnr)
 			------------------------------
 			-- Diagnostic key
 			------------------------------
-			["[d"] = { "<cmd>vim.diagnostic.goto_prev<cr>" },
-			["]d"] = { "<cmd>vim.diagnostic.goto_prev<cr>" },
+			["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Go to prev diagnostic" },
+			-- ["[d"] = { "<cmd>vim.diagnostic.goto_prev<CR>", desc = "Go to prev diagnostic" },
+			["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Go to prev diagnostic" },
 
 			------------------------------
 			-- workspace
