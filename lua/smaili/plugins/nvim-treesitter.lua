@@ -44,6 +44,7 @@ function M.config()
 			"gitcommit",
 			"diff",
 			"git_rebase",
+			"yaml",
 		},
 		context_commentstring = { -- nvim-ts-context-commentstring
 			enable = true,

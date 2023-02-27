@@ -48,7 +48,7 @@ local function telescope_keymap()
 			------------------------------
 			-- GIT
 			------------------------------
-			["<leader>gb"] = { builtin.git_branches, desc = "Git branches" },
+			-- ["<leader>gb"] = { builtin.git_branches, desc = "Git branches" },
 			["<leader>gc"] = { builtin.git_branches, desc = "Git comits" },
 			["<leader>gs"] = { builtin.git_branches, desc = "Git status" },
 

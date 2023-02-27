@@ -31,10 +31,10 @@ return {
 	{ "b0o/schemastore.nvim" },
 
 	-- Better UI
-	{
-		"stevearc/dressing.nvim",
-		event = "BufReadPost",
-	},
+	-- {
+	-- 	"stevearc/dressing.nvim",
+	-- 	event = "BufReadPost",
+	-- },
 
 	-- Undo tree visualization
 	{
