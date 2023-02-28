@@ -35,6 +35,13 @@ return {
 	-- 	"stevearc/dressing.nvim",
 	-- 	event = "BufReadPost",
 	-- },
+	{
+		"danymat/neogen",
+		config = true,
+		keys = {
+			{ "<leader>ln", "<cmd>Neogen<CR>", desc = "Generate func|class|type documentation" },
+		},
+	},
 
 	-- Undo tree visualization
 	{
