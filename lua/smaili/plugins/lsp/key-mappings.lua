@@ -1,6 +1,4 @@
 return function(bufnr)
-	local builtin = require("telescope.builtin")
-
 	local keymaps = {
 		n = {
 			------------------------------
@@ -9,15 +7,14 @@ return function(bufnr)
 			["<leader>lr"] = { "<cmd>Lspsaga rename<CR>", desc = "Rename", buffer = bufnr },
 			["<leader>la"] = { vim.lsp.buf.code_action, desc = "Action", buffer = bufnr },
 			["<leader>lD"] = { vim.lsp.buf.type_definition, desc = "Type definition", buffer = bufnr },
-			["<leader>ls"] = { builtin.lsp_document_symbols, desc = "Document Symbols" },
+			["<leader>ls"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
 			["<leader>li"] = { "<cmd>Lspsaga incoming_calls<CR>", desc = "List incoming calls" },
-			-- ["<leader>lo"] = { "<cmd>Lspsaga outgoing_calls<CR>", desc = "List outgoing calls" },
 			["<leader>lo"] = { "<cmd>Lspsaga outline<CR>", desc = "List file outline" },
-			["<leader>lws"] = { builtin.lsp_dynamic_workspace_symbols, desc = "Workspace Symbols", buffer = bufnr },
+			["<leader>lws"] = { ":FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics", buffer = bufnr },
 			["<leader>lf"] = { ":FormatCurrentBuffer<CR>", desc = "Format document", buffer = bufnr },
 			["<leader>ld"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show diagnostics", buffer = bufnr },
 			["<leader>lb"] = {
-				"<cmd>Lspsaga show_buf_diagnostics<CR>",
+				"<cmd>FzfLua diagnostics_document<CR>",
 				desc = "Show buffer diagnostics",
 				buffer = bufnr,
 			},
@@ -32,7 +29,6 @@ return function(bufnr)
 			-- Diagnostic key
 			------------------------------
 			["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Go to prev diagnostic" },
-			-- ["[d"] = { "<cmd>vim.diagnostic.goto_prev<CR>", desc = "Go to prev diagnostic" },
 			["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Go to prev diagnostic" },
 
 			------------------------------
@@ -47,7 +43,7 @@ return function(bufnr)
 			["gd"] = { "<cmd>Lspsaga peek_definition<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
 			["gf"] = { "<cmd>Lspsaga lsp_finder<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
 			["ga"] = { "<cmd>Lspsaga code_action<CR>", desc = "[G]oto [D]efinition", buffer = bufnr },
-			["gr"] = { builtin.lsp_references, desc = "[G]oto [R]eferences", buffer = bufnr },
+			["gr"] = { ":FzfLua lsp_references<CR>", desc = "[G]oto [R]eferences", buffer = bufnr },
 			["gD"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration", buffer = bufnr },
 			["gI"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },
 		},

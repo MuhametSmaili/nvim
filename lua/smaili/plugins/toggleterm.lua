@@ -8,7 +8,7 @@ return {
 	keys = {
 		{ "<leader>tf", ":ToggleTerm direction=float<CR>", desc = "Toggle terminal float" },
 		{ "<C-`>", ":ToggleTerm<CR>", desc = "Toggle terminal float" },
-		{ "<leader>gl" },
+		{ "<leader>gl", desc = "Toggle lazygit" },
 	},
 	opts = {
 		open_mapping = [[<c-`>]],
