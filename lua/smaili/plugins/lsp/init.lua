@@ -23,6 +23,9 @@ return {
 						on_insert = false,
 						on_insert_follow = false,
 					},
+					rename = {
+						in_select = false,
+					},
 				},
 			},
 		},
