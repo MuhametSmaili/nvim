@@ -14,16 +14,6 @@ local M = {
 
 function M.config()
 	require("nvim-tree").setup({
-		-- view = {
-		-- 	adaptive_size = true,
-		-- 	side = "right",
-		-- 	hide_root_folder = true,
-		-- 	number = true,
-		-- 	relativenumber = true,
-		--     float = {
-		--       enable = true
-		--     }
-		-- },
 		view = {
 			relativenumber = true,
 			float = {

@@ -16,26 +16,7 @@ autocmd("TextYankPost", {
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
 
--- Return to last edit position when opening files
--- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
--- 	group = smailiGroup,
--- 	pattern = { "*" },
--- 	callback = function()
--- 		vim.api.nvim_exec('silent! normal! g`"zv', false)
--- 	end,
--- })
-
--- vim.api.nvim_create_autocmd("BufReadPost", {
--- 	group = smailiGroup,
--- 	callback = function()
--- 		local mark = vim.api.nvim_buf_get_mark(0, '"')
--- 		local lcount = vim.api.nvim_buf_line_count(0)
--- 		if mark[1] > 0 and mark[1] <= lcount then
--- 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
--- 		end
--- 	end,
--- })
---
+-- Go the last cursor position on buffer
 autocmd("BufReadPost", {
 	callback = function()
 		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then

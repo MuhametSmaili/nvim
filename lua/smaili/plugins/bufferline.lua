@@ -1,6 +1,5 @@
 local M = {
 	"akinsho/bufferline.nvim",
-	dependencies = { "famiu/bufdelete.nvim" },
 	event = "BufReadPost",
 }
 
@@ -12,6 +11,9 @@ function M.config()
 				{ filetype = "NvimTree", separator = true, text = "" },
 			},
 			buffer_close_icon = "",
+			indicator = {
+				style = "underline",
+			},
 		},
 	})
 end

@@ -5,6 +5,7 @@ mason_nullls.setup({
 		"prettierd",
 		"eslint_d",
 		"stylua",
+		"ansible-lint",
 	},
 	automatic_installation = true,
 	automatic_setup = true,

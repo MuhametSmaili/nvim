@@ -33,7 +33,7 @@ require("lazy").setup("smaili.plugins", {
 			disabled_plugins = {
 				-- "matchit",
 				-- "matchparen",
-				-- "netrwPlugin",
+				"netrwPlugin",
         "gzip",
 				"tarPlugin",
 				"tohtml",

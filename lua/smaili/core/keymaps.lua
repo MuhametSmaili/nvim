@@ -65,7 +65,7 @@ M.keyMaps = {
 		["<leader>w"] = ":w<CR>",
 
 		-- Close
-		["<leader>c"] = ":Bdelete<CR>",
+		["<leader>c"] = ":bdelete<CR>",
 
 		-- SUDO save
 		-- ["<leader>W"] = ":w !sudo -S tee % <CR>",
