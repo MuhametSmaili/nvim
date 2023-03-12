@@ -37,7 +37,7 @@ return {
 			autoformat = true,
 			servers = {
 				"tsserver",
-				"eslint",
+				-- "eslint",
 				"html",
 				"lua_ls",
 				"jsonls",

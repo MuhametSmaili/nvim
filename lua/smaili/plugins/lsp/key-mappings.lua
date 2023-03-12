@@ -10,7 +10,7 @@ return function(bufnr)
 			["<leader>ls"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
 			["<leader>li"] = { "<cmd>Lspsaga incoming_calls<CR>", desc = "List incoming calls" },
 			["<leader>lo"] = { "<cmd>Lspsaga outline<CR>", desc = "List file outline" },
-			["<leader>lws"] = { ":FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics", buffer = bufnr },
+			["<leader>lwd"] = { ":FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics", buffer = bufnr },
 			["<leader>lf"] = { ":FormatCurrentBuffer<CR>", desc = "Format document", buffer = bufnr },
 			["<leader>ld"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show diagnostics", buffer = bufnr },
 			["<leader>lb"] = {

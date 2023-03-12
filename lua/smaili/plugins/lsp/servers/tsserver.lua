@@ -1,12 +1,9 @@
-local M = {
+return {
 	name = "tsserver",
+	config = {
+		on_init = function(client)
+			-- client.server_capabilities.documentFormattingProvider = false
+			-- client.server_capabilities.documentFormattingRangeProvider = false
+		end,
+	},
 }
-
-M.config = {
-	on_init = function(client)
-		-- client.server_capabilities.documentFormattingProvider = false
-		-- client.server_capabilities.documentFormattingRangeProvider = false
-	end,
-}
-
-return M
