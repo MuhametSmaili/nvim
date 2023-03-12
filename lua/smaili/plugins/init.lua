@@ -9,12 +9,6 @@ return {
 		event = "InsertEnter",
 	},
 
-	-- {
-	-- 	"NvChad/nvim-colorizer.lua",
-	-- 	config = true,
-	-- 	event = "VeryLazy",
-	-- },
-
 	-- Vim-surround
 	{
 		"tpope/vim-surround",
@@ -30,11 +24,7 @@ return {
 	-- jsonschema-store
 	{ "b0o/schemastore.nvim" },
 
-	-- Better UI
-	-- {
-	-- 	"stevearc/dressing.nvim",
-	-- 	event = "BufReadPost",
-	-- },
+	-- Generate documentation
 	{
 		"danymat/neogen",
 		config = true,
