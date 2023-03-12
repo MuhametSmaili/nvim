@@ -67,6 +67,7 @@ local options = {
 	----------------------------
 	swapfile = false, -- creates a swapfile
 	undofile = true, -- enable persistent undo
+	-- undodir=$HOME/.local/state/nvim/undo
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	spell = false,
 

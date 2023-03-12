@@ -7,7 +7,8 @@ return {
 	cmd = "FzfLua",
 	keys = {
 		{ "<C-p>", ":FzfLua files<cr>", desc = "Find files" },
-		{ "<leader>sw", ":FzfLua live_grep<cr>", desc = "Find word (live_grep)" },
+    { "<leader>sw", ":lua require'fzf-lua'.live_grep({ multiprocess=true })<CR>", desc = "Find word (live_grep)" },
+		{ "<leader>sW", ":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>", desc = "Find word (grep project)" },
 		{ "<leader><tab>", ":FzfLua buffers<cr>", desc = "Find buffers" },
 		{ "<leader>sr", ":FzfLua registers <cr>", desc = "Search registers" },
 		{ "<leader>sm", ":FzfLua man_pages <cr>", desc = "Search manual pages" },
