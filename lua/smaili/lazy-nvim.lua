@@ -29,12 +29,15 @@ require("lazy").setup("smaili.plugins", {
 		fallback = false,
 	},
 	performance = {
+		cache = {
+			enabled = true,
+		},
 		rtp = {
 			disabled_plugins = {
 				-- "matchit",
 				-- "matchparen",
-				"netrwPlugin",
-        "gzip",
+				-- "netrwPlugin",
+				"gzip",
 				"tarPlugin",
 				"tohtml",
 				"tutor",

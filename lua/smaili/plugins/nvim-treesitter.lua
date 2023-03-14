@@ -13,7 +13,7 @@ local M = {
 		"windwp/nvim-ts-autotag",
 		"nvim-treesitter/playground",
 		-- "mrjones2014/nvim-ts-rainbow",
-		--  HiPhish/nvim-ts-rainbow2
+    --  HiPhish/nvim-ts-rainbow2
 	},
 }
 
