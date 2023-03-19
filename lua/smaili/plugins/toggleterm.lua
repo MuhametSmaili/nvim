@@ -13,6 +13,7 @@ return {
 	opts = {
 		open_mapping = [[<c-`>]],
 		direction = "float",
+		start_in_insert = true,
 	},
 	config = function(plugin, opts)
 		require("toggleterm").setup(opts)
