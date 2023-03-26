@@ -65,7 +65,7 @@ return {
 			----------------------------------
 			-- Load server configurations from files
 			----------------------------------
-			-- Every file configuration should have at least these two keys
+			-- Every file configuration should have at least these two properties 
 			--  name -> the server name
 			--  config -> the config of the server
 			--  we configure servers on seperate files, if we do not want to change the
@@ -84,11 +84,29 @@ return {
 			----------------------------------
 			-- ON ATTACH
 			----------------------------------
-			local on_attach = function(_, bufnr)
+			local on_attach = function(client, bufnr)
 				----------------------------------
 				-- Load key mappings
 				----------------------------------
 				require("smaili.plugins.lsp.key-mappings")(bufnr)
+
+				-- Highlight lsp reference when we keep hovering -> :h document_highlight
+				if client.server_capabilities.documentHighlightProvider then
+					vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+					vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
+					vim.api.nvim_create_autocmd("CursorHold", {
+						callback = vim.lsp.buf.document_highlight,
+						buffer = bufnr,
+						group = "lsp_document_highlight",
+						desc = "Document Highlight",
+					})
+					vim.api.nvim_create_autocmd("CursorMoved", {
+						callback = vim.lsp.buf.clear_references,
+						buffer = bufnr,
+						group = "lsp_document_highlight",
+						desc = "Clear All the References",
+					})
+				end
 			end
 
 			----------------------------------
