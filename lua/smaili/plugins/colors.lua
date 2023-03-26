@@ -3,14 +3,31 @@
 ------------------------------
 local M = {
 	{
-		dir = "~/.local/share/nvim/projects/dracula",
-		dev = true,
+		"folke/tokyonight.nvim",
+		event = "VeryLazy",
+		opts = {
+			transparent = true,
+		},
+	},
+	{
+		"dracula/vim",
+		name = "dracula",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[let g:dracula_colorterm = 0]])
-			vim.cmd([[colorscheme dracula_pro]])
+			vim.cmd([[ 
+        let g:dracula_colorterm = 0
+        colorscheme dracula
+      ]])
 		end,
+	},
+	{
+		"catppuccin/nvim",
+		event = "VeryLazy",
+		name = "catppuccin",
+		opts = {
+			transparent_background = true,
+		},
 	},
 }
 
