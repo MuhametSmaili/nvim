@@ -28,6 +28,7 @@ require("lazy").setup("smaili.plugins", {
 		path = "~/.local/share/nvim/projects",
 		fallback = false,
 	},
+	ui = { border = "rounded" },
 	performance = {
 		cache = {
 			enabled = true,

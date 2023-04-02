@@ -7,10 +7,16 @@ return {
 	cmd = "FzfLua",
 	keys = {
 		{ "<C-p>", ":FzfLua files<cr>", desc = "Find files" },
-    { "<leader>sw", ":lua require'fzf-lua'.live_grep({ multiprocess=true })<CR>", desc = "Find word (live_grep)" },
-		{ "<leader>sW", ":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>", desc = "Find word (grep project)" },
+		{ "<leader>sw", ":lua require'fzf-lua'.live_grep({ multiprocess=true })<CR>", desc = "Find word (live_grep)" },
+		{
+			"<leader>sW",
+			":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>",
+			desc = "Find word (grep project)",
+		},
 		{ "<leader><tab>", ":FzfLua buffers<cr>", desc = "Find buffers" },
 		{ "<leader>sr", ":FzfLua registers <cr>", desc = "Search registers" },
+		{ "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" },
+		{ "<leader>sh", ":FzfLua highlights<cr>", desc = "Search highlights" },
 		{ "<leader>sm", ":FzfLua man_pages <cr>", desc = "Search manual pages" },
 		{ "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
 		{ "<leader>sj", ":FzfLua keymaps <cr>", desc = "Search jumps" },
