@@ -65,7 +65,7 @@ return {
 			----------------------------------
 			-- Load server configurations from files
 			----------------------------------
-			-- Every file configuration should have at least these two properties 
+			-- Every file configuration should have at least these two properties
 			--  name -> the server name
 			--  config -> the config of the server
 			--  we configure servers on seperate files, if we do not want to change the
@@ -137,6 +137,7 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -162,6 +163,7 @@ return {
 					end,
 				},
 				sources = cmp.config.sources({
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
