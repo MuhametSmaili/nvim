@@ -19,7 +19,8 @@ return {
 		{ "<leader>sh", ":FzfLua highlights<cr>", desc = "Search highlights" },
 		{ "<leader>sm", ":FzfLua man_pages <cr>", desc = "Search manual pages" },
 		{ "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
-		{ "<leader>sj", ":FzfLua keymaps <cr>", desc = "Search jumps" },
+		{ "<leader>ss", ":FzfLua spell_suggest <cr>", desc = "Show spell suggestions" },
+		{ "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
 	},
 	opts = {
 		previewers = {
