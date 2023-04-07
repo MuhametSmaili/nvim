@@ -3,12 +3,11 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "BufReadPost",
 		dependencies = {
-			{ "williamboman/mason.nvim", opts = {} }, -- installing LSPs automaticlly
+			{ "williamboman/mason.nvim", opts = {}, run = ":MasonUpdate" }, -- installing LSPs automaticlly
 			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
 			"folke/neodev.nvim", -- extra documentation
 			{ "j-hui/fidget.nvim", opts = {} }, -- status for lsp
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/nvim-cmp",
 			{
 				"glepnir/lspsaga.nvim",
 				opts = {
