@@ -1,8 +1,5 @@
-local M = {
+return {
 	name = "jsonls",
-}
-
-M.config = {
 	settings = {
 		json = {
 			schemas = require("schemastore").json.schemas(),
@@ -12,5 +9,3 @@ M.config = {
 		},
 	},
 }
-
-return M

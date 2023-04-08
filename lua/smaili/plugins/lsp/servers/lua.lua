@@ -1,8 +1,5 @@
-local M = {
+return {
 	name = "lua_ls",
-}
-
-M.config = {
 	settings = {
 		Lua = {
 			workspace = {
@@ -17,5 +14,3 @@ M.config = {
 		},
 	},
 }
-
-return M
