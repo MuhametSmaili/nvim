@@ -1,5 +1,8 @@
 local null_ls = require("null-ls")
 local mason_nullls = require("mason-null-ls")
+
+null_ls.setup({})
+
 mason_nullls.setup({
 	ensure_installed = {
 		"prettierd",
@@ -9,33 +12,32 @@ mason_nullls.setup({
 	},
 	automatic_installation = true,
 	automatic_setup = true,
+	handlers = {
+		prettierd = function(source_name, methods)
+			-- Adding astro for prettier
+			null_ls.builtins.formatting.prettierd.filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"css",
+				"scss",
+				"less",
+				"html",
+				"json",
+				"jsonc",
+				"yaml",
+				"markdown",
+				"markdown.mdx",
+				"graphql",
+				"handlebars",
+				"astro",
+			}
+      null_ls.register(null_ls.builtins.formatting.prettierd)
+		end,
+	},
 })
 
-mason_nullls.setup_handlers({
-	prettierd = function(source_name, methods)
-		-- Adding astro for prettier
-		null_ls.builtins.formatting.prettierd.filetypes = {
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"css",
-			"scss",
-			"less",
-			"html",
-			"json",
-			"jsonc",
-			"yaml",
-			"markdown",
-			"markdown.mdx",
-			"graphql",
-			"handlebars",
-			"astro",
-		}
-	end,
-})
-
-null_ls.setup({})
 -- here we can setup null ls with options that are not supported by mason-null-ls
-mason_nullls.setup_handlers({})
+-- mason_nullls.setup_handlers({})
