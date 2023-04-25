@@ -13,6 +13,9 @@ return {
 	{
 		"tpope/vim-surround",
 		keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
+		dependencies = {
+			"tpope/vim-repeat",
+		},
 	},
 
 	-- Track time - nvim-wakatime
