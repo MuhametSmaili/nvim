@@ -45,7 +45,7 @@ local options = {
 	------------------------------
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	pumheight = 10, -- pop up menu height
-	showtabline = 2, -- always show tabs
+	showtabline = 0, -- always show tabs
 	mouse = "a", -- allow the mouse to be used in neovim
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
