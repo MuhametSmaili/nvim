@@ -3,6 +3,7 @@
     "Lua.workspace.checkThirdParty": false,
     "diagnostics.globals": [
         "vim",
-        "_lazygit_toggle"
+        "_lazygit_toggle",
+        "smaili"
     ]
 }
