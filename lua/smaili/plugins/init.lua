@@ -23,10 +23,9 @@ return {
 		"wansmer/treesj",
 		keys = {
 			{ "<leader>m", "<cmd>TSJToggle<CR>", desc = "Toggle Treesitter Join" },
-			{ "<leader>j" }, -- join
-			{ "<leader>s" }, -- split
 		},
 		cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+		opts = { use_default_keymaps = false },
 	},
 
 	-- Track time - nvim-wakatime
