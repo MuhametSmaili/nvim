@@ -18,11 +18,26 @@ return {
 		},
 	},
 
+	-- TreeSj ( split/join blocks)
+	{
+		"wansmer/treesj",
+		keys = {
+			{ "<leader>m", "<cmd>TSJToggle<CR>", desc = "Toggle Treesitter Join" },
+			{ "<leader>j" }, -- join
+			{ "<leader>s" }, -- split
+		},
+		cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+	},
+
 	-- Track time - nvim-wakatime
 	{
 		"wakatime/vim-wakatime",
 		event = "VeryLazy",
 	},
+
+	-- {
+	-- 	"kevinhwang91/nvim-bqf ",
+	-- },
 
 	-- jsonschema-store
 	{ "b0o/schemastore.nvim" },
