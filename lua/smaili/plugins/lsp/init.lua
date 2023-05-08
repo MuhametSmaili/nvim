@@ -27,6 +27,7 @@ return {
 					},
 				},
 			},
+			-- "rrethy/vim-illuminate",
 		},
 		opts = {
 			diagnostics = {
