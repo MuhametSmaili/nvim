@@ -28,6 +28,12 @@ return {
 		opts = { use_default_keymaps = false },
 	},
 
+	-- Higlight unqiue letter in the row, to quickly move
+	{
+		"unblevable/quick-scope",
+		keys = { { "f" }, { "F" }, { "t" }, { "T" } },
+	},
+
 	-- Track time - nvim-wakatime
 	{
 		"wakatime/vim-wakatime",
