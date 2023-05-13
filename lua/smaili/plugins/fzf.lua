@@ -21,6 +21,11 @@ return {
 		{ "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
 		{ "<leader>ss", ":FzfLua spell_suggest <cr>", desc = "Show spell suggestions" },
 		{ "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
+		{
+			"<leader>st",
+			":lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})",
+			desc = "Search tags TODO|FIX...",
+		},
 	},
 	opts = {
 		"fzf-native",
