@@ -23,7 +23,7 @@ return {
 		{ "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
 		{
 			"<leader>st",
-			":lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})",
+			":lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
 			desc = "Search tags TODO|FIX...",
 		},
 	},

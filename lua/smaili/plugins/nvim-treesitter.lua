@@ -8,12 +8,17 @@ local M = {
 	event = "BufReadPost",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		{
+			"nvim-treesitter/nvim-treesitter-context",
+			config = true,
+			keys = { { "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TSContext" } },
+		},
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"windwp/nvim-ts-autotag",
 		-- "nvim-treesitter/playground",
 		-- "mrjones2014/nvim-ts-rainbow",
-    --  HiPhish/nvim-ts-rainbow2
+		--  HiPhish/nvim-ts-rainbow2
 	},
 }
 
