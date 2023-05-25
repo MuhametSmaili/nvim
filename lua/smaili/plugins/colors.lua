@@ -14,6 +14,14 @@ local M = {
 		end,
 	},
 	{
+		"projekt0n/github-nvim-theme",
+		-- opts={
+		--   options={
+		--     transparent = true
+		--   }
+		-- }
+	},
+	{
 		"folke/tokyonight.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -36,11 +44,15 @@ local M = {
 				all = function(colors)
 					return {
 						LineNr = { fg = "#4b5481" },
-						-- IllumniatedWordRead = { link = "LspReferenceRead " }, -- alternative to this color #426646
-						-- IllumniatedWordText = { link = "LspReferenceText " },
-						-- IllumniatedWordWrite = { link = "LspReferenceWrite " },
 					}
 				end,
+			},
+			integrations = {
+				illuminate = true,
+				lsp_saga = true,
+				treesitter = true,
+				which_key = true,
+				telescope = false,
 			},
 		},
 		config = function(plugin)
