@@ -23,14 +23,12 @@ local M = {
 	},
 	{
 		"folke/tokyonight.nvim",
-		event = "VeryLazy",
 		opts = {
 			transparent = true,
 		},
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		event = "VeryLazy",
 		opts = { transparent = true },
 	},
 	{
@@ -52,7 +50,9 @@ local M = {
 				lsp_saga = true,
 				treesitter = true,
 				which_key = true,
+				treesitter_context = true,
 				telescope = false,
+				-- ts_rainbow2 = true,
 			},
 		},
 		config = function(plugin)
