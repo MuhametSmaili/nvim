@@ -18,6 +18,13 @@ return {
 		},
 	},
 
+	-- smooth scrolling
+	{
+		"karb94/neoscroll.nvim",
+		keys = { { "<c-u>" }, { "zz" }, { "<c-d>" }, { "<c-e>" }, { "<c-y>" } },
+		opts = {},
+	},
+
 	-- TreeSj ( split/join blocks)
 	{
 		"wansmer/treesj",
