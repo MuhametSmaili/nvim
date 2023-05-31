@@ -11,7 +11,15 @@ local M = {
 		{
 			"nvim-treesitter/nvim-treesitter-context",
 			config = true,
-			keys = { { "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TSContext" } },
+			keys = {
+				{ "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TSContext" },
+				{
+					"[c",
+					":lua require('treesitter-context').go_to_context()<cr>",
+					silent = true,
+					desc = "Go to context",
+				},
+			},
 		},
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"JoosepAlviste/nvim-ts-context-commentstring",
@@ -140,14 +148,15 @@ function M.config()
 				},
 			},
 		},
-		-- rainbow = {
-		-- 	enable = true,
-		-- 	disable = { "jsx", "tsx" },
-		-- 	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-		-- 	max_file_lines = nil, -- Do not enable for files with more than n lines, int
-		-- 	-- colors = {}, -- table of hex strings
-		-- 	-- termcolors = {} -- table of colour name strings
-		-- },
+		rainbow = {
+			enable = true,
+			-- disable = { "jsx", "tsx" },
+			-- extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+			query = "rainbow-parens",
+			-- max_file_lines = nil, -- Do not enable for files with more than n lines, int
+			-- colors = {}, -- table of hex strings
+			-- termcolors = {} -- table of colour name strings
+		},
 	})
 end
 
