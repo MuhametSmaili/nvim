@@ -13,6 +13,7 @@ function M.config()
 			q = { "Quit" },
 			Q = { "Force quit" },
 			h = { "Toggle highlight" },
+			r = { "Refactor", { b = "Block refactoring" } },
 			c = { "Close buffer" },
 			W = { "SUDO write" },
 			e = { "Toggle explorer" },

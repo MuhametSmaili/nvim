@@ -22,6 +22,10 @@ local M = {
 		-- }
 	},
 	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+	},
+	{
 		"folke/tokyonight.nvim",
 		opts = {
 			transparent = true,
@@ -51,8 +55,13 @@ local M = {
 				treesitter = true,
 				which_key = true,
 				treesitter_context = true,
+				nvimtree = true,
+				mason = true,
+				aerial = true,
 				telescope = false,
 				-- ts_rainbow2 = true,
+				notify = true,
+				noice = true,
 			},
 		},
 		config = function(plugin)
