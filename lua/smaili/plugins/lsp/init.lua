@@ -5,8 +5,7 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", opts = {}, run = ":MasonUpdate" }, -- installing LSPs automaticlly
 			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
-			"folke/neodev.nvim", -- extra documentation
-			{ "j-hui/fidget.nvim", opts = {} }, -- status for lsp
+			-- { "j-hui/fidget.nvim", opts = {}, tag = "legacy" }, -- status for lsp
 			"hrsh7th/nvim-cmp",
 			{
 				"glepnir/lspsaga.nvim",
@@ -131,17 +130,10 @@ return {
 	-- ===========================
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			{ "L3MON4D3/LuaSnip", opts = {} }, -- TODO check and fix this for adding friendly snippet
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-		},
 		opts = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			vim.opt.runtimepath:append("~/github/lsp_signature.nvim")
 
 			return {
 				completion = {
@@ -163,12 +155,13 @@ return {
 					end,
 				},
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp_signature_help" },
+					-- { name = "nvim_lsp_signature_help" }, --
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
 				}),
+				-- experimental = { ghost_text = true },
 				mapping = cmp.mapping.preset.insert({
 					["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 					["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -179,12 +172,23 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
+						elseif require("luasnip").expand_or_jumpable() then
+							require("luasnip").expand_or_jump()
+						elseif cmp.has_words_before() then
+							cmp.complete()
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
+					-- ["<Tab>"] = cmp.mapping(function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_next_item()
+					-- 	elseif luasnip.expand_or_jumpable() then
+					-- 		luasnip.expand_or_jump()
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -197,21 +201,37 @@ return {
 				}),
 			}
 		end,
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			{
+				"L3MON4D3/LuaSnip",
+				opts = {},
+				build = "make install_jsregexp",
+			},
+			"rafamadriz/friendly-snippets",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			-- "hrsh7th/cmp-nvim-lsp-signature-help",
+			"ray-x/lsp_signature.nvim",
+		},
 	},
 	-- ===========================
 	-- Formatter
 	-- ===========================
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		dependencies = {
-			"jayp0521/mason-null-ls.nvim",
-		},
+		-- dependencies = {
+		-- 	"jayp0521/mason-null-ls.nvim",
+		-- },
 		event = "BufReadPost",
 		config = function()
 			----------------------------------
 			-- Setting up formatter
 			----------------------------------
 			require("smaili.plugins.lsp.formatting")
+			-- setting vscode snippets
+			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
 }

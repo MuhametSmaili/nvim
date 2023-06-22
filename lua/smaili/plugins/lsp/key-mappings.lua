@@ -8,8 +8,9 @@ return function(bufnr)
 			["<leader>la"] = { vim.lsp.buf.code_action, desc = "Action", buffer = bufnr },
 			["<leader>lD"] = { vim.lsp.buf.type_definition, desc = "Type definition", buffer = bufnr },
 			["<leader>ls"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
-			["<leader>li"] = { "<cmd>Lspsaga incoming_calls<CR>", desc = "List incoming calls" },
-			["<leader>lo"] = { "<cmd>Lspsaga outline<CR>", desc = "List file outline" },
+			["<leader>li"] = { "<cmd>FzfLua lsp_incoming_calls<CR>", desc = "List incoming calls (FZF)" },
+			["<leader>lI"] = { "<cmd>Lspsaga incoming_calls<CR>", desc = "List incoming calls" },
+			-- ["<leader>lo"] = { "<cmd>Lspsaga outline<CR>", desc = "List file outline" },
 			["<leader>lf"] = { ":FormatCurrentBuffer<CR>", desc = "Format document", buffer = bufnr },
 			["<leader>ld"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show diagnostics", buffer = bufnr },
 			["<leader>lb"] = {
@@ -48,6 +49,14 @@ return function(bufnr)
 			["gI"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },
 			["gi"] = { "<cmd>Lspsaga goto_definition<CR>", desc = "Go to definition", buffer = bufnr },
 			["gt"] = { "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type definition", buffer = bufnr },
+			------------------------------
+			-- signature_help
+			------------------------------
+			["<leader>k"] = {
+				require("lsp_signature").toggle_float_win,
+				desc = "Signature Documentation",
+				buffer = bufnr,
+			},
 		},
 		i = {
 			["<C-k>"] = { vim.lsp.buf.signature_help, desc = "Signature Documentation", buffer = bufnr },
