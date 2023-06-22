@@ -70,4 +70,17 @@ return {
 			{ "<leader>gu", "<cmd>UndotreeToggle<CR>", desc = "Toggle undotree" },
 		},
 	},
+
+	{
+		"stevearc/aerial.nvim",
+		opts = {
+			layout = {
+				max_with = { 40, 0.5 },
+				min_width = 20,
+			},
+		},
+		keys = {
+			{ "<leader>lo", "<cmd>AerialToggle!<cr>" },
+		},
+	},
 }
