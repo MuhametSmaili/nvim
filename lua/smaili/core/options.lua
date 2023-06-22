@@ -21,7 +21,7 @@ local options = {
 	------------------------------
 	-- Performance options
 	------------------------------
-	lazyredraw = true, -- Don’t update screen during macro and script execution
+	lazyredraw = false, -- Don’t update screen during macro and script execution
 	updatetime = 300, -- faster completion (4000ms default)
 	timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
 
@@ -43,7 +43,7 @@ local options = {
 	------------------------------
 	-- UI options
 	------------------------------
-	cmdheight = 1, -- more space in the neovim command line for displaying messages
+	cmdheight = 0, -- more space in the neovim command line for displaying messages
 	pumheight = 10, -- pop up menu height
 	showtabline = 0, -- always show tabs
 	mouse = "a", -- allow the mouse to be used in neovim

@@ -30,6 +30,7 @@ autocmd("BufReadPost", {
 -- Format current buffer using null-ls
 vim.api.nvim_create_user_command("FormatCurrentBuffer", function()
 	vim.lsp.buf.format({
+		async = true,
 		filter = function(client)
 			return client.name == "null-ls"
 		end,
