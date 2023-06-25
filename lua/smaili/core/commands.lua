@@ -13,6 +13,22 @@ autocmd("TextYankPost", {
 	end,
 })
 
+-- Command for enabling/disabling the inlay hint on insert mode
+autocmd("InsertEnter", {
+	group = smailiGroup,
+	callback = function()
+		vim.lsp.buf.inlay_hint(0, true)
+	end,
+	desc = "Enable inlay_hint on insert",
+})
+autocmd({ "InsertLeave" }, {
+	group = smailiGroup,
+	callback = function()
+		vim.lsp.buf.inlay_hint(0, false)
+	end,
+	desc = "Disable inlay_hint when we leave insert",
+})
+
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
 
