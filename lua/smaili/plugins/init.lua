@@ -47,6 +47,28 @@ return {
 		event = "VeryLazy",
 	},
 
+	--do not overuse hjkl
+	{
+		"m4xshen/hardtime.nvim",
+		event = "VeryLazy",
+		opts = {
+			restricted_keys = {
+				["h"] = { "n", "v" },
+				["j"] = { "n", "v" },
+				["k"] = { "n", "v" },
+				["l"] = { "n", "v" },
+				["-"] = { "n", "v" },
+				["+"] = { "n", "v" },
+				["gj"] = { "n", "v" },
+				["gk"] = { "n", "v" },
+				["<CR>"] = { "n", "v" },
+				["<C-M>"] = { "n", "v" },
+				["<C-N>"] = { "n", "v" },
+				["<C-P>"] = nil,
+			},
+		},
+	},
+
 	-- {
 	-- 	"kevinhwang91/nvim-bqf ",
 	-- },
