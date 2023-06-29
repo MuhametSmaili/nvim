@@ -18,6 +18,14 @@ return function(bufnr)
 				desc = "Show buffer diagnostics",
 				buffer = bufnr,
 			},
+      -- Toggle inlay hint
+			["<leader>ui"] = {
+				function()
+					vim.lsp.buf.inlay_hint(bufnr)
+				end,
+				desc = "Toggle inlay hint",
+				buffer = bufnr,
+			},
 
 			------------------------------
 			-- Hover
