@@ -2,7 +2,7 @@
 -- name : nvim-treesitter
 -- url  : https://github.com/nvim-treesitter/nvim-treesitter
 -------------------------------------------------
-local M = {
+return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	event = "BufReadPost",
@@ -24,16 +24,9 @@ local M = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"windwp/nvim-ts-autotag",
-		-- "nvim-treesitter/playground",
-		-- "mrjones2014/nvim-ts-rainbow",
-		--  HiPhish/nvim-ts-rainbow2
 	},
-}
-
-function M.config()
-	require("nvim-treesitter.configs").setup({
+	opts = {
 		ensure_installed = {
-			"help",
 			"javascript",
 			"typescript",
 			"tsx",
@@ -148,16 +141,8 @@ function M.config()
 				},
 			},
 		},
-		rainbow = {
-			enable = true,
-			-- disable = { "jsx", "tsx" },
-			-- extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-			query = "rainbow-parens",
-			-- max_file_lines = nil, -- Do not enable for files with more than n lines, int
-			-- colors = {}, -- table of hex strings
-			-- termcolors = {} -- table of colour name strings
-		},
-	})
-end
-
-return M
+	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
+}
