@@ -52,6 +52,8 @@ return {
 		"m4xshen/hardtime.nvim",
 		event = "VeryLazy",
 		opts = {
+			disable_mouse = false,
+			notification = false,
 			restricted_keys = {
 				["h"] = { "n", "v" },
 				["j"] = { "n", "v" },
@@ -64,7 +66,7 @@ return {
 				["<CR>"] = { "n", "v" },
 				["<C-M>"] = { "n", "v" },
 				["<C-N>"] = { "n", "v" },
-				["<C-P>"] = nil,
+				["<C-P>"] = {},
 			},
 		},
 	},
