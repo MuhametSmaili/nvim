@@ -2,6 +2,4 @@
 
 - A personal neovim configuration
 
-![image](https://user-images.githubusercontent.com/51492002/230772537-c2bfb021-988c-4d0c-8ce3-a19490210d28.png)
-
-
+![image](https://github.com/MuhametSmaili/nvim/assets/51492002/adddeacf-b233-478a-bcc8-071d9f2ee32d)
