@@ -15,6 +15,7 @@ function M.config()
 			h = { "Toggle highlight" },
 			r = { "Refactor", { b = "Block refactoring" } },
 			c = { "Close buffer" },
+			C = { "Force Close buffer" },
 			W = { "SUDO write" },
 			e = { "Toggle explorer" },
 			s = { name = "Search" },
