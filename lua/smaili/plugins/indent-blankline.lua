@@ -2,18 +2,21 @@
 -- name : Indent Blankline
 -- url  : https://github.com/lukas-reineke/indent-blankline.nvim
 -------------------------------------------------
-local M = {
+return {
 	"lukas-reineke/indent-blankline.nvim",
 	event = { "BufReadPost" },
+	main = "ibl",
+	opts = {
+		indent = {
+			char = "┊",
+		},
+		whitespace = {
+			remove_blankline_trail = false,
+		},
+		scope = {
+			-- char = "│",
+			enabled = true,
+			show_start = false,
+		},
+	},
 }
-
-function M.config()
-	require("indent_blankline").setup({
-		char = "┊",
-		show_trailing_blankline_indent = false,
-		show_current_context = true,
-		-- show_current_context_start = true,
-	})
-end
-
-return M
