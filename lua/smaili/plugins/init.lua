@@ -95,16 +95,31 @@ return {
 		},
 	},
 
+	-- copy to the system clipboard
 	{
-		"stevearc/aerial.nvim",
-		opts = {
-			layout = {
-				max_with = { 40, 0.5 },
-				min_width = 20,
-			},
-		},
+		"christoomey/vim-system-copy",
 		keys = {
-			{ "<leader>lo", "<cmd>AerialToggle!<cr>" },
+			{ "cp", desc = "Copy to system clipboard(motion)" },
+			{ "cv", desc = "Paste from system clipboard(motion)" },
 		},
 	},
+
+	-- table markdwn
+	{
+		"dhruvasagar/vim-table-mode",
+		cmd = "TableModeToggle",
+	},
+
+	-- {
+	-- 	"stevearc/aerial.nvim",
+	-- 	opts = {
+	-- 		layout = {
+	-- 			max_with = { 40, 0.5 },
+	-- 			min_width = 20,
+	-- 		},
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<leader>lo", "<cmd>AerialToggle!<cr>" },
+	-- 	},
+	-- },
 }
