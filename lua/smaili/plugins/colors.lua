@@ -2,38 +2,12 @@
 ------------------------------
 ------------------------------
 local M = {
+	{ "sainnhe/everforest" },
 	{
-		"maxmx03/dracula.nvim",
+		"sainnhe/gruvbox-material",
 		config = function()
-			-- Getting custom colors
-			local dracula = require("dracula")
-			local colors = require("dracula.palettes")
-			local setup_options = require("user.colors")
-			dracula.setup(setup_options.dracula(colors))
-			-- vim.cmd("colorscheme dracula")
+			vim.cmd("let g:gruvbox_material_background = 'hard'")
 		end,
-	},
-	{
-		"projekt0n/github-nvim-theme",
-		-- opts={
-		--   options={
-		--     transparent = true
-		--   }
-		-- }
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-	},
-	{
-		"folke/tokyonight.nvim",
-		opts = {
-			transparent = true,
-		},
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		opts = { transparent = true },
 	},
 	{
 		lazy = false,
