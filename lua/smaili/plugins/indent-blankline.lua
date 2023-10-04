@@ -14,7 +14,7 @@ return {
 			remove_blankline_trail = false,
 		},
 		scope = {
-			-- char = "│",
+			char = "│",
 			enabled = true,
 			show_start = false,
 		},
