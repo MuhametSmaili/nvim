@@ -114,9 +114,8 @@ M.keyMaps = {
 		["<"] = "<gv",
 		[">"] = ">gv",
 
-		-- Visual mode pressing * or # searches for the current selection
-		["*"] = ":<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>",
-		["#"] = ":<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>",
+		-- Visual mode pressing # searches for the current selection
+		["#"] = '"fy/\\V<C-R>f<CR>',
 	},
 
 	-------------------------------------
