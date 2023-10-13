@@ -180,15 +180,6 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-					-- ["<Tab>"] = cmp.mapping(function(fallback)
-					-- 	if cmp.visible() then
-					-- 		cmp.select_next_item()
-					-- 	elseif luasnip.expand_or_jumpable() then
-					-- 		luasnip.expand_or_jump()
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -215,23 +206,5 @@ return {
 			-- "hrsh7th/cmp-nvim-lsp-signature-help",
 			"ray-x/lsp_signature.nvim",
 		},
-	},
-	-- ===========================
-	-- Formatter
-	-- ===========================
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		-- dependencies = {
-		-- 	"jayp0521/mason-null-ls.nvim",
-		-- },
-		event = "BufReadPost",
-		config = function()
-			----------------------------------
-			-- Setting up formatter
-			----------------------------------
-			require("smaili.plugins.lsp.formatting")
-			-- setting vscode snippets
-			require("luasnip.loaders.from_vscode").lazy_load()
-		end,
 	},
 }

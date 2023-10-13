@@ -10,15 +10,13 @@ return function(bufnr)
 			["<leader>ls"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
 			["<leader>li"] = { "<cmd>FzfLua lsp_incoming_calls<CR>", desc = "List incoming calls (FZF)" },
 			["<leader>lI"] = { "<cmd>Lspsaga incoming_calls<CR>", desc = "List incoming calls" },
-			-- ["<leader>lo"] = { "<cmd>Lspsaga outline<CR>", desc = "List file outline" },
-			["<leader>lf"] = { ":FormatCurrentBuffer<CR>", desc = "Format document", buffer = bufnr },
 			["<leader>ld"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show diagnostics", buffer = bufnr },
 			["<leader>lb"] = {
 				"<cmd>FzfLua diagnostics_document<CR>",
 				desc = "Show buffer diagnostics",
 				buffer = bufnr,
 			},
-      -- Toggle inlay hint
+			-- Toggle inlay hint
 			["<leader>ui"] = {
 				function()
 					vim.lsp.buf.inlay_hint(bufnr)

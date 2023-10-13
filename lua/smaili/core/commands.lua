@@ -27,16 +27,16 @@ autocmd("BufReadPost", {
 	desc = "Go To The Last Cursor Position",
 })
 
--- Format current buffer using null-ls
-vim.api.nvim_create_user_command("FormatCurrentBuffer", function()
-	vim.lsp.buf.format({
-		async = true,
-		filter = function(client)
-			return client.name == "null-ls"
-		end,
-		timeout_ms = 2000,
-	})
-end, {})
+-- -- Format current buffer using null-ls
+-- vim.api.nvim_create_user_command("FormatCurrentBuffer", function()
+-- 	vim.lsp.buf.format({
+-- 		async = true,
+-- 		filter = function(client)
+-- 			return client.name == "null-ls"
+-- 		end,
+-- 		timeout_ms = 2000,
+-- 	})
+-- end, {})
 
 -- Enable code higlighting for markdown files
 vim.cmd("let g:markdown_fenced_languages = ['html', 'javascript', 'typescript', 'vim', 'lua', 'css']")
