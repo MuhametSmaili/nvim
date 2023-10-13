@@ -78,3 +78,6 @@ smaili.icons = {
 		Info = " ",
 	},
 }
+
+-- Fold tesxt
+require('smaili.utils.fold-text')

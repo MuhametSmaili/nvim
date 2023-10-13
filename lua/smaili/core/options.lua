@@ -72,6 +72,21 @@ local options = {
 	spell = false,
 
 	------------------------------
+	-- Fold text
+	----------------------------
+	foldlevel = 99,
+	fillchars = {
+		foldopen = "",
+		foldclose = "",
+		fold = " ",
+		foldsep = " ",
+		diff = "╱",
+		eob = " ",
+	},
+	foldmethod = "indent",
+	foldtext = require("smaili.utils.fold-text")(),
+
+	------------------------------
 	-- Other options
 	------------------------------
 	backup = false, -- creates a backup file
@@ -81,4 +96,9 @@ local options = {
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
+end
+
+if vim.fn.has("nvim-0.10") == 1 then
+	vim.opt.foldmethod = "expr"
+	vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 end
