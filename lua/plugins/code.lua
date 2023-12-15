@@ -13,4 +13,10 @@ return {
       { "cv", desc = "Paste from system clipboard(motion)" },
     },
   },
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<leader>gu", "<cmd>UndotreeToggle<CR>", desc = "Toggle undotree" },
+    },
+  },
 }

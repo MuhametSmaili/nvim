@@ -4,3 +4,4 @@
 
 vim.wo.conceallevel = 0
 vim.opt.clipboard = ""
+vim.opt.wildignore:append({ "*/node_modules/*" })
