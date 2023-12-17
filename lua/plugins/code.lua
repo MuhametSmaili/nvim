@@ -6,6 +6,7 @@ return {
       "tpope/vim-repeat",
     },
   },
+  { "echasnovski/mini.bracketed", version = false, keys = { { "[" }, { "]" } } },
 
   -- vim-system-copy
   {
@@ -53,7 +54,7 @@ return {
       {
         "<leader>r",
         function()
-          require("refactoring").select_refactor()
+          require("refactoring").select_refactor({})
         end,
         mode = "v",
         noremap = true,
