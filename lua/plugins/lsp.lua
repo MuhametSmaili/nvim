@@ -11,7 +11,20 @@ return {
       -- keys[#keys + 1] = { "gg", vim.lsp.buf.implementation } -- lsp_declarations  -- https://github.com/ibhagwan/fzf-lua
       keys[#keys + 1] = { "gI", ":FzfLua lsp_implementations<CR>" }
       keys[#keys + 1] = { "gt", ":FzfLua lsp_typedefs<CR>" }
-      keys[#keys + 1] = { "gA", ":FzfLua lsp_code_actions<CR>" }
+      keys[#keys + 1] = {
+        "ga",
+        function()
+          require("fzf-lua").lsp_code_actions({
+            winopts = {
+              relative = "cursor",
+              width = 0.6,
+              height = 0.6,
+              row = 1,
+              preview = { horizontal = "up:70%" },
+            },
+          })
+        end,
+      }
       -- keys[#keys + 1] = { "<leader>li", "<cmd>FzfLua lsp_incoming_calls<CR>" }
       -- keys[#keys + 1] = { "<leader>la", vim.lsp.buf.code_action }
       -- keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename }
