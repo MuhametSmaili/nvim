@@ -6,7 +6,18 @@ return {
       "tpope/vim-repeat",
     },
   },
-  { "echasnovski/mini.bracketed", version = false, keys = { { "[" }, { "]" } } },
+
+  -- Smart Comments
+  {
+    "numToStr/comment.nvim",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    keys = { { "gc" }, { "gc", mode = "v" } },
+    opts = {
+      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    },
+  },
 
   -- vim-system-copy
   {
@@ -31,7 +42,7 @@ return {
     config = true,
     keys = {
       {
-        "<leader>ln",
+        "<leader>cn",
         function()
           require("neogen").generate({})
         end,
