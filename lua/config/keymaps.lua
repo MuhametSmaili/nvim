@@ -5,7 +5,10 @@
 local map = vim.keymap.set
 
 map("n", "<leader>h", ":nohl<cr>")
-map("n", "<leader>w", "<cmd>w<cr>") -- save buffer
+map("n", "<leader>w", "<cmd>w<cr>")
+map("n", "<C-d>", "<C-d>zz", { describe = "Move half screen down & center" })
+map("n", "<C-u>", "<C-u>zz", { describe = "Move half screen up & center" })
+
 -- map("n", "<leader>l", "")
 -- map("n", "<leader>w", "<cmd>w<esc>") -- close buffer
 -- map("n", "<leader>w", "<cmd>w<esc>") -- force close buffer
