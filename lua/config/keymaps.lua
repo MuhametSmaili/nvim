@@ -11,7 +11,7 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Move half screen up & center" })
 map("n", "<leader>uz", function()
   require("zen-mode").toggle({
     window = {
-      width = 0.75,
+      width = 0.65,
     },
   })
 end, { desc = "Toggle zen mode" })

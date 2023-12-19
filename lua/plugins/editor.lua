@@ -24,6 +24,7 @@ return {
     { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
   },
+  -- Zen mode
   {
     "folke/zen-mode.nvim",
     opts = {
@@ -51,6 +52,15 @@ return {
           -- can be either an absolute font size or the number of incremental steps
           font = "+4", -- (10% increase per step)
         },
+      },
+    },
+  },
+  -- neotree
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        position = "float",
       },
     },
   },
