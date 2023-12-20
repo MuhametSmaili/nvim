@@ -24,8 +24,8 @@ return {
     { "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
     {
       "<leader>st",
-      ":lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
-      desc = "Search tags TODO|FIX...",
+      "<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
+      desc = "Search tags TODO|FIX|PERF|FIX...",
     },
     { "gr", ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
   },
