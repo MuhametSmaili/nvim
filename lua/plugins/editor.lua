@@ -62,6 +62,12 @@ return {
       window = {
         position = "float",
       },
+      filesystem = {
+        follow_current_file = { enabled = true },
+      },
+    },
+    keys = {
+      { "<leader>e", ":Neotree source=filesystem reveal=true position=float<cr>" },
     },
   },
   -- harpoon (because of Prime)
