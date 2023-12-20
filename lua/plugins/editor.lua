@@ -64,4 +64,40 @@ return {
       },
     },
   },
+  -- harpoon (because of Prime)
+  {
+    "ThePrimeagen/harpoon",
+    -- branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "<leader>a",
+        function()
+          require("harpoon.mark").add_file()
+        end,
+        desc = "Add file to harpoon",
+      },
+      {
+        "<leader>n",
+        function()
+          require("harpoon.ui").nav_next()
+        end,
+        desc = "Go to next mark : harpoon list",
+      },
+      {
+        "<leader>p",
+        function()
+          require("harpoon.ui").nav_prev()
+        end,
+        desc = "Go to prev mark : harpoon list",
+      },
+      {
+        "<c-e>",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "Go to prev mark : harpoon list",
+      },
+    },
+  },
 }
