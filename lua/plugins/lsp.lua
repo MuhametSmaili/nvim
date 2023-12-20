@@ -53,9 +53,23 @@ return {
       --
       -- -- disable a keymap
       keys[#keys + 1] = { "gy", false }
-      -- keys[#keys + 1] = { "K", false }
-      -- add a keymap
-      -- keys[#keys + 1] = { "H", "<cmd>echo ''<cr>" }
+      --
+      -- Add border back
+      local _border = "single"
+
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = _border,
+      })
+
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = _border,
+      })
+
+      vim.diagnostic.config({
+        float = { border = _border },
+      })
+
+      require("lspconfig.ui.windows").default_options.border = _border
     end,
   },
 }
