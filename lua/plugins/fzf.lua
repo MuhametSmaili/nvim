@@ -22,6 +22,7 @@ return {
     { "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
     { "<leader>ss", ":FzfLua spell_suggest <cr>", desc = "Show spell suggestions" },
     { "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
+    { "<leader>gb", ":FzfLua git_bcommits<cr>", desc = "Git buffer commits" },
     {
       "<leader>st",
       "<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
