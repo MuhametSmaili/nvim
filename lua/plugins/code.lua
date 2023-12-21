@@ -1,10 +1,17 @@
 return {
+  -- {
+  --   "tpope/vim-surround",
+  --   keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
+  --   dependencies = {
+  --     "tpope/vim-repeat",
+  --   },
+  -- },
+
   {
-    "tpope/vim-surround",
-    keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
-    dependencies = {
-      "tpope/vim-repeat",
-    },
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
   },
 
   -- Smart Comments
