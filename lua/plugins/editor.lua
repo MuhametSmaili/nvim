@@ -67,7 +67,7 @@ return {
       },
     },
     keys = {
-      { "<leader>e", ":Neotree source=filesystem reveal=true position=float<cr>" },
+      { "<leader>e", ":Neotree source=filesystem reveal=true position=float<cr>", desc = "Float neotree" },
     },
   },
   -- harpoon (because of Prime)
