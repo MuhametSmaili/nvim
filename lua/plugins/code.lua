@@ -9,7 +9,7 @@ return {
   {
     "kylechui/nvim-surround",
     version = "*",
-    event = "VeryLazy",
+    keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
     opts = {},
   },
 
