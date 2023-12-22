@@ -24,6 +24,13 @@ return {
     { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
   },
+  -- keymaps
+  {
+    "folke/which-key.nvim",
+    opts = {
+      window = { border = "single" },
+    },
+  },
   -- Zen mode
   {
     "folke/zen-mode.nvim",

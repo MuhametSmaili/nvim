@@ -6,6 +6,7 @@ return {
   --     "tpope/vim-repeat",
   --   },
   -- },
+  { "tpope/vim-repeat", keys = { { "." }, { ";" } } },
   {
     "kylechui/nvim-surround",
     version = "*",
