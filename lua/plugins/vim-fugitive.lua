@@ -3,5 +3,10 @@ return {
   cmd = { "Git" },
   keys = {
     { "<leader>gs", "<cmd>Git<cr>", desc = "Git status" },
+    { "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff split" },
+    { "<leader>gD", "<cmd>Gdiffsplit!<cr>", desc = "Git diff 3-way-split" },
+    { "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
+    { "<leader>gC", "<cmd>Git commit --amend<cr>", desc = "Git commit --amend" },
+    { "<leader>gl", "<cmd>GcLog<cr>", desc = "Git log" },
   },
 }

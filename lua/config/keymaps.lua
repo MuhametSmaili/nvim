@@ -4,6 +4,9 @@
 --
 local map = vim.keymap.set
 
+vim.keymap.del("n", "<leader>gg")
+vim.keymap.del("n", "<leader>gG")
+
 map("n", "<leader>h", ":nohl<cr>")
 map("n", "<leader>w", "<cmd>w<cr>")
 map("n", "<C-d>", "<C-d>zz", { desc = "Move half screen down & center" })

@@ -28,7 +28,7 @@ return {
       count = 5,
     })
 
-    vim.keymap.set("n", "<leader>gl", function()
+    vim.keymap.set("n", "<leader>gg", function()
       lazygit:toggle()
     end, { noremap = true, silent = true, desc = "Toggle lazygit" })
   end,
