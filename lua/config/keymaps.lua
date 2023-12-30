@@ -11,13 +11,6 @@ map("n", "<leader>h", ":nohl<cr>")
 map("n", "<leader>w", "<cmd>w<cr>")
 map("n", "<C-d>", "<C-d>zz", { desc = "Move half screen down & center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move half screen up & center" })
-map("n", "<leader>uz", function()
-  require("zen-mode").toggle({
-    window = {
-      width = 0.65,
-    },
-  })
-end, { desc = "Toggle zen mode" })
 
 -- map("n", "<leader>l", "")
 -- map("n", "<leader>w", "<cmd>w<esc>") -- close buffer
