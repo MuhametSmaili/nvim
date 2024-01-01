@@ -6,9 +6,10 @@ local map = vim.keymap.set
 
 -- vim.keymap.del("n", "<leader>gg")
 vim.keymap.del("n", "<leader>gG")
+-- vim.keymap.del("n", "<leader>w")
 
 map("n", "<leader>h", ":nohl<cr>")
-map("n", "<leader>w", "<cmd>w<cr>")
+map("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true, desc = "Save buffer" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Move half screen down & center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move half screen up & center" })
 
