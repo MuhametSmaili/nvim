@@ -19,6 +19,9 @@ return {
           }
         end,
       },
+      integrations = {
+        harpoon = true,
+      },
     },
   },
   {
