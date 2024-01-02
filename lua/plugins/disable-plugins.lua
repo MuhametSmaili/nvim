@@ -7,7 +7,7 @@ return {
   { "echasnovski/mini.ai", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
   -- { "mini.indentscope", enabled = false },
-  -- { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvimdev/dashboard-nvim", enabled = false },
   { "folke/noice.nvim", enabled = false },

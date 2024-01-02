@@ -3,7 +3,7 @@ return {
     "echasnovski/mini.bufremove",
     keys = {
       {
-        "<leader>bd", -- TODO change this
+        "<leader>bd", -- TODO: change this
         function()
           local bd = require("mini.bufremove").delete
           if vim.bo.modified then
@@ -20,10 +20,16 @@ return {
         end,
         desc = "Delete Buffer",
       },
-    -- stylua: ignore
-    { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+      {
+        "<leader>bD",
+        function()
+          require("mini.bufremove").delete(0, true)
+        end,
+        desc = "Delete Buffer (Force)",
+      },
     },
   },
+
   -- keymaps
   {
     "folke/which-key.nvim",
@@ -31,106 +37,44 @@ return {
       window = { border = "single" },
     },
   },
-  -- Zen mode
+
+  -- Center buffer
   {
     "shortcuts/no-neck-pain.nvim",
     version = "*",
     cmd = { "NoNeckPain" },
     keys = { { "<leader>uz", "<cmd>NoNeckPain<cr>", desc = "Toggle center-screen" } },
-    opts = { window = 130 },
+    opts = { width = 120 },
   },
+  -- Dressing ui
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   opts = {
+  --     input = {
+  --       override = function(opt)
+  --         if vim.api.nvim_buf_get_option(0, "filetype") == "NvimTree" then
+  --           opt.anchor = "SW"
+  --           opt.col = 1
+  --           opt.row = vim.o.lines - vim.o.cmdheight - 1
+  --           opt.relative = "editor"
+  --         end
+  --       end,
+  --     },
+  --   },
+  -- },
   -- neotree
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        position = "float",
-      },
-      filesystem = {
-        follow_current_file = { enabled = true },
-      },
-    },
-    keys = {
-      { "<leader>e", ":Neotree source=filesystem reveal=true position=float<cr>", desc = "Float neotree" },
-    },
-  },
-  -- harpoon (because of Prime)
-  {
-    "ThePrimeagen/harpoon",
-    -- branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      {
-        "<leader>a",
-        function()
-          require("harpoon.mark").add_file()
-        end,
-        desc = "Add file to harpoon",
-      },
-      {
-        "<leader>n",
-        function()
-          require("harpoon.ui").nav_next()
-        end,
-        desc = "Go to next mark : harpoon list",
-      },
-      {
-        "<leader>p",
-        function()
-          require("harpoon.ui").nav_prev()
-        end,
-        desc = "Go to prev mark : harpoon list",
-      },
-      {
-        "<leader>p",
-        function()
-          require("harpoon.ui").nav_prev()
-        end,
-        desc = "Go to prev mark : harpoon list",
-      },
-      {
-        "<leader>1",
-        function()
-          require("harpoon.ui").nav_file(1)
-        end,
-        desc = "Go to 1 file in harpoon list",
-      },
-      {
-        "<leader>2",
-        function()
-          require("harpoon.ui").nav_file(2)
-        end,
-        desc = "Go to 2 file in harpoon list",
-      },
-      {
-        "<leader>3",
-        function()
-          require("harpoon.ui").nav_file(3)
-        end,
-        desc = "Go to 3 file in harpoon list",
-      },
-      {
-        "<leader>4",
-        function()
-          require("harpoon.ui").nav_file(4)
-        end,
-        desc = "Go to 4 file in harpoon list",
-      },
-      {
-        "<c-e>",
-        function()
-          require("harpoon.ui").toggle_quick_menu()
-        end,
-        desc = "Toggle harpoon UI quick/menu",
-      },
-    },
-  },
-  -- todo comments
-  {
-    "folke/todo-comments.nvim",
-    keys = {
-      { "<leader>st", false },
-      { "<leader>sT", false },
-    },
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   opts = {
+  --     window = {
+  --       position = "float",
+  --     },
+  --     filesystem = {
+  --       follow_current_file = { enabled = true },
+  --     },
+  --   },
+  --   keys = {
+  --     { "<leader>e", ":Neotree source=filesystem reveal=true position=float<cr>", desc = "Float neotree" },
+  --   },
+  -- },
 }

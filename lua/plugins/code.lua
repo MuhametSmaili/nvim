@@ -1,11 +1,4 @@
 return {
-  -- {
-  --   "tpope/vim-surround",
-  --   keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
-  --   dependencies = {
-  --     "tpope/vim-repeat",
-  --   },
-  -- },
   { "tpope/vim-repeat", keys = { { "." }, { ";" } } },
   {
     "kylechui/nvim-surround",
@@ -63,6 +56,9 @@ return {
     "smjonas/inc-rename.nvim",
     cmd = "IncRename",
     config = true,
+    opts = {
+      input_buffer_type = "dressing",
+    },
   },
 
   -- Refactoring tool
@@ -81,5 +77,76 @@ return {
       },
     },
     opts = {},
+  },
+  -- harpoon (because of Prime)
+  {
+    "ThePrimeagen/harpoon",
+    -- branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "<leader>a",
+        function()
+          require("harpoon.mark").add_file()
+        end,
+        desc = "Add file to harpoon",
+      },
+      {
+        "<leader>n",
+        function()
+          require("harpoon.ui").nav_next()
+        end,
+        desc = "Go to next mark : harpoon list",
+      },
+      {
+        "<leader>p",
+        function()
+          require("harpoon.ui").nav_prev()
+        end,
+        desc = "Go to prev mark : harpoon list",
+      },
+      {
+        "<leader>p",
+        function()
+          require("harpoon.ui").nav_prev()
+        end,
+        desc = "Go to prev mark : harpoon list",
+      },
+      {
+        "<leader>1",
+        function()
+          require("harpoon.ui").nav_file(1)
+        end,
+        desc = "Go to 1 file in harpoon list",
+      },
+      {
+        "<leader>2",
+        function()
+          require("harpoon.ui").nav_file(2)
+        end,
+        desc = "Go to 2 file in harpoon list",
+      },
+      {
+        "<leader>3",
+        function()
+          require("harpoon.ui").nav_file(3)
+        end,
+        desc = "Go to 3 file in harpoon list",
+      },
+      {
+        "<leader>4",
+        function()
+          require("harpoon.ui").nav_file(4)
+        end,
+        desc = "Go to 4 file in harpoon list",
+      },
+      {
+        "<c-e>",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "Toggle harpoon UI quick/menu",
+      },
+    },
   },
 }
