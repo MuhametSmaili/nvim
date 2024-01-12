@@ -63,11 +63,29 @@ return {
     },
   },
   {
-    "echasnovski/mini.indentscope",
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost" },
+    main = "ibl",
     opts = {
-      draw = { animation = require("mini.indentscope").gen_animation.none() },
+      indent = {
+        char = "┊",
+      },
+      whitespace = {
+        remove_blankline_trail = false,
+      },
+      scope = {
+        char = "│",
+        enabled = true,
+        show_start = false,
+      },
     },
   },
+  -- {
+  --   "echasnovski/mini.indentscope",
+  --   opts = {
+  --     draw = { animation = require("mini.indentscope").gen_animation.none() },
+  --   },
+  -- },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -88,8 +106,21 @@ return {
         sections = {
           lualine_c = { filename_with_path },
         },
-        inactive_sections = {
-          lualine_a = { "filename" },
+        inactive_winbar = {
+          lualine_a = {
+            -- {
+            --   "filename",
+            --   file_status = true,
+            --   newfile_status = true,
+            --   path = 1,
+            --   symbols = {
+            --     modified = "[+]",
+            --     readonly = "[-]",
+            --     unnamed = "[No Name]",
+            --     newfile = "[New]",
+            --   },
+            -- },
+          },
           lualine_c = { filename_with_path },
           lualine_y = {
             {

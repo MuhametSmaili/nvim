@@ -6,11 +6,12 @@ return {
   { "echasnovski/mini.files", enabled = false },
   { "echasnovski/mini.ai", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
-  -- { "mini.indentscope", enabled = false },
+  { "mini.indentscope", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvimdev/dashboard-nvim", enabled = false },
   { "folke/noice.nvim", enabled = false },
   { "folke/neoconf.nvim", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
+  { "steearc/dressing.nvim", enabled = false },
 }
