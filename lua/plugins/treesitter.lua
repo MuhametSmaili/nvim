@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
+    ignore_install = { "help" },
     ensure_installed = {
       "bash",
       "html",
@@ -20,6 +21,13 @@ return {
       "vim",
       "yaml",
       "astro",
+      "vimdoc",
+      "dockerfile",
+      "jsdoc",
+      "make",
+      "gitcommit",
+      "git_rebase",
+      "gitignore",
     },
     query_linter = {
       enable = true,
