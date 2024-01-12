@@ -52,14 +52,14 @@ return {
   },
 
   -- Incremental rename
-  {
-    "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    config = true,
-    opts = {
-      input_buffer_type = "dressing",
-    },
-  },
+  -- {
+  --   "smjonas/inc-rename.nvim",
+  --   cmd = "IncRename",
+  --   config = true,
+  --   opts = {
+  --     input_buffer_type = "dressing",
+  --   },
+  -- },
 
   -- Refactoring tool
   {
