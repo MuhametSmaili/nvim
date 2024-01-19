@@ -50,12 +50,4 @@ return {
   keys = {
     { "<leader>e", ":NvimTreeToggle<CR>", desc = "Toggle tree" },
   },
-  config = function(plugin, opts)
-    require("nvim-tree").setup(opts)
-    -- Open file when we create
-    local api = require("nvim-tree.api")
-    api.events.subscribe(api.events.Event.FileCreated, function(file)
-      vim.cmd("edit " .. file.fname)
-    end)
-  end,
 }
