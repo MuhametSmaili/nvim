@@ -8,6 +8,15 @@ return {
     lazy = true,
   },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      styles = {
+        transparency = true,
+      },
+    },
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
