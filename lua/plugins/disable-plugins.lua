@@ -13,5 +13,5 @@ return {
   { "folke/noice.nvim", enabled = false },
   { "folke/neoconf.nvim", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
-  { "steearc/dressing.nvim", enabled = false },
+  { "stevearc/dressing.nvim", enabled = false },
 }

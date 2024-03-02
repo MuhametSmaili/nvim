@@ -4,15 +4,21 @@
 --
 local map = vim.keymap.set
 
--- vim.keymap.del("n", "<leader>gg")
 vim.keymap.del("n", "<leader>gG")
 vim.keymap.del("n", "<leader>st")
--- vim.keymap.del("n", "<leader>w")
 
 map("n", "<leader>h", ":nohl<cr>")
 map("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true, desc = "Save buffer" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Move half screen down & center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move half screen up & center" })
+map(
+  "n",
+  "<leader>st",
+  "<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
+  { desc = "Search tags TODO|FIX|PERF|FIX..." }
+)
+-- map("n", "<D-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
+-- map("n", "<D-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
 
 -- map("n", "<leader>l", "")
 -- map("n", "<leader>w", "<cmd>w<esc>") -- close buffer

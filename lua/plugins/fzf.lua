@@ -32,17 +32,17 @@ return {
     { "gr", ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
   },
   opts = {
-    "fzf-native",
-    previewers = {
-      git_diff = {
-        pager = "delta --width=$FZF_PREVIEW_COLUMNS",
-      },
-    },
-    git = {
-      bcommits = {
-        preview_pager = "delta --width=$FZF_PREVIEW_COLUMNS",
-      },
-    },
+    "default",
+    -- previewers = {
+    --   git_diff = {
+    --     pager = "delta --width=$FZF_PREVIEW_COLUMNS",
+    --   },
+    -- },
+    -- git = {
+    -- bcommits = {
+    --   preview_pager = "delta --width=$FZF_PREVIEW_COLUMNS",
+    -- },
+    -- },
     winopts = {
       on_create = function()
         vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", "<Down>", { silent = true, noremap = true })
@@ -85,11 +85,11 @@ return {
       },
     },
     lsp = {
-      code_actions = {
-        previewer = "codeaction_native",
-        preview_pager = "delta --side-by-side --width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit'",
-        layout = "flex",
-      },
+      -- code_actions = {
+      --   previewer = "codeaction_native",
+      --   preview_pager = "delta --side-by-side --width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit'",
+      --   layout = "flex",
+      -- },
     },
   },
 }
