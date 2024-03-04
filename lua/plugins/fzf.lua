@@ -26,7 +26,34 @@ return {
     { "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
     { "<leader>ss", ":FzfLua spell_suggest <cr>", desc = "Show spell suggestions" },
     { "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
-    { "<leader>gb", ":FzfLua git_bcommits<cr>", desc = "Git buffer commits" },
+    {
+      "<leader>gb",
+      function()
+        require("fzf-lua").git_bcommits({
+          fzf_opts = {
+            ["--preview-window"] = "nohidden,down,70%,border-top,+{3}+3/3,~3",
+          },
+        })
+      end,
+      desc = "Git buffer commits",
+    },
+    {
+      "<leader>gA",
+      function()
+        require("fzf-lua").fzf_live(
+          "git rev-list --all | xargs git grep --line-number --column --color=always <query>",
+          {
+            fzf_opts = {
+              ["--delimiter"] = ":",
+              ["--preview-window"] = "nohidden,down,60%,border-top,+{3}+3/3,~3",
+            },
+            preview = "git show {1}:{2} | "
+              .. "bat --style=default --color=always --file-name={2} --highlight-line={3}",
+          }
+        )
+      end,
+      desc = "Git grap all GIT history",
+    },
     {
       "<leader>st",
       "<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
