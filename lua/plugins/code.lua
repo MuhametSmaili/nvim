@@ -19,14 +19,24 @@ return {
     },
   },
 
-  -- vim-system-copy
+  -- split join
   {
-    "christoomey/vim-system-copy",
+    "Wansmer/treesj",
+    dependencies = "nvim-treesitter",
     keys = {
-      { "cp", desc = "Copy to system clipboard(motion)" },
-      { "cv", desc = "Paste from system clipboard(motion)" },
+      { "<leader>cj", "<cmd>TSJToggle<cr>", desc = "Join/split code block" },
     },
+    opts = { use_default_keymaps = false },
   },
+
+  -- vim-system-copy
+  -- {
+  --   "christoomey/vim-system-copy",
+  --   keys = {
+  --     { "cp", desc = "Copy to system clipboard(motion)" },
+  --     { "cv", desc = "Paste from system clipboard(motion)" },
+  --   },
+  -- },
 
   -- UndotreeToggle
   {
