@@ -80,12 +80,6 @@ return {
       },
     },
   },
-  -- {
-  --   "echasnovski/mini.indentscope",
-  --   opts = {
-  --     draw = { animation = require("mini.indentscope").gen_animation.none() },
-  --   },
-  -- },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -104,6 +98,11 @@ return {
           section_separators = "",
         },
         sections = {
+          lualine_b = {
+            {
+              "grapple",
+            },
+          },
           lualine_c = { filename_with_path },
         },
         inactive_winbar = {
