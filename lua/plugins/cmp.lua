@@ -8,7 +8,9 @@ return {
   -- then: setup supertab in cmp
   {
     "hrsh7th/nvim-cmp",
-    dependencies = {},
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+    },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local has_words_before = function()
@@ -49,7 +51,8 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       }
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
+      opts.sources =
+        cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" }, { name = "nvim_lsp_signature_help" } }))
     end,
   },
 }
