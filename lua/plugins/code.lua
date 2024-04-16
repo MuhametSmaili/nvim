@@ -70,6 +70,10 @@ return {
   --     input_buffer_type = "dressing",
   --   },
   -- },
+  -- big files
+  {
+    "LunarVim/bigfile.nvim",
+  },
 
   -- Refactoring tool
   {
