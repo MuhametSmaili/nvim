@@ -90,6 +90,20 @@ return {
       local filename_with_path =
         { my_filename, path = 1, symbols = { modified = " ", readonly = "", unnamed = " " } }
 
+      local trouble = require("trouble")
+      if not trouble.statusline then
+        LazyVim.error("You have enabled the **trouble-v3** extra,\nbut still need to update it with `:Lazy`")
+        return
+      end
+
+      local symbols = trouble.statusline({
+        mode = "symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+      })
+
       require("lualine").setup({
         options = {
           icons_enabled = true,
@@ -105,7 +119,10 @@ return {
               "grapple",
             },
           },
-          lualine_c = { filename_with_path },
+          lualine_c = {
+            filename_with_path,
+            { symbols.get, cond = symbols.has },
+          },
         },
         inactive_winbar = {
           lualine_a = {

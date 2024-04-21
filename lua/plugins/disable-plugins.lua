@@ -14,6 +14,5 @@ return {
   { "stevearc/dressing.nvim", enabled = false },
   { "folke/persistence.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
-  { "folke/trouble.nvim", enabled = false },
   { "toggleterm.nvim", enabled = false },
 }
