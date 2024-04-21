@@ -124,12 +124,12 @@ return {
         desc = "Add file to grapple",
       },
       {
-        "<leader>j",
+        "<c-j>",
         "<cmd>Grapple cycle forward<cr>",
         desc = "Grapple cycle forward",
       },
       {
-        "<leader>J",
+        "<c-k>",
         "<cmd>Grapple cycle backward<cr>",
         desc = "Grapple cycle backward",
       },
