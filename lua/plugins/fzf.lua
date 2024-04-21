@@ -104,7 +104,7 @@ return {
         -- ["ctrl-b"] = "half-page-up",
         -- ["ctrl-a"] = "beginning-of-line",
         -- ["ctrl-e"] = "end-of-line",
-        -- ["alt-a"] = "toggle-all",
+        ["alt-a"] = "toggle-all",
         -- Only valid with fzf previewers (bat/cat/git/etc)
         -- ["f3"] = "toggle-preview-wrap",
         -- ["f4"] = "toggle-preview",
@@ -112,6 +112,7 @@ return {
         -- ["<C-u>"] = "preview-page-up",
         ["ctrl-d"] = "preview-page-down",
         ["ctrl-u"] = "preview-page-up",
+        ["ctrl-q"] = "select-all+accept",
       },
     },
     lsp = {

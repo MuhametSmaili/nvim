@@ -98,7 +98,9 @@ return {
           section_separators = "",
         },
         sections = {
+          lualine_a = { { "branch" } },
           lualine_b = {
+            { "mode" },
             {
               "grapple",
             },

@@ -47,6 +47,9 @@ return {
         end, { "i", "s" }),
       })
 
+      -- CMP follow follow_cursor
+      -- opts.view.entries.follow_cursor = true
+
       opts.window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),

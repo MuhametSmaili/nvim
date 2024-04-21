@@ -9,8 +9,8 @@ vim.keymap.del("n", "<leader>st")
 
 map("n", "<leader>h", ":nohl<cr>")
 map("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true, desc = "Save buffer" })
-map("n", "<C-d>", "<C-d>zz", { desc = "Move half screen down & center" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Move half screen up & center" })
+-- map("n", "<C-d>", "<C-d>zz", { desc = "Move half screen down & center" })
+-- map("n", "<C-u>", "<C-u>zz", { desc = "Move half screen up & center" })
 map(
   "n",
   "<leader>st",

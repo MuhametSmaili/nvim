@@ -3,8 +3,6 @@ return {
   { "nvim-telescope/telescope.nvim", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
   { "echasnovski/mini.comment", enabled = false },
-  { "echasnovski/mini.files", enabled = false },
-  -- { "echasnovski/mini.ai", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
   { "mini.indentscope", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
@@ -17,4 +15,5 @@ return {
   { "folke/persistence.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
   { "folke/trouble.nvim", enabled = false },
+  { "toggleterm.nvim", enabled = false },
 }
