@@ -6,6 +6,10 @@ local map = vim.keymap.set
 
 vim.keymap.del("n", "<leader>gG")
 vim.keymap.del("n", "<leader>st")
+vim.keymap.del("n", "<leader>w-")
+vim.keymap.del("n", "<leader>w|")
+vim.keymap.del("n", "<leader>wd")
+vim.keymap.del("n", "<leader>ww")
 
 map("n", "<leader>h", ":nohl<cr>")
 map("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true, desc = "Save buffer" })
