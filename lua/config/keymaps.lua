@@ -21,34 +21,62 @@ map(
   "<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
   { desc = "Search tags TODO|FIX|PERF|FIX..." }
 )
+
+-- map copy to system keyboard cp -> \"y+
+map("v", "cp", '"+y')
+map("n", "cp$", 'v$"+y')
+map("n", "cP", '0v$"+y')
+map("n", "cpaw", 'vaw"+y')
+map("n", "cpiw", 'viw"+y')
+map("n", "cpj", '0vj$"+y')
+map("n", "cpk", '0vk$"+y')
+map("n", "cpw", 'viw"+y')
+map("n", "cpa{", 'va{"+y')
+map("n", "cpi{", 'vi{"+y')
+map("n", "cpa}", 'va}"+y')
+map("n", "cpi}", 'vi}"+y')
+map("n", "cpa(", 'va("+y')
+map("n", "cpi(", 'vi("+y')
+map("n", "cpa)", 'va)"+y')
+map("n", "cpi)", 'vi)"+y')
+map("n", "cpi[", 'vi["+y')
+map("n", "cpa[", 'va["+y')
+map("n", "cpi]", 'vi]"+y')
+map("n", "cpa]", 'va]"+y')
+map("n", 'cpa"', 'va""+y')
+map("n", 'cpi"', 'vi""+y')
+map("n", "cpa'", "va'\"+y")
+map("n", "cpi'", "vi'\"+y")
+
+-- map("n", "<D-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
+-- map("n", "<D-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
 -- map("n", "<D-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
 -- map("n", "<D-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
 
--- map("n", "<leader>l", "")
--- map("n", "<leader>w", "<cmd>w<esc>") -- close buffer
--- map("n", "<leader>w", "<cmd>w<esc>") -- force close buffer
--- pcmd
--- map({ "n", "v" }, "<leader>lf", function()
---   require("lazyvim.util").format({ force = true })
--- end, { desc = "Format" })
---
--- n = {
--- 	["<leader>gd"] = { gitsigns.diffthis, desc = "View git diff" },
--- 	["<leader>ga"] = { gitsigns.get_actions, desc = "Get git actions" },
--- 	["gb"] = { gitsigns.blame_line, desc = "View git blame" },
--- 	["<leader>gR"] = { gitsigns.show, desc = "View git revision" },
--- 	["<leader>gh"] = { gitsigns.preview_hunk, desc = "View git hunk per current line" },
--- 	["]h"] = { gitsigns.next_hunk, desc = "Next hunk" },
--- 	["[h"] = { gitsigns.prev_hunk, desc = "Prev hunk" },
--- 	["<leader>gr"] = { gitsigns.reset_hunk, desc = "Reset current hunk" },
--- 	["<leader>gH"] = { gitsigns.get_hunks, desc = "Get git hunks" },
--- 	["<leader>gtd"] = { gitsigns.toggle_deleted, desc = "Git toggle deleted" },
--- 	["<leader>gts"] = { gitsigns.toggle_signs, desc = "Git toggle signs" },
--- 	["<leader>gtw"] = { gitsigns.toggle_word_diff, desc = "Git toggle word diff" },
--- 	["<leader>gc"] = { ":FzfLua git_commits<cr>", desc = "View git commits for this buffer" },
--- 	["<leader>gs"] = { ":FzfLua git_status<cr>", desc = "Git status" },
--- 	["<leader>gb"] = { ":FzfLua git_bcommits<cr>", desc = "Git buffer commits" },
--- },
--- Plugins to check
--- https://github.com/Bekaboo/dropbar.nvim
--- utilyre/sentiment.nvim
+-- map copy to system keyboard cp -> \"y+
+map("v", "cp", '"+y')
+map("n", "cp$", 'v$"+y')
+map("n", "cP", '0v$"+y')
+map("n", "cpaw", 'vaw"+y')
+map("n", "cpiw", 'viw"+y')
+map("n", "cpj", '0vj$"+y')
+map("n", "cpk", '0vk$"+y')
+map("n", "cpw", 'viw"+y')
+map("n", "cpa{", 'va{"+y')
+map("n", "cpi{", 'vi{"+y')
+map("n", "cpa}", 'va}"+y')
+map("n", "cpi}", 'vi}"+y')
+map("n", "cpa(", 'va("+y')
+map("n", "cpi(", 'vi("+y')
+map("n", "cpa)", 'va)"+y')
+map("n", "cpi)", 'vi)"+y')
+map("n", "cpi[", 'vi["+y')
+map("n", "cpa[", 'va["+y')
+map("n", "cpi]", 'vi]"+y')
+map("n", "cpa]", 'va]"+y')
+map("n", 'cpa"', 'va""+y')
+map("n", 'cpi"', 'vi""+y')
+map("n", "cpa'", "va'\"+y")
+map("n", "cpi'", "vi'\"+y")
+map("n", "cpG", 'vG"+y')
+map("n", "cpgg", 'vgg"+y')
