@@ -7,6 +7,17 @@ return {
     opts = {},
   },
 
+  -- opposite and increment/decrement
+  {
+    "nat-418/boole.nvim",
+    keys = { { "<C-a>" }, { "<C-x>" } },
+    opts = {
+      mappings = {
+        increment = "<C-a>",
+        decrement = "<C-x>",
+      },
+    },
+  },
   -- Smart Comments
   {
     "numToStr/comment.nvim",
@@ -28,15 +39,6 @@ return {
     },
     opts = { use_default_keymaps = false },
   },
-
-  -- vim-system-copy
-  -- {
-  --   "christoomey/vim-system-copy",
-  --   keys = {
-  --     { "cp", desc = "Copy to system clipboard(motion)" },
-  --     { "cv", desc = "Paste from system clipboard(motion)" },
-  --   },
-  -- },
 
   -- UndotreeToggle
   {
@@ -95,25 +97,25 @@ return {
     "cbochs/grapple.nvim",
     opts = {
       scope = "git_branch",
-      style = "basename",
+      -- style = "basename",
     },
     lazy = true,
     cmd = "Grapple",
     dependencies = {
-      {
-        "cbochs/portal.nvim",
-        keys = {
-          { "<leader>o", "<cmd>Portal jumplist backward<cr>", desc = "Jump backward" },
-          { "<leader>i", "<cmd>Portal jumplist forward<cr>", desc = "Jump forward" },
-          {
-            "<leader>p",
-            function()
-              require("portal.builtin").grapple.tunnel()
-            end,
-            desc = "Jump on grapple",
-          },
-        },
-      },
+      -- {
+      --   "cbochs/portal.nvim",
+      --   keys = {
+      --     { "<leader>sjb", "<cmd>Portal jumplist backward<cr>", desc = "Jump backward" },
+      --     { "<leader>sjf", "<cmd>Portal jumplist forward<cr>", desc = "Jump forward" },
+      --     {
+      --       "<leader>p",
+      --       function()
+      --         require("portal.builtin").grapple.tunnel()
+      --       end,
+      --       desc = "Jump on grapple",
+      --     },
+      --   },
+      -- },
     },
     keys = {
       {
