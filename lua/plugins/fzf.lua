@@ -12,6 +12,18 @@ return {
     { "<leader>sw", "<cmd>FzfLua live_grep_glob<cr>", desc = "Find word (grep project)" },
     { "<leader>sb", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Find word in buffer" },
     { "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "Grep", mode = "x" },
+    {
+      "<leader>of",
+      ":lua require'fzf-lua'.files({ cwd='~/vaults/personal' })<CR>",
+      desc = "Find obsidian files",
+      mode = "n",
+    },
+    {
+      "<leader>ow",
+      ":lua require'fzf-lua'.live_grep_glob({ cwd='~/vaults/personal' })<CR>",
+      desc = "Find obsidian words ",
+      mode = "n",
+    },
     -- {
     --   "<leader>sW",
     --   ":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>",
@@ -26,7 +38,7 @@ return {
     { "<leader>sM", ":FzfLua man_pages <cr>", desc = "Search manual pages" },
     { "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
     { "<leader>ss", ":FzfLua spell_suggest <cr>", desc = "Show spell suggestions" },
-    { "<leader>sj", ":FzfLua jumps <cr>", desc = "Search jumps" },
+    { "<leader>sJ", ":FzfLua jumps <cr>", desc = "Search jumps" },
     {
       "<leader>gb",
       function()
