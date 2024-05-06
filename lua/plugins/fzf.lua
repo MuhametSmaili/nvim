@@ -76,6 +76,9 @@ return {
   },
   opts = {
     "default",
+    -- defaults = {
+    --   formatter = "path.filename_first",
+    -- },
     -- previewers = {
     --   git_diff = {
     --     pager = "delta --width=$FZF_PREVIEW_COLUMNS",
@@ -129,11 +132,11 @@ return {
       },
     },
     lsp = {
-      -- code_actions = {
-      --   previewer = "codeaction_native",
-      --   preview_pager = "delta --side-by-side --width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit'",
-      --   layout = "flex",
-      -- },
+      code_actions = {
+        previewer = "codeaction_native",
+        preview_pager = "delta --side-by-side --width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit'",
+        layout = "flex",
+      },
     },
   },
 }
