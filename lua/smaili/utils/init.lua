@@ -1,10 +1,9 @@
-smaili = {}
--- rawset(_G, "smaili", smaili)
+custom_util = {}
 
 -- Set key-map by table
 -- Give a table with modes as keys for example:
 -- map = {n = {[keymap]='function or what you want your keymap to execute', desc="for description"}}
-function smaili.set_keymappings(keymaps)
+function custom_util.set_keymappings(keymaps)
 	local default_options = {
 		n = {
 			noremap = true,
@@ -34,7 +33,7 @@ function smaili.set_keymappings(keymaps)
 end
 
 --icons
-smaili.icons = {
+custom_util.icons = {
 	lsp = {
 		Array = " ",
 		Boolean = " ",
@@ -80,4 +79,4 @@ smaili.icons = {
 }
 
 -- Fold tesxt
-require('smaili.utils.fold-text')
+require("smaili.utils.fold-text")

@@ -65,8 +65,8 @@ M.keyMaps = {
 		["<leader>w"] = ":w<CR>",
 
 		-- Close
-		["<leader>c"] = ":bdelete<CR>",
-		["<leader>C"] = ":bdelete!<CR>",
+		["<leader>bd"] = ":bdelete<CR>",
+		["<leader>bD"] = ":bdelete!<CR>",
 
 		-- SUDO save
 		-- ["<leader>W"] = ":w !sudo -S tee % <CR>",
@@ -97,6 +97,9 @@ M.keyMaps = {
 		["<leader>tf"] = { ":ToggleTerm direction=float<CR>", desc = "Toggle terminal float" },
 		["<leader>th"] = { ":ToggleTerm direction=horizontal<CR>", desc = "Toggle terminal horizontal" },
 		-- ["<C-`>"] = ":ToggleTerm",
+
+		-- Lazy
+		["<leader>l"] = ":Lazy<CR>",
 	},
 
 	-------------------------------------
@@ -157,4 +160,4 @@ M.keyMaps = {
 ------------------------------
 -- Set keymaps
 ------------------------------
-smaili.set_keymappings(M.keyMaps)
+custom_util.set_keymappings(M.keyMaps)

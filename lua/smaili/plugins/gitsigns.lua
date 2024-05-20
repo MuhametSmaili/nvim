@@ -42,8 +42,8 @@ function M.config()
 		current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 	})
 
-	-- Git signs
-	smaili.set_keymappings(keymaps())
+	-- Git signs keymaps
+	custom_util.set_keymappings(keymaps())
 end
 
 return M

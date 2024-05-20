@@ -53,9 +53,6 @@ return {
 			"git_rebase",
 			"yaml",
 		},
-		context_commentstring = { -- nvim-ts-context-commentstring
-			enable = true,
-		},
 		autotag = { enable = true }, -- nvim-ts-autotag
 		highlight = {
 			enable = true,
