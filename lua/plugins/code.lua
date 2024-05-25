@@ -19,16 +19,16 @@ return {
     },
   },
   -- Smart Comments
-  {
-    "numToStr/comment.nvim",
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
-    keys = { { "gc" }, { "gc", mode = "v" } },
-    opts = {
-      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-    },
-  },
+  -- {
+  --   "numToStr/comment.nvim",
+  --   dependencies = {
+  --     "JoosepAlviste/nvim-ts-context-commentstring",
+  --   },
+  --   keys = { { "gc" }, { "gc", mode = "v" } },
+  --   opts = {
+  --     pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+  --   },
+  -- },
 
   -- split join
   {
@@ -125,16 +125,16 @@ return {
         end,
         desc = "Add file to grapple",
       },
-      {
-        "<c-j>",
-        "<cmd>Grapple cycle forward<cr>",
-        desc = "Grapple cycle forward",
-      },
-      {
-        "<c-k>",
-        "<cmd>Grapple cycle backward<cr>",
-        desc = "Grapple cycle backward",
-      },
+      -- {
+      --   "<c-j>",
+      --   "<cmd>Grapple cycle forward<cr>",
+      --   desc = "Grapple cycle forward",
+      -- },
+      -- {
+      --   "<c-k>",
+      --   "<cmd>Grapple cycle backward<cr>",
+      --   desc = "Grapple cycle backward",
+      -- },
       {
         "<leader>1",
         "<cmd>Grapple select index=1<cr>",
