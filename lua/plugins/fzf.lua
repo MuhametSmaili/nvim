@@ -76,9 +76,9 @@ return {
   },
   opts = {
     "default",
-    -- defaults = {
-    --   formatter = "path.filename_first",
-    -- },
+    defaults = {
+      formatter = "path.filename_first",
+    },
     -- previewers = {
     --   git_diff = {
     --     pager = "delta --width=$FZF_PREVIEW_COLUMNS",

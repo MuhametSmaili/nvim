@@ -45,6 +45,9 @@ return {
     name = "catppuccin",
     opts = {
       transparent_background = true,
+      styles = {
+        keywords = { "italic", "bold" },
+      },
       highlight_overrides = {
         all = function(_)
           return {
