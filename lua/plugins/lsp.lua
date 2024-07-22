@@ -11,6 +11,7 @@ return {
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- change a keymap
+      keys[#keys + 1] = { "gr", false }
       keys[#keys + 1] = { "gr", ":FzfLua lsp_references<CR>" }
       keys[#keys + 1] = { "gR", vim.lsp.buf.rename }
       keys[#keys + 1] = { "gd", ":FzfLua lsp_definitions<CR>" } -- lsp_declarations  -- https://github.com/ibhagwan/fzf-lua
@@ -76,6 +77,9 @@ return {
       })
 
       require("lspconfig.ui.windows").default_options.border = _border
+
+      keys[#keys + 1] = { "gr", ":FzfLua lsp_references<CR>" }
+      keys[#keys + 1] = { "gd", ":FzfLua lsp_definitions<CR>" } -- lsp_declarations  -- https://github.com/ibhagwan/fzf-lua
     end,
   },
 }

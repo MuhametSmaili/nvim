@@ -5,6 +5,7 @@
 return {
   "ibhagwan/fzf-lua",
   cmd = "FzfLua",
+  lazy = false,
   keys = {
     { "<C-p>", ":FzfLua files<cr>", desc = "Find files" },
     { "<leader>s<", "<cmd>FzfLua resume<cr>", desc = "Resume last command" },
@@ -75,7 +76,8 @@ return {
     { "gr", ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
   },
   opts = {
-    "default",
+    "fzf-native",
+    -- "default",
     defaults = {
       formatter = "path.filename_first",
     },

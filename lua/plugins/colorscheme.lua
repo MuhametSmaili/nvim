@@ -46,7 +46,7 @@ return {
     opts = {
       transparent_background = true,
       styles = {
-        keywords = { "italic", "bold" },
+        keywords = { "italic" },
       },
       highlight_overrides = {
         all = function(_)
