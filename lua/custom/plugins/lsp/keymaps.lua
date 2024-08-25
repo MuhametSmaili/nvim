@@ -46,11 +46,35 @@ return function(bufnr)
 			------------------------------
 			-- LSP
 			------------------------------
-			["gd"] = { vim.lsp.buf.definition, desc = "Peek definition", buffer = bufnr },
-			["ga"] = { vim.lsp.buf.code_action, desc = "Code action", buffer = bufnr },
+			-- ["gd"] = { vim.lsp.buf.definition, desc = "Peek definition", buffer = bufnr },
+			["gd"] = { ":FzfLua lsp_definitions<CR>", desc = "Peek definition", buffer = bufnr },
+			["gt"] = { ":FzfLua lsp_typedefs<CR>", desc = "Peek definition", buffer = bufnr },
+			["ga"] = {
+				function()
+					require("fzf-lua").lsp_code_actions({
+						winopts = {
+							relative = "cursor",
+							width = 0.6,
+							height = 0.6,
+							row = 1,
+							preview = { horizontal = "up:70%" },
+						},
+					})
+				end,
+				desc = "Code action",
+				buffer = bufnr,
+			},
 			["gR"] = { vim.lsp.buf.rename, desc = "Rename", buffer = bufnr },
-			["gD"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration", buffer = bufnr },
-			["gI"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },
+			-- ["gD"] = { vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration", buffer = bufnr },
+			["gD"] = {
+				function()
+					require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+				end,
+				desc = "[G]oto [D]eclaration",
+				buffer = bufnr,
+			},
+			-- ["gI"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },
+			["gI"] = { ":FzfLua lsp_implementations<CR>", desc = "[G]oto [I]mplementation", buffer = bufnr },
 		},
 	}
 
