@@ -7,7 +7,6 @@ return {
 			{ "williamboman/mason.nvim", opts = {}, run = ":MasonUpdate" }, -- installing LSPs automaticlly
 			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
 			-- { "j-hui/fidget.nvim", opts = {}, tag = "legacy" }, -- status for lsp
-			{ "folke/neodev.nvim", opts = {} },
 			"echasnovski/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -147,6 +146,7 @@ return {
 				virtual_lines = false,
 				float = { border = "rounded" },
 			})
+			require("lspconfig.ui.windows").default_options.border = "rounded"
 		end,
 	},
 }
