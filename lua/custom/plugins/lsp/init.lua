@@ -30,6 +30,7 @@ return {
 				"yamllint",
 				"html",
 				"dockerls",
+				"lua-language-server",
 				"docker_compose_language_service",
 				"vimls",
 				"cssls",

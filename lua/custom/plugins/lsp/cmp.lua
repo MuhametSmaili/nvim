@@ -7,6 +7,17 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				},
+			},
+		},
+		{
 			"L3MON4D3/LuaSnip",
 			build = (function()
 				if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
@@ -22,6 +33,14 @@ return {
 					end,
 				},
 			},
+		},
+		{
+			"MattiasMTS/cmp-dbee",
+			dependencies = {
+				{ "kndndrj/nvim-dbee" },
+			},
+			ft = "sql", -- optional but good to have
+			opts = {}, -- needed
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-buffer",
@@ -56,6 +75,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
+				{ name = "cmp-dbee" },
 			}),
 			-- experimental = { ghost_text = true },
 			mapping = cmp.mapping.preset.insert({
