@@ -3,6 +3,7 @@
 -- ===========================
 return {
 	"hrsh7th/nvim-cmp",
+	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{
@@ -24,6 +25,7 @@ return {
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-buffer",
+		"tranzystorekk/cmp-minikind.nvim",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
@@ -44,6 +46,9 @@ return {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end,
+			},
+			formatting = {
+				format = require("cmp-minikind").cmp_format(),
 			},
 			sources = cmp.config.sources({
 				{ name = "lazydev", group_index = 0 },

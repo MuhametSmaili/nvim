@@ -1,17 +1,8 @@
 return {
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
 	{ -- LSP
 		"neovim/nvim-lspconfig",
 		event = "BufReadPost",
+		cmd = { "Mason" },
 		dependencies = {
 			{ "williamboman/mason.nvim", opts = {}, run = ":MasonUpdate" }, -- installing LSPs automaticlly
 			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
@@ -30,14 +21,19 @@ return {
 		},
 		opts = {
 			servers = {
-				"eslint",
+				"prettier",
+				"eslint_d",
+				"golines",
 				"bashls",
+				"vim-language-server",
+				"golangci-lint",
+				"yamllint",
 				"html",
 				"dockerls",
 				"docker_compose_language_service",
-				"astro",
 				"vimls",
 				"cssls",
+				"stylua",
 				"astro",
 			},
 		},
@@ -109,29 +105,47 @@ return {
 				-- lsp.configure(server.name, server.config)
 				servers[server.name] = server.config
 			end
-			vim.list_extend(opts.servers, servers)
-
 			----------------------------------
 			-- Add servers automaticlly
 			----------------------------------
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities)
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			require("mason").setup()
+			local ensure_installed = vim.tbl_keys(servers or {})
+			vim.list_extend(ensure_installed, opts.servers)
 
-			require("mason-tool-installer").setup({ ensure_installed = opts.servers })
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed, auto_update = true })
+
+			-- LSP borders
+			local handlers = {
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+			}
 
 			require("mason-lspconfig").setup({
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+
+						server.handlers = handlers
 						require("lspconfig")[server_name].setup(server)
 					end,
 				},
 			})
 
-			vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
+			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+			end
+
+			vim.diagnostic.config({
+				virtual_text = false,
+				virtual_lines = false,
+				float = { border = "rounded" },
+			})
 		end,
 	},
 }

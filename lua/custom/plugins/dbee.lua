@@ -1,11 +1,11 @@
 return {
 	{
 		"kndndrj/nvim-dbee",
-		enabled = false,
 		dependencies = { "MunifTanjim/nui.nvim" },
 		build = function()
 			require("dbee").install()
 		end,
+		keymap = { "<leader>od" },
 		config = function()
 			local source = require("dbee.sources")
 			require("dbee").setup({
@@ -13,7 +13,7 @@ return {
 					source.EnvSource:new("DBEE_CONNECTIONS"),
 				},
 			})
-			vim.keymap.set("n", "<space>od", function()
+			vim.keymap.set("n", "<leader>od", function()
 				require("dbee").open()
 			end)
 

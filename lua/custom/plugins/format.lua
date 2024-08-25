@@ -28,7 +28,7 @@ return {
 			markdown = { { "prettierd", "prettier" } },
 			graphql = { { "prettierd", "prettier" } },
 		},
-		format_on_save = {
+		format_after_save = {
 			async = true,
 			timeout_ms = 500,
 			lsp_fallback = true,

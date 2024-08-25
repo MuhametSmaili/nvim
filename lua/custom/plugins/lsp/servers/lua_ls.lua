@@ -1,5 +1,5 @@
 return {
-	name = "lua_ls",
+	name = "lua-language-server",
 	settings = {
 		Lua = {
 			workspace = {
