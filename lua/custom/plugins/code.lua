@@ -18,6 +18,13 @@ return {
 			},
 		},
 	},
+	-- TODO: coments
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "BufReadPost",
+		opts = {},
+	},
 
 	-- split join
 	{
