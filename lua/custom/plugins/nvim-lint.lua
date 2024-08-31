@@ -11,6 +11,8 @@ return {
 			typescriptreact = { "eslint_d" },
 			astro = { "eslint_d" },
 			go = { "golangcilint" },
+			yaml = { "yamllint" },
+			lua = { "luacheck" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

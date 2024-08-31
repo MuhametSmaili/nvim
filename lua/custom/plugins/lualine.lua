@@ -24,7 +24,7 @@ function M.config()
 		sections = {
 			lualine_c = { filename_with_path },
 		},
-		inactive_sections = {
+		inactive_winbar = {
 			lualine_a = { "filename" },
 			lualine_c = { filename_with_path },
 			lualine_y = {

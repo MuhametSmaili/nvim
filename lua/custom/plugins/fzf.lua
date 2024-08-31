@@ -7,7 +7,11 @@ return {
 	cmd = "FzfLua",
 	lazy = false,
 	keys = {
-		{ "<C-p>", ":FzfLua files<cr>", desc = "Find files" },
+		{
+			"<C-p>",
+			":FzfLua files<cr>",
+			desc = "Find files",
+		},
 		{ "<leader>s,", "<cmd>FzfLua resume<cr>", desc = "Resume last command" },
 		-- { "<leader>sw", ":lua require'fzf-lua'.live_grep({ multiprocess=true })<CR>", desc = "Find word (live_grep)" },
 		{ "<leader>sw", "<cmd>FzfLua live_grep<cr>", desc = "Find word (grep project)" },
@@ -17,6 +21,7 @@ return {
 			desc = "Find word (grep project)",
 		},
 		{ "<leader>sb", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Find word in buffer" },
+		{ "<leader>sg", "<cmd>FzfLua git_status<cr>", desc = "Find word in buffer" },
 		{ "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "Grep", mode = "x" },
 		{
 			"<leader>of",
@@ -138,6 +143,9 @@ return {
 				["ctrl-u"] = "preview-page-up",
 				["ctrl-q"] = "select-all+accept",
 			},
+		},
+		files = {
+			git_icons = true,
 		},
 		lsp = {
 			code_actions = {

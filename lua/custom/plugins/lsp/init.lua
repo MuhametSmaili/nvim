@@ -6,14 +6,11 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", opts = {}, run = ":MasonUpdate" }, -- installing LSPs automaticlly
 			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
-			-- { "j-hui/fidget.nvim", opts = {}, tag = "legacy" }, -- status for lsp
 			"echasnovski/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
-			-- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 			-- Autoformatting
 			"stevearc/conform.nvim",
-			-- Schema information
 			"b0o/SchemaStore.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"rrethy/vim-illuminate",
@@ -66,10 +63,10 @@ return {
 						})
 
 						vim.api.nvim_create_autocmd("LspDetach", {
-							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+							group = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = true }),
 							callback = function(event2)
 								vim.lsp.buf.clear_references()
-								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+								vim.api.nvim_clear_autocmds({ group = "custom-lsp-highlight", buffer = event2.buf })
 							end,
 						})
 					end
@@ -136,15 +133,28 @@ return {
 			})
 
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			end
-
 			vim.diagnostic.config({
-				virtual_text = false,
+				-- virtual_text = false,
+				virtual_text = {
+					spacing = 4,
+					source = "if_many",
+					prefix = "●",
+				},
+				underline = false,
 				virtual_lines = false,
+				document_highlight = {
+					enabled = true,
+				},
+				severity_sort = true,
 				float = { border = "rounded" },
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = signs.Error,
+						[vim.diagnostic.severity.WARN] = signs.Warn,
+						[vim.diagnostic.severity.HINT] = signs.Hint,
+						[vim.diagnostic.severity.INFO] = signs.Info,
+					},
+				},
 			})
 			require("lspconfig.ui.windows").default_options.border = "rounded"
 		end,

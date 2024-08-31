@@ -18,7 +18,6 @@ return {
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
 			javascriptreact = { { "prettierd", "prettier" } },
-			-- typescriptreact = { "prettierd", "eslint_d" },
 			typescriptreact = { "prettierd", "eslint_d" },
 			astro = { { "prettierd", "prettier" } },
 			css = { { "prettierd", "prettier" } },
@@ -36,6 +35,8 @@ return {
 	},
 	config = function(_, opts)
 		local util = require("conform.util")
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
 		-- running eslint fix
 		util.add_formatter_args(require("conform.formatters.eslint_d"), { "--fix" })
 		require("conform").setup(opts)

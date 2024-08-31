@@ -68,10 +68,10 @@ return {
 		incremental_selection = {
 			enable = true,
 			keymaps = {
-				-- init_selection = "<c-space>",
-				-- node_incremental = "<c-space>",
-				-- scope_incremental = "<c-s>",
-				-- node_decremental = "<c-backspace>",
+				init_selection = "<c-space>",
+				node_incremental = "<c-space>",
+				scope_incremental = "<c-s>",
+				node_decremental = "<c-backspace>",
 			},
 		},
 		query_linter = {
@@ -148,6 +148,9 @@ return {
 					["<leader>p:"] = "@property.outer", -- swap object property with prev
 					["<leader>pm"] = "@function.outer", -- swap function with previous
 				},
+			},
+			fold = {
+				enable = true,
 			},
 			move = {
 				enable = true,

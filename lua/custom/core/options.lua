@@ -37,13 +37,13 @@ local options = {
 	whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
 	numberwidth = 4, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-	conceallevel = 0, -- so that `` is visible in markdown files
+	-- conceallevel = 0, -- so that `` is visible in markdown files
 	fileencoding = "utf-8", -- the encoding written to a file
 
 	------------------------------
 	-- UI options
 	------------------------------
-	cmdheight = 0, -- more space in the neovim command line for displaying messages
+	-- cmdheight = 0, -- more space in the neovim command line for displaying messages
 	pumheight = 10, -- pop up menu height
 	showtabline = 0, -- always show tabs
 	mouse = "a", -- allow the mouse to be used in neovim
@@ -52,6 +52,7 @@ local options = {
 	title = false, -- the file currently being edited
 	showmode = false, -- we don't need to see mode, we have statusline
 	termguicolors = true, -- set term gui colors (most terminals support this)
+	laststatus = 3, -- when to have a status line (options from 0-3) 2 default
 	showmatch = true, -- Show matching brackets when text indicator is over them
 	mat = 2, -- How many tenths of a second to blink when matching brackets
 	cursorline = true, -- highlight the current line
@@ -77,12 +78,14 @@ local options = {
 	foldlevel = 99,
 	foldexpr = "v:lua.vim.treesitter.foldexpr()",
 	foldmethod = "expr",
+	foldenable = true,
 	fillchars = {
 		foldopen = "",
 		foldclose = "",
 		fold = " ",
 		foldsep = " ",
 		diff = "╱",
+		msgsep = "─",
 		eob = " ",
 	},
 	foldtext = "",
@@ -101,3 +104,9 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+vim.filetype.add({
+	extension = {
+		["http"] = "http",
+	},
+})

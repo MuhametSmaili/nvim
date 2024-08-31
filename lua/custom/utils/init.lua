@@ -31,5 +31,3 @@ function custom.set_keymappings(keymaps)
 		end
 	end
 end
--- Fold tesxt
-require("custom.utils.fold-text")

@@ -2,26 +2,12 @@ return {
 	"cbochs/grapple.nvim",
 	opts = {
 		scope = "git_branch",
+		icons = true,
+		status = true,
 		-- style = "basename",
 	},
 	lazy = true,
 	cmd = "Grapple",
-	dependencies = {
-		-- {
-		--   "cbochs/portal.nvim",
-		--   keys = {
-		--     { "<leader>sjb", "<cmd>Portal jumplist backward<cr>", desc = "Jump backward" },
-		--     { "<leader>sjf", "<cmd>Portal jumplist forward<cr>", desc = "Jump forward" },
-		--     {
-		--       "<leader>p",
-		--       function()
-		--         require("portal.builtin").grapple.tunnel()
-		--       end,
-		--       desc = "Jump on grapple",
-		--     },
-		--   },
-		-- },
-	},
 	keys = {
 		{
 			"<leader>a",

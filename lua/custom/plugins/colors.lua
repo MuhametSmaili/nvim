@@ -15,7 +15,7 @@ return {
 		"sainnhe/gruvbox-material",
 		config = function()
 			vim.cmd("let g:gruvbox_material_background = 'hard'")
-			-- vim.cmd("let g:gruvbox_material_transparent_background = 1")
+			vim.cmd("let g:gruvbox_material_transparent_background = 1")
 		end,
 	},
 	{
@@ -26,7 +26,7 @@ return {
 			styles = {
 				transparency = true,
 			},
-			before_highlight = function(group, highlight, palette)
+			before_highlight = function(_, highlight)
 				-- Disable all undercurls
 				if highlight.undercurl then
 					highlight.undercurl = false
@@ -55,8 +55,6 @@ return {
 		opts = {
 			integrations = {
 				cmp = true,
-				gitsigns = true,
-				nvimtree = true,
 				treesitter = true,
 				notify = false,
 				fzf = true,
