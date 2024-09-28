@@ -23,6 +23,7 @@ function M.config()
 		},
 		sections = {
 			lualine_c = { filename_with_path },
+			lualine_b = { "grapple" },
 		},
 		inactive_winbar = {
 			lualine_a = { "filename" },

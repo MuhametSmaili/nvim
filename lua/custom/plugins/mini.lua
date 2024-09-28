@@ -1,12 +1,7 @@
 return {
 	{
 		"echasnovski/mini.ai",
-		opts = { search_method = "cover_or_nearest" },
-		event = { "BufReadPost" },
-	},
-	{
-		"echasnovski/mini.ai",
-		opts = function()
+		ops = function()
 			local ai = require("mini.ai")
 			return {
 				n_lines = 500,
@@ -27,13 +22,26 @@ return {
 					u = ai.gen_spec.function_call(), -- u for "Usage"
 					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 				},
+				search_method = "cover_or_next", --FIXME:
 			}
 		end,
 		event = { "BufReadPost" },
 	},
 	{
 		"echasnovski/mini.icons",
-		opts = {},
+		opts = {
+			file = {
+				[".eslintrc.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+				[".node-version"] = { glyph = "", hl = "MiniIconsGreen" },
+				[".prettierrc"] = { glyph = "", hl = "MiniIconsPurple" },
+				[".yarnrc.yml"] = { glyph = "", hl = "MiniIconsBlue" },
+				["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+				["package.json"] = { glyph = "", hl = "MiniIconsGreen" },
+				["tsconfig.json"] = { glyph = "", hl = "MiniIconsAzure" },
+				["tsconfig.build.json"] = { glyph = "", hl = "MiniIconsAzure" },
+				["yarn.lock"] = { glyph = "", hl = "MiniIconsBlue" },
+			},
+		},
 		lazy = false,
 		specs = {
 			{ "nvim-tree/nvim-web-devicons", enabled = false, optional = true },

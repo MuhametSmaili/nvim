@@ -4,14 +4,13 @@
 return {
 	{
 		"sainnhe/everforest",
-		lazy = true,
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
 		opts = {},
 		config = function()
 			vim.cmd("let g:everforest_transparent_background = 1")
 		end,
 	},
 	{
-		lazy = true,
 		"sainnhe/gruvbox-material",
 		config = function()
 			vim.cmd("let g:gruvbox_material_background = 'hard'")
@@ -21,7 +20,7 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		lazy = true,
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
 		opts = {
 			styles = {
 				transparency = true,
@@ -41,7 +40,7 @@ return {
 	},
 	{
 		"sainnhe/sonokai",
-		lazy = true,
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
 		config = function()
 			vim.cmd("let g:sonokai_transparent_background = 1")
 		end,
@@ -56,11 +55,34 @@ return {
 			integrations = {
 				cmp = true,
 				treesitter = true,
+				treesitter_context = true,
 				notify = false,
 				fzf = true,
 				gitsigns = true,
 				nvimtree = true,
-				illuminate = true,
+				illuminate = {
+					enabled = true,
+					lsp = false,
+				},
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+						ok = { "italic" },
+					},
+					underlines = {
+						errors = { "undercurl" },
+						hints = { "undercurl" },
+						warnings = { "undercurl" },
+						information = { "undercurl" },
+					},
+					inlay_hints = {
+						background = true,
+					},
+				},
 				mini = {
 					enabled = true,
 					indentscope_color = "",
