@@ -39,22 +39,23 @@ return {
 			dependencies = {
 				{ "kndndrj/nvim-dbee" },
 			},
-			ft = "sql", -- optional but good to have
-			opts = {}, -- needed
+			ft = "sql",
+			opts = {},
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-buffer",
-		"tranzystorekk/cmp-minikind.nvim",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
 	opts = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		local miniIcons = require("mini.icons")
 		luasnip.config.setup({})
 
 		return {
 			completion = {
+				autocomplete = false,
 				completeopt = "menu,menuone,noinsert",
 			},
 			window = {
@@ -67,10 +68,16 @@ return {
 				end,
 			},
 			formatting = {
-				format = require("cmp-minikind").cmp_format(),
+				format = function(_, vim_item)
+					local icon, hl = miniIcons.get("lsp", vim_item.kind)
+					vim_item.kind = icon .. " " .. vim_item.kind
+					vim_item.kind_hl_group = hl
+					return vim_item
+				end,
 			},
 			sources = cmp.config.sources({
 				{ name = "lazydev", group_index = 0 },
+				{ name = "nvim_lsp_signature_help" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
@@ -79,12 +86,18 @@ return {
 			}),
 			-- experimental = { ghost_text = true },
 			mapping = cmp.mapping.preset.insert({
-				["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-				["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 				["<C-d>"] = cmp.mapping.scroll_docs(-4),
 				["<C-u>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete({}),
-				["<C-y>"] = cmp.mapping.complete({}),
+				["<C-y>"] = cmp.mapping(
+					cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Insert,
+						select = true,
+					}),
+					{ "i", "c" }
+				),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-l>"] = cmp.mapping(function()
 					if luasnip.expand_or_locally_jumpable() then
