@@ -1,17 +1,43 @@
 return {
-	name = "lua-language-server",
 	settings = {
 		Lua = {
 			workspace = {
 				checkThirdParty = false,
+				library = vim.api.nvim_get_runtime_file("", true),
+				maxPreload = 1000, -- Limit preloaded files for performance
+				preloadFileSize = 150, -- Skip large files
 			},
 			completion = {
 				callSnippet = "Replace",
+				keywordSnippet = "Replace",
+				showWord = "Disable", -- Disable noisy word completions
 			},
 			diagnostics = {
 				globals = { "vim" },
+				severity = {
+					["unused-local"] = "Hint",
+					["redefined-local"] = "Warning",
+				},
 			},
-			hint = { enable = true },
+			hint = {
+				enable = true,
+				setType = true, -- Show type hints for variables
+				paramType = true, -- Show parameter type hints
+				await = true, -- Show hints for async functions
+			},
+			semantic = {
+				enable = true, -- Enable semantic tokens for better syntax highlighting
+			},
+			telemetry = {
+				enable = false, -- Disable telemetry
+			},
+			format = {
+				enable = true, -- Enable formatting
+				defaultConfig = {
+					indent_style = "space",
+					indent_size = "2",
+				},
+			},
 		},
 	},
 }

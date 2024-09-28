@@ -4,38 +4,39 @@ return {
 		event = "BufReadPost",
 		cmd = { "Mason" },
 		dependencies = {
-			{ "williamboman/mason.nvim", opts = {}, run = ":MasonUpdate" }, -- installing LSPs automaticlly
-			"williamboman/mason-lspconfig.nvim", -- lsp configuration for mason lsp
+			{ "williamboman/mason.nvim", opts = {}, build = ":MasonUpdate" },
+			"williamboman/mason-lspconfig.nvim",
 			"echasnovski/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
-			-- Autoformatting
-			"stevearc/conform.nvim",
 			"b0o/SchemaStore.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"rrethy/vim-illuminate",
 		},
 		opts = {
-			servers = {
-				"prettier",
-				"eslint_d",
-				"golines",
-				"bashls",
-				"vim-language-server",
-				"golangci-lint",
-				"yamllint",
+			lsp_servers = {
+				"vimls",
 				"html",
-				"dockerls",
-				"lua-language-server",
-				"docker_compose_language_service",
 				"vimls",
 				"cssls",
-				"stylua",
 				"astro",
+			},
+			tools = {
+				"prettierd",
+				"eslint_d",
+				"golines",
+				"gofumpt",
+				"goimports",
+				"golangci-lint",
+				"yamllint",
+				"write-good",
+				"stylua",
 			},
 		},
 		config = function(_, opts)
-			-- LSP Attach
+			----------------------------------
+			-- LSP attach
+			----------------------------------
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("custom-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -63,10 +64,13 @@ return {
 						})
 
 						vim.api.nvim_create_autocmd("LspDetach", {
-							group = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = true }),
-							callback = function(event2)
+							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+							callback = function(detach_event)
 								vim.lsp.buf.clear_references()
-								vim.api.nvim_clear_autocmds({ group = "custom-lsp-highlight", buffer = event2.buf })
+								vim.api.nvim_clear_autocmds({
+									group = "custom-lsp-highlight",
+									buffer = detach_event.buf,
+								})
 							end,
 						})
 					end
@@ -77,7 +81,7 @@ return {
 					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 						vim.keymap.set("n", "<leader>uh", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-						end, { desc = "[T]oggle Inlay [H]ints", buffer = event.buf })
+						end, { desc = "Toggle inlay hints", buffer = event.buf })
 					end
 				end,
 			})
@@ -86,64 +90,63 @@ return {
 			-- Server configuration
 			----------------------------------
 			-- Load server configurations from files
-			----------------------------------
-			-- Every file configuration should have at least these two properties
-			--  name -> the server name
-			--  config -> the config of the server
 			--  we configure servers on seperate files, if we do not want to change the
-			--  default behaviour then we can just add to the opts.servers the server name
 			local servers = {}
-			for _, file in
-				ipairs(
-					vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/custom/plugins/lsp/servers", [[v:val =~ '\.lua$']])
-				)
-			do
-				local server = require("custom.plugins.lsp.servers." .. file:gsub("%.lua$", ""))
-				-- lsp.configure(server.name, server.config)
-				servers[server.name] = server.config
+			local lsp_servers_path = vim.fn.stdpath("config") .. "/lua/custom/plugins/lsp/servers"
+
+			for _, file in ipairs(vim.fn.readdir(lsp_servers_path, [[v:val =~ '\.lua$']])) do
+				local server_name = file:gsub("%.lua$", "")
+				local server_opts = require("custom.plugins.lsp.servers." .. server_name)
+				servers[server_name] = server_opts
 			end
 			----------------------------------
 			-- Add servers automaticlly
 			----------------------------------
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			capabilities.workspace.fileOperations = { didRename = true, willRename = true }
 
 			require("mason").setup()
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, opts.servers)
+			vim.list_extend(ensure_installed, opts.lsp_servers)
+			vim.list_extend(ensure_installed, opts.tools)
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed, auto_update = true })
 
 			-- LSP borders
-			local handlers = {
+			local common_handlers = {
 				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
 				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 			}
 
-			require("mason-lspconfig").setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			require("mason-lspconfig").setup_handlers({
+				-- This will loop through the all installed servers
+				-- We have configured servers on a file, here we are just apssing the options
+				function(server_name)
+					local server_options = servers[server_name] or {}
+					server_options.capabilities =
+						vim.tbl_deep_extend("force", {}, capabilities, server_options.capabilities or {})
 
-						server.handlers = handlers
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
+					server_options.handlers = common_handlers
+					require("lspconfig")[server_name].setup(server_options)
+				end,
 			})
 
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			vim.diagnostic.config({
-				-- virtual_text = false,
 				virtual_text = {
 					spacing = 4,
 					source = "if_many",
 					prefix = "●",
 				},
-				underline = false,
+				underline = true,
 				virtual_lines = false,
+				update_in_insert = false,
 				document_highlight = {
 					enabled = true,
+				},
+				codelens = {
+					enabled = false,
 				},
 				severity_sort = true,
 				float = { border = "rounded" },

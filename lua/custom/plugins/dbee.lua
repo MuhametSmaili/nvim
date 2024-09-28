@@ -4,7 +4,8 @@ return {
 	build = function()
 		require("dbee").install()
 	end,
-	keys = { "<leader>od", "<cmd>Dbee open", desc = "Open Nvim DBEE" },
+	keys = { { "<leader>od", "<cmd>Dbee open<cr>", desc = "Open Nvim DBEE" } },
+	cmd = { "Dbee" },
 	config = function()
 		local source = require("dbee.sources")
 		require("dbee").setup({

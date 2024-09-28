@@ -4,20 +4,20 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		lint.linters_by_ft = {
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			javascriptreact = { "eslint_d" },
-			typescriptreact = { "eslint_d" },
-			astro = { "eslint_d" },
-			go = { "golangcilint" },
+		local eslint_filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" }
+		for _, ft in ipairs(eslint_filetypes) do
+			lint.linters_by_ft[ft] = { "eslint_d" }
+		end
+
+		lint.linters_by_ft = vim.tbl_extend("force", lint.linters_by_ft, {
+			go = { "golangci-lint" },
 			yaml = { "yamllint" },
-			lua = { "luacheck" },
-		}
+			["*"] = { "write-good" },
+		})
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+		vim.api.nvim_create_autocmd("BufWritePost", {
 			group = lint_augroup,
 			callback = function()
 				lint.try_lint()

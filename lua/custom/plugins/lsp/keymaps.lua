@@ -1,3 +1,14 @@
+-- Toggle virtual_text
+local virtual_text_enabled = false
+
+function ToggleVirtualText()
+	virtual_text_enabled = not virtual_text_enabled
+	vim.diagnostic.config({
+		virtual_text = virtual_text_enabled,
+	})
+	print("Virtual Text: " .. (virtual_text_enabled and "On" or "Off"))
+end
+
 return function(bufnr)
 	local keymaps = {
 		n = {
@@ -66,6 +77,7 @@ return function(bufnr)
 			},
 			-- ["gI"] = { vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation", buffer = bufnr },
 			["gI"] = { ":FzfLua lsp_implementations<CR>", desc = "[G]oto [I]mplementation", buffer = bufnr },
+			["<leader>uv"] = { ":lua ToggleVirtualText()<CR>", desc = "Toggle Virtual Text", buffer = bufnr },
 		},
 	}
 
