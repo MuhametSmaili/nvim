@@ -11,6 +11,24 @@ return {
 		end,
 	},
 	{
+		"olivercederborg/poimandres.nvim",
+		lazy = true,
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		-- priority = 1000,
+		config = function()
+			require("poimandres").setup({
+				-- leave this setup function empty for default config
+				-- or refer to the configuration section
+				-- for configuration options
+			})
+		end,
+
+		-- optionally set the colorscheme within lazy config
+		-- init = function()
+		-- 	vim.cmd("colorscheme poimandres")
+		-- end,
+	},
+	{
 		"sainnhe/gruvbox-material",
 		config = function()
 			vim.cmd("let g:gruvbox_material_background = 'hard'")
@@ -90,7 +108,7 @@ return {
 			},
 			transparent_background = true,
 			styles = {
-				keywords = { "italic" },
+				-- keywords = { "italic" },
 			},
 			highlight_overrides = {
 				all = function(_)
@@ -103,6 +121,18 @@ return {
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
 			vim.cmd.colorscheme("catppuccin")
+		end,
+	},
+	-- Lazy
+	{
+		"vague2k/vague.nvim",
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		config = function()
+			require("vague").setup({
+				transparent = true,
+				-- optional configuration here
+			})
+			-- vim.cmd.colorscheme("vague")
 		end,
 	},
 }

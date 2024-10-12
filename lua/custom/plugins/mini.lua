@@ -1,7 +1,7 @@
 return {
 	{
 		"echasnovski/mini.ai",
-		ops = function()
+		opts = function()
 			local ai = require("mini.ai")
 			return {
 				n_lines = 500,
@@ -22,11 +22,14 @@ return {
 					u = ai.gen_spec.function_call(), -- u for "Usage"
 					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 				},
-				search_method = "cover_or_next", --FIXME:
+				search_method = "cover_or_next",
+				-- search_method = "cover_or_nearest",
 			}
 		end,
 		event = { "BufReadPost" },
 	},
+	{ "echasnovski/mini.bracketed", version = "*", opts = {}, keys = { { "[" } } },
+	-- { "echasnovski/mini.surround", version = "*", opts = {}, keys = { { "s" } } },
 	{
 		"echasnovski/mini.icons",
 		opts = {

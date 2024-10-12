@@ -34,8 +34,8 @@ M.keyMaps = {
 		["<C-l>"] = "<C-w>l",
 
 		-- Close
-		["<leader>q"] = ":qa<CR>",
-		["<leader>Q"] = ":qa!<CR>",
+		["<leader>qq"] = { ":q<CR>", desc = "Quit window" },
+		["<leader>qQ"] = { ":qa!<CR>", desc = "Quit vim & do not save" },
 
 		------------------------------
 		-- UI
@@ -128,6 +128,7 @@ M.keyMaps = {
 		-- Move text up/down
 		["<A-j>"] = ":m '>+1<CR>gv-gv",
 		["<A-k>"] = ":m '<-2<CR>gv-gv",
+		["p"] = [[p:if v:register == '"'<Bar>let @@=@0<Bar>endif<CR>]],
 	},
 
 	-------------------------------------

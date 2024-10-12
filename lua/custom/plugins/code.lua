@@ -11,7 +11,7 @@ return {
 		"monkoose/neocodeium",
 		event = "VeryLazy",
 		opts = {
-			-- manual = true,
+			manual = false,
 			filter = function()
 				local cmp = require("cmp")
 				return not cmp.visible()

@@ -35,8 +35,8 @@ return function(bufnr)
 			------------------------------
 			-- Diagnostic key
 			------------------------------
-			["[d"] = { vim.diagnostic.get_prev, desc = "Go to prev diagnostic" },
-			["]d"] = { vim.diagnostic.get_next, desc = "Go to next diagnostic" },
+			-- ["]d"] = { vim.diagnostic.get_next, desc = "Go to next diagnostic" },
+			-- ["[d"] = { vim.diagnostic.get_prev, desc = "Go to prev diagnostic" },
 
 			------------------------------
 			-- workspace
@@ -61,6 +61,7 @@ return function(bufnr)
 							row = 1,
 							preview = { horizontal = "up:70%" },
 						},
+						multiprocess = true,
 					})
 				end,
 				desc = "Code action",

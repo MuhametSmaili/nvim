@@ -24,6 +24,7 @@ return {
 			tools = {
 				"prettierd",
 				"eslint_d",
+				-- "quick-lint-js",
 				"golines",
 				"gofumpt",
 				"goimports",
@@ -119,17 +120,20 @@ return {
 				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 			}
 
-			require("mason-lspconfig").setup_handlers({
+			require("mason-lspconfig").setup({
 				-- This will loop through the all installed servers
 				-- We have configured servers on a file, here we are just apssing the options
-				function(server_name)
-					local server_options = servers[server_name] or {}
-					server_options.capabilities =
-						vim.tbl_deep_extend("force", {}, capabilities, server_options.capabilities or {})
+				handlers = {
+					function(server_name)
+						local server_options = servers[server_name] or {}
+						server_options.capabilities =
+							vim.tbl_deep_extend("force", {}, capabilities, server_options.capabilities or {})
+						server_options.handlers =
+							vim.tbl_deep_extend("force", {}, common_handlers, server_options.handlers or {})
 
-					server_options.handlers = common_handlers
-					require("lspconfig")[server_name].setup(server_options)
-				end,
+						require("lspconfig")[server_name].setup(server_options)
+					end,
+				},
 			})
 
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }

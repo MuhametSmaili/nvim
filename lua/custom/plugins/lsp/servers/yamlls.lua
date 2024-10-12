@@ -1,12 +1,9 @@
 return {
-	name = "yamlls",
-	config = {
-		settings = {
-			yaml = {
-				schemaStore = {
-					enable = false,
-					url = "",
-				},
+	settings = {
+		yaml = {
+			schemaStore = {
+				enable = false,
+				url = "",
 			},
 		},
 	},

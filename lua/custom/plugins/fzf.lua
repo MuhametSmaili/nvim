@@ -146,6 +146,7 @@ return {
 		},
 		files = {
 			git_icons = true,
+			multiprocess = true,
 		},
 		lsp = {
 			code_actions = {
