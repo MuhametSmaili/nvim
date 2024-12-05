@@ -1,6 +1,7 @@
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
+	lazy = false,
 	config = function()
 		local lint = require("lint")
 
@@ -10,7 +11,7 @@ return {
 		end
 
 		lint.linters_by_ft = vim.tbl_extend("force", lint.linters_by_ft, {
-			go = { "golangci-lint" },
+			go = { "golangcilint" },
 			yaml = { "yamllint" },
 			["*"] = { "write-good" },
 		})
@@ -23,29 +24,6 @@ return {
 				lint.try_lint()
 			end,
 		})
-
-		require("lint").linters.eslint_d = {
-			cmd = "eslint_d",
-			args = {
-				"--stdin",
-				"--stdin-filename",
-				"%filepath",
-				"--cache",
-				"--cache-location",
-				"node_modules/.cache/eslint",
-				"--ext",
-				".js,.jsx,.ts,.tsx",
-				-- "--fix",
-				-- "--max-warnings",
-				-- "0",
-			},
-			stream = "both",
-			ignore_exitcode = true,
-			parser = require("lint.parser").from_errorformat("%f:%l:%c: %m", {
-				source = "eslint_d",
-				severity = vim.lsp.protocol.DiagnosticSeverity.Warning,
-			}),
-		}
 
 		vim.keymap.set("n", "<leader>cl", function()
 			lint.try_lint()

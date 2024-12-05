@@ -11,6 +11,27 @@ return {
 		end,
 	},
 	{
+		"loctvl842/monokai-pro.nvim",
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		config = function()
+			require("monokai-pro").setup({
+				transparent_background = true,
+			})
+		end,
+	},
+	{
+		"sho-87/kanagawa-paper.nvim",
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		opts = {
+			transparent = true,
+		},
+	},
+	{
+		"datsfilipe/vesper.nvim",
+		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		opts = {},
+	},
+	{
 		"olivercederborg/poimandres.nvim",
 		lazy = true,
 		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },

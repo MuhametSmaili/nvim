@@ -29,7 +29,6 @@ return {
 			gofumpt = true,
 			diagnosticsDelay = "500ms", -- Reduces the delay for diagnostics to appear
 			hoverKind = "FullDocumentation", -- Can be "SingleLine", "Structured" or "FullDocumentation"
-			memoryMode = "DegradeClosed", -- Optimize memory usage by discarding closed files' ASTs
 			semanticTokens = true,
 		},
 	},

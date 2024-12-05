@@ -21,6 +21,7 @@ return function(bufnr)
 			["<leader>cs"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
 			["<leader>ci"] = { "<cmd>FzfLua lsp_incoming_calls<CR>", desc = "List incoming calls (FZF)" },
 			["<leader>cd"] = { vim.diagnostic.open_float, desc = "Show diagnostics", buffer = bufnr },
+			-- ["<leader>cd"] = { "<cmd>FzfLua lsp_document_diagnostics<CR>", desc = "Show diagnostics", buffer = bufnr },
 			-- ["<leader>cb"] = {
 			-- 	vim.diagnostic.,
 			-- 	desc = "Show buffer diagnostics",

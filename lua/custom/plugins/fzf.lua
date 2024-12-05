@@ -56,7 +56,7 @@ return {
 			function()
 				require("fzf-lua").git_bcommits({
 					fzf_opts = {
-						["--preview-window"] = "nohidden,down,70%,border-top,+{3}+3/3,~3",
+						-- ["--preview-window"] = "nohidden,down,70%,border-top,+{3}+3/3,~3",
 					},
 				})
 			end,
@@ -70,7 +70,7 @@ return {
 					{
 						fzf_opts = {
 							["--delimiter"] = ":",
-							["--preview-window"] = "nohidden,down,60%,border-top,+{3}+3/3,~3",
+							-- ["--preview-window"] = "nohidden,down,60%,border-top,+{3}+3/3,~3",
 						},
 						preview = "git show {1}:{2} | "
 							.. "bat --style=default --color=always --file-name={2} --highlight-line={3}",
