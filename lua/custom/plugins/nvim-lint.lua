@@ -11,8 +11,9 @@ return {
 		end
 
 		lint.linters_by_ft = vim.tbl_extend("force", lint.linters_by_ft, {
-			go = { "golangcilint" },
+			go = { "staticcheck", "golangcilint" },
 			yaml = { "yamllint" },
+			proto = { "protolint" },
 			["*"] = { "write-good" },
 		})
 

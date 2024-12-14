@@ -7,7 +7,10 @@ return {
 	name = "nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		{ "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+		{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+		{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
@@ -45,8 +48,8 @@ return {
 			opts = {},
 		},
 		"saadparwaiz1/cmp_luasnip",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
+		-- "hrsh7th/cmp-buffer",
+		"https://codeberg.org/FelipeLema/cmp-async-path",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
 	opts = function()
@@ -57,7 +60,6 @@ return {
 
 		return {
 			completion = {
-				autocomplete = false,
 				completeopt = "menu,menuone,noinsert",
 			},
 			window = {

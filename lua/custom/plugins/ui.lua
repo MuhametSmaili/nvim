@@ -4,7 +4,7 @@ return {
 		version = "*",
 		cmd = { "NoNeckPain" },
 		keys = {
-			{ "<leader>uz", "<cmd>NoNeckPain<cr>", desc = "Toggle center-screen" },
+			{ "<leader>uc", "<cmd>NoNeckPain<cr>", desc = "Toggle center-screen" },
 			{
 				"<leader>uZ",
 				function()

@@ -13,7 +13,7 @@ return {
 			config = true,
 			opts = { enable = false },
 			keys = {
-				{ "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TSContext" },
+				{ "<leader>uC", ":TSContextToggle<CR>", desc = "Toggle TSContext" },
 				{
 					"[c",
 					":lua require('treesitter-context').go_to_context()<cr>",

@@ -26,7 +26,6 @@ return {
 			-- 	test = true, -- Run tests directly in the editor
 			-- },
 			staticcheck = true,
-			gofumpt = true,
 			diagnosticsDelay = "500ms", -- Reduces the delay for diagnostics to appear
 			hoverKind = "FullDocumentation", -- Can be "SingleLine", "Structured" or "FullDocumentation"
 			semanticTokens = true,
