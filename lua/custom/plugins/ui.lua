@@ -5,6 +5,7 @@ return {
 		cmd = { "NoNeckPain" },
 		keys = {
 			{ "<leader>uc", "<cmd>NoNeckPain<cr>", desc = "Toggle center-screen" },
+			{ "<leader>uz", "<cmd>NoNeckPain<cr>", desc = "Toggle center-screen" },
 			{
 				"<leader>uZ",
 				function()

@@ -24,7 +24,7 @@ return {
 			html = { "prettierd", "prettier" },
 			json = { "prettierd" },
 			yaml = { "prettierd", "prettier" },
-			markdown = { "prettierd", "prettier" },
+			-- markdown = { "prettierd", "prettier" },
 			graphql = { "prettierd", "prettier" },
 			["_"] = { "trim_whitespace" },
 		},

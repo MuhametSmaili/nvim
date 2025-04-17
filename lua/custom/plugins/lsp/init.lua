@@ -27,7 +27,7 @@ return {
 				"eslint_d",
 				-- "quick-lint-js",
 				"staticcheck",
-				"gofumpt",
+				-- "gofumpt",
 				"goimports",
 				"gotests",
 				"golangci-lint",

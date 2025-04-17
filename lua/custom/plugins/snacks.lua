@@ -11,32 +11,33 @@ return {
 			desc = "Open LazyGit",
 		},
 		{
-			"<leader>uz",
+			"<leader>uc",
 			function()
 				require("snacks").zen()
 			end,
-			desc = "Open zen mode",
+			desc = "Open center mode",
 		},
-		{
-			"<leader>.",
-			function()
-				require("snacks").scratch()
-			end,
-			desc = "Toggle Scratch Buffer",
-		},
-		{
-			"<leader>S",
-			function()
-				require("snacks").scratch.select()
-			end,
-			desc = "Select Scratch Buffer",
-		},
+		-- {
+		-- 	"<leader>.",
+		-- 	function()
+		-- 		require("snacks").scratch()
+		-- 	end,
+		-- 	desc = "Toggle Scratch Buffer",
+		-- },
+		-- {
+		-- 	"<leader>S",
+		-- 	function()
+		-- 		require("snacks").scratch.select()
+		-- 	end,
+		-- 	desc = "Select Scratch Buffer",
+		-- },
 	},
 	opts = {
 		bigfile = { enabled = true },
 		indent = { animate = { enabled = false } },
 		lazygit = { enabled = true },
 		statuscolumn = { enabled = true },
+		zen = { toggles = { dim = false } },
 
 		dashboard = { enabled = false },
 		scroll = { enabled = false },

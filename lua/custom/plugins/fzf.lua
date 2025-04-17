@@ -20,6 +20,16 @@ return {
 			':lua require"fzf-lua".live_grep({ cmd = "git grep --line-number --files-with-matches --column --color=always" })<cr>',
 			desc = "Find word (grep project)",
 		},
+		{
+			"<leader>,",
+			function()
+				require("fzf-lua").oldfiles({
+					cwd_only = true,
+					stat_file = true, -- verify files exist on disk
+				})
+			end,
+			desc = "Find word in buffer",
+		},
 		{ "<leader>sb", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Find word in buffer" },
 		{ "<leader>sg", "<cmd>FzfLua git_status<cr>", desc = "Find word in buffer" },
 		{ "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "Grep", mode = "x" },
@@ -42,7 +52,6 @@ return {
 		-- },
 		{ "<leader><tab>", ":FzfLua buffers<cr>", desc = "Find buffers" },
 		{ "<leader>sR", ":FzfLua registers <cr>", desc = "Search registers" },
-		{ "<leader>sr", ":FzfLua resume <cr>", desc = "Search registers" },
 		{ "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" },
 		{ "<leader>sh", ":FzfLua help_tags<cr>", desc = "Search help tags" },
 		{ "<leader>sH", ":FzfLua highlights<cr>", desc = "Search highlights" },
@@ -90,7 +99,10 @@ return {
 		"fzf-native",
 		-- "default",
 		defaults = {
-			formatter = "path.filename_first",
+			-- formatter = "path.filename_first",
+		},
+		oldfiles = {
+			include_current_session = true,
 		},
 		-- previewers = {
 		--   git_diff = {
@@ -110,7 +122,23 @@ return {
 			winopts = {
 				relativenumber = true,
 			},
+			on_close = function()
+				print("on_exit")
+				vim.cmd("stopinsert") -- Exit insert mode on close
+			end,
+			on_exit = function()
+				print("on_exit")
+				vim.cmd("stopinsert") -- Ensure cleanup after exit
+			end,
 		},
+		on_close = function()
+			print("on_exit")
+			vim.cmd("stopinsert") -- Exit insert mode on close
+		end,
+		on_exit = function()
+			print("on_exit")
+			vim.cmd("stopinsert") -- Ensure cleanup after exit
+		end,
 		keymap = {
 			-- builtin = {
 			-- 	["<F1>"] = "toggle-help",
@@ -144,9 +172,18 @@ return {
 				["ctrl-q"] = "select-all+accept",
 			},
 		},
+		actions = {
+			files = {
+				true,
+				-- 		["<c-q>"] = function()
+				-- 			require("fzf-lua.actions").toggle_hidden()
+				-- 		end,
+			},
+		},
 		files = {
 			git_icons = true,
 			multiprocess = true,
+			-- ["<c-g>"] = require("fzf-lua").actions.toggle_hidden,
 		},
 		lsp = {
 			code_actions = {
@@ -156,4 +193,10 @@ return {
 			},
 		},
 	},
+
+	config = function(_, opts)
+		-- local actions = require("fzf-lua").actions
+
+		require("fzf-lua").setup(opts)
+	end,
 }

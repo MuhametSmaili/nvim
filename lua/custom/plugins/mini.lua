@@ -29,14 +29,15 @@ return {
 		event = { "BufReadPost" },
 	},
 	{ "echasnovski/mini.bracketed", version = "*", opts = {}, keys = { { "[" } } },
-	-- { "echasnovski/mini.surround", version = "*", opts = {}, keys = { { "s" } } },
+	{ "echasnovski/mini.surround", version = "*", opts = {}, keys = { { "s" } } },
+	{ "echasnovski/mini.splitjoin", version = "*", opts = {}, keys = { { "gS" } } },
 	{
 		"echasnovski/mini.icons",
 		opts = {
 			file = {
 				[".eslintrc.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
 				[".node-version"] = { glyph = "", hl = "MiniIconsGreen" },
-				[".prettierrc"] = { glyph = "", hl = "MiniIconsPurple" },
+				-- [".prettierrc"] = { glyph = "", hl = "MiniIconsPurple" },
 				[".yarnrc.yml"] = { glyph = "", hl = "MiniIconsBlue" },
 				["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
 				["package.json"] = { glyph = "", hl = "MiniIconsGreen" },

@@ -1,21 +1,16 @@
 return {
 	{ "tpope/vim-repeat", keys = { { "." }, { ";" } } },
-	{
-		"kylechui/nvim-surround",
-		version = "*",
-		keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
-		opts = {},
-	},
 	--codeiumn
 	{
 		"monkoose/neocodeium",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		lazy = true,
 		opts = {
-			manual = false,
-			filter = function()
-				local cmp = require("cmp")
-				return not cmp.visible()
-			end,
+			manual = true,
+			-- filter = function()
+			-- 	local cmp = require("cmp")
+			-- 	return not cmp.visible()
+			-- end,
 			debounce = true,
 			server = {},
 		},
@@ -54,27 +49,17 @@ return {
 			},
 		},
 	},
-	{
-		"chrisgrieser/nvim-various-textobjs",
-		event = "UIEnter",
-		opts = { useDefaultKeymaps = true },
-	},
+	-- {
+	-- 	"chrisgrieser/nvim-various-textobjs",
+	-- 	event = "UIEnter",
+	-- 	opts = { keymaps = { keymapuseDefaultKeymaps = true } },
+	-- },
 	-- TODO: coments
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = "BufReadPost",
 		opts = {},
-	},
-
-	-- split join
-	{
-		"Wansmer/treesj",
-		dependencies = "nvim-treesitter",
-		keys = {
-			{ "<leader>cj", "<cmd>TSJToggle<cr>", desc = "Join/split code block" },
-		},
-		opts = { use_default_keymaps = false },
 	},
 
 	-- UndotreeToggle
@@ -110,20 +95,5 @@ return {
 			{ "g?P", mode = { "n", "x" }, desc = "Plain debug log below" },
 		},
 		version = "*",
-	},
-	-- Autoclose
-	{
-		"windwp/nvim-ts-autotag",
-		opts = {},
-		event = "InsertEnter",
-	},
-
-	-- copy to the system clipboard
-	{
-		"christoomey/vim-system-copy",
-		keys = {
-			{ "cp", desc = "Copy to system clipboard(motion)" },
-			{ "cv", desc = "Paste from system clipboard(motion)" },
-		},
 	},
 }

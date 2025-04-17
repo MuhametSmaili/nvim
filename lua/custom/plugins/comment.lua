@@ -1,16 +1,6 @@
-local M = {
-	"numToStr/comment.nvim",
-	dependencies = {
-		"JoosepAlviste/nvim-ts-context-commentstring",
-	},
+return {
+	"folke/ts-comments.nvim",
 	opts = {},
-	keys = { { "gc" }, { "gc", mode = "v" } },
+	event = "VeryLazy",
+	enabled = vim.fn.has("nvim-0.10.0") == 1,
 }
-
-function M.config()
-	require("Comment").setup({
-		pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-	})
-end
-
-return M
