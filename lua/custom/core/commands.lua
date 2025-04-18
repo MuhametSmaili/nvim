@@ -27,3 +27,17 @@ autocmd("BufReadPost", {
 
 -- Enable code higlighting for markdown files
 vim.cmd("let g:markdown_fenced_languages = ['html', 'javascript', 'typescript', 'vim', 'lua', 'css']")
+
+--
+-- clear neocodeium result when cmp is open
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BlinkCmpMenuOpen",
+	callback = function()
+		local has_neocodeium, neocodeium = pcall(require, "neocodeium")
+
+		if has_neocodeium then
+			neocodeium.clear()
+		end
+	end,
+})

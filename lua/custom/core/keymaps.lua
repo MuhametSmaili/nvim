@@ -74,7 +74,7 @@ M.keyMaps = {
 		------------------------------
 		-- Open neo tree
 		------------------------------
-		["<leader>e"] = ":NvimTreeToggle<CR>",
+		-- ["<leader>e"] = ":NvimTreeToggle<CR>",
 
 		------------------------------
 		-- Text

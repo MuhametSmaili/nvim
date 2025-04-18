@@ -99,6 +99,13 @@ return {
 				fzf = true,
 				gitsigns = true,
 				nvimtree = true,
+				blink_cmp = true,
+				snacks = {
+					enabled = true,
+					indent_scope_color = "lavender",
+				},
+				neotest = true,
+				mason = true,
 				illuminate = {
 					enabled = true,
 					lsp = false,
@@ -122,10 +129,7 @@ return {
 						background = true,
 					},
 				},
-				mini = {
-					enabled = true,
-					indentscope_color = "",
-				},
+				mini = { enabled = true },
 			},
 			transparent_background = true,
 			styles = {

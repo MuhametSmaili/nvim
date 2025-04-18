@@ -4,13 +4,13 @@ return {
 		event = "BufReadPost",
 		cmd = { "Mason" },
 		dependencies = {
-			{ "williamboman/mason.nvim", opts = {}, build = ":MasonUpdate" },
+			{ "williamboman/mason.nvim", opts = { ui = { border = "rounded" } }, build = ":MasonUpdate" },
 			"williamboman/mason-lspconfig.nvim",
 			"echasnovski/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
 			"b0o/SchemaStore.nvim",
-			"hrsh7th/cmp-nvim-lsp",
+			"saghen/blink.cmp",
 			"rrethy/vim-illuminate",
 		},
 		opts = {
@@ -106,7 +106,8 @@ return {
 			-- Add servers automaticlly
 			----------------------------------
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			capabilities =
+				vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 			capabilities.workspace.fileOperations = { didRename = true, willRename = true }
 
 			require("mason").setup()

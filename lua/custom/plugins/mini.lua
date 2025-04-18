@@ -28,9 +28,24 @@ return {
 		end,
 		event = { "BufReadPost" },
 	},
-	{ "echasnovski/mini.bracketed", version = "*", opts = {}, keys = { { "[" } } },
-	{ "echasnovski/mini.surround", version = "*", opts = {}, keys = { { "s" } } },
-	{ "echasnovski/mini.splitjoin", version = "*", opts = {}, keys = { { "gS" } } },
+	{
+		"echasnovski/mini.bracketed",
+		version = "*",
+		opts = {},
+		keys = { { "[" }, { "]" } },
+	},
+	{
+		"echasnovski/mini.surround",
+		version = "*",
+		opts = { search_method = "cover_or_next" },
+		keys = { { "s" } },
+	},
+	{
+		"echasnovski/mini.splitjoin",
+		version = "*",
+		opts = {},
+		keys = { { "gS" } },
+	},
 	{
 		"echasnovski/mini.icons",
 		opts = {
@@ -44,6 +59,12 @@ return {
 				["tsconfig.json"] = { glyph = "", hl = "MiniIconsAzure" },
 				["tsconfig.build.json"] = { glyph = "", hl = "MiniIconsAzure" },
 				["yarn.lock"] = { glyph = "", hl = "MiniIconsBlue" },
+				[".go-version"] = { glyph = "", hl = "MiniIconsBlue" },
+				gotmpl = { glyph = "󰟓", hl = "MiniIconsGrey" },
+				[".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+			},
+			filetype = {
+				gotmpl = { glyph = "󰟓", hl = "MiniIconsGrey" },
 			},
 		},
 		lazy = false,
@@ -56,6 +77,37 @@ return {
 				return package.loaded["nvim-web-devicons"]
 			end
 		end,
+	},
+	{
+		"echasnovski/mini.bufremove",
+		keys = {
+			{
+				"<leader>bd",
+				function()
+					local bd = require("mini.bufremove").delete
+					if vim.bo.modified then
+						local choice =
+							vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+						if choice == 1 then -- Yes
+							vim.cmd.write()
+							bd(0)
+						elseif choice == 2 then -- No
+							bd(0, true)
+						end
+					else
+						bd(0)
+					end
+				end,
+				desc = "Delete Buffer",
+			},
+			{
+				"<leader>bD",
+				function()
+					require("mini.bufremove").delete(0, true)
+				end,
+				desc = "Delete Buffer (Force)",
+			},
+		},
 	},
 	{ "echasnovski/mini.pairs", opts = {}, event = { "InsertEnter" } },
 }

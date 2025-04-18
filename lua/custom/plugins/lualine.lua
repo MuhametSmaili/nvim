@@ -16,6 +16,7 @@ function M.config()
 
 	require("lualine").setup({
 		options = {
+			theme = "catppuccin",
 			icons_enabled = true,
 			-- globalstatus = true, -- to have just one lualine, the inactive_* won't work
 			component_separators = "|",

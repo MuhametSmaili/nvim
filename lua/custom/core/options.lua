@@ -100,6 +100,7 @@ local options = {
 }
 
 vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.o.winborder = "rounded"
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
