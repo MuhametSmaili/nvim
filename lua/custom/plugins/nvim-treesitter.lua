@@ -7,7 +7,6 @@ return {
 	build = ":TSUpdate",
 	event = "BufReadPost",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
 		{
 			"nvim-treesitter/nvim-treesitter-context",
 			config = true,

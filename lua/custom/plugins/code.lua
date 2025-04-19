@@ -49,19 +49,6 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"chrisgrieser/nvim-various-textobjs",
-	-- 	event = "UIEnter",
-	-- 	opts = { keymaps = { keymapuseDefaultKeymaps = true } },
-	-- },
-	-- TODO: coments
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		event = "BufReadPost",
-		opts = {},
-	},
-
 	-- UndotreeToggle
 	{
 		"mbbill/undotree",

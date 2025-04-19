@@ -17,13 +17,6 @@ return {
 			end,
 			desc = "Open center mode",
 		},
-		{
-			"<leader>e",
-			function()
-				require("snacks").explorer()
-			end,
-			desc = "Open explorer",
-		},
 		-- {
 		-- 	"<leader>.",
 		-- 	function()
