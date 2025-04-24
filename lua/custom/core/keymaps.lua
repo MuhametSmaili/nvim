@@ -159,3 +159,11 @@ M.keyMaps = {
 -- Set keymaps
 ------------------------------
 custom.set_keymappings(M.keyMaps)
+
+vim.keymap.set("n", "k", function()
+	return vim.v.count > 0 and "m'" .. vim.v.count .. "k" or "gk"
+end, { expr = true })
+
+vim.keymap.set("n", "j", function()
+	return vim.v.count > 0 and "m'" .. vim.v.count .. "j" or "gj"
+end, { expr = true })

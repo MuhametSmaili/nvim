@@ -95,11 +95,11 @@ local options = {
 	------------------------------
 	backup = false, -- creates a backup file
 	-- clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-	clipboard = "",
 	completeopt = "menu,menuone,noselect", -- mostly just for cmp
 }
 
 vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.g.clipboard = "osc52"
 vim.o.winborder = "rounded"
 
 for k, v in pairs(options) do

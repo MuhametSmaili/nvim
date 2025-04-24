@@ -14,7 +14,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			go = { "goimports", "gofumpt" },
+			go = { "goimports" }, -- "gofumpt"
 			javascript = { "prettierd", "prettier" },
 			typescript = { "prettierd", "eslint_d" },
 			javascriptreact = { "prettierd", "eslint_d" },

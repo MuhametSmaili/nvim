@@ -25,6 +25,27 @@ function M.config()
 		sections = {
 			lualine_c = { filename_with_path },
 			lualine_b = { "grapple" },
+			lualine_x = {
+				"location",
+				-- "fileformat",
+				"filetype",
+				{
+					"lsp_status",
+					-- icon = require("lualine.components.filetype").apply_icon, -- f013
+					symbols = {
+						-- Standard unicode symbols to cycle through for LSP progress:
+						spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+						-- Standard unicode symbol for when LSP is done:
+						done = "✓",
+						-- Delimiter inserted between LSP names:
+						separator = " ",
+					},
+				},
+			},
+
+			-- lualine_x = {
+			-- "location",
+			-- },
 		},
 		inactive_winbar = {
 			lualine_a = { "filename" },
@@ -36,7 +57,7 @@ function M.config()
 				},
 			},
 		},
-		extensions = { "nvim-tree" },
+		extensions = { "nvim-tree", "fzf" },
 	})
 end
 

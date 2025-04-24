@@ -33,6 +33,7 @@ vim.cmd("let g:markdown_fenced_languages = ['html', 'javascript', 'typescript', 
 
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BlinkCmpMenuOpen",
+	group = smailiGroup,
 	callback = function()
 		local has_neocodeium, neocodeium = pcall(require, "neocodeium")
 

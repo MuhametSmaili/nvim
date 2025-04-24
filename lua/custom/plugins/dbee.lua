@@ -1,8 +1,8 @@
 return {
 	"kndndrj/nvim-dbee",
 	dependencies = {
-		{ "MunifTanjim/nui.nvim", opts = {} },
-		{ "MattiasMTS/cmp-dbee", opts = {} },
+		"MunifTanjim/nui.nvim",
+		"MattiasMTS/cmp-dbee",
 	},
 	build = function()
 		require("dbee").install()

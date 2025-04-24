@@ -17,20 +17,13 @@ return {
 			end,
 			desc = "Open center mode",
 		},
-		-- {
-		-- 	"<leader>.",
-		-- 	function()
-		-- 		require("snacks").scratch()
-		-- 	end,
-		-- 	desc = "Toggle Scratch Buffer",
-		-- },
-		-- {
-		-- 	"<leader>S",
-		-- 	function()
-		-- 		require("snacks").scratch.select()
-		-- 	end,
-		-- 	desc = "Select Scratch Buffer",
-		-- },
+		{
+			"<leader>e",
+			function()
+				require("snacks").explorer()
+			end,
+			desc = "Open explorer",
+		},
 	},
 	---@type snacks.Config
 	opts = {
@@ -43,25 +36,33 @@ return {
 		picker = {
 			sources = {
 				explorer = {
+					actions = {
+						search_list = function(picker)
+							picker:action("focus_list")
+							vim.fn.feedkeys("/", "n")
+						end,
+						search_list_r = function(picker)
+							picker:action("focus_list")
+							vim.fn.feedkeys("?", "n")
+						end,
+					},
+					win = {
+						list = {
+							wo = {
+								relativenumber = true,
+							},
+							keys = {
+								["/"] = { "search_list", mode = { "n" }, desc = "Search list" },
+								["?"] = { "search_list_r", mode = { "n" }, desc = "Search list reverse" },
+								["g?"] = { "toggle_help_list" },
+								["F"] = { "toggle_focus", desc = "Filter tree" },
+							},
+						},
+					},
 					auto_close = true,
 					layout = {
 						preset = "vertical",
 						cycle = true,
-						-- layout = {
-						-- 	box = "horizontal",
-						-- 	position = "float",
-						-- 	height = 0.95,
-						-- 	width = 0,
-						-- 	border = "rounded",
-						-- 	{
-						-- 		box = "vertical",
-						-- 		width = 40,
-						-- 		min_width = 40,
-						-- 		{ win = "input", height = 1, title = "{title} {live} {flags}", border = "single" },
-						-- 		{ win = "list" },
-						-- 	},
-						-- 	{ win = "preview", width = 0, border = "left" },
-						-- },
 					},
 				},
 			},
