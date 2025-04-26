@@ -83,5 +83,5 @@ return function(bufnr)
 		},
 	}
 
-	custom.set_keymappings(keymaps)
+	Custom.set_keymappings(keymaps)
 end

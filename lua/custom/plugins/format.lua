@@ -23,6 +23,7 @@ return {
 			css = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
 			json = { "prettierd" },
+			jsonc = { "prettierd" },
 			yaml = { "prettierd", "prettier" },
 			-- markdown = { "prettierd", "prettier" },
 			graphql = { "prettierd", "prettier" },

@@ -1,9 +1,9 @@
-custom = {}
+Custom = {}
 
 -- Set key-map by table
 -- Give a table with modes as keys for example:
 -- map = {n = {[keymap]='function or what you want your keymap to execute', desc="for description"}}
-function custom.set_keymappings(keymaps)
+function Custom.set_keymappings(keymaps)
 	local default_options = {
 		n = {
 			noremap = true,

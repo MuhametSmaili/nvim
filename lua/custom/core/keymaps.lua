@@ -158,7 +158,7 @@ M.keyMaps = {
 ------------------------------
 -- Set keymaps
 ------------------------------
-custom.set_keymappings(M.keyMaps)
+Custom.set_keymappings(M.keyMaps)
 
 vim.keymap.set("n", "k", function()
 	return vim.v.count > 0 and "m'" .. vim.v.count .. "k" or "gk"

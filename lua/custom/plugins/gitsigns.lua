@@ -30,7 +30,7 @@ function M.config()
 	})
 
 	-- Git signs
-	custom.set_keymappings(keymaps())
+	Custom.set_keymappings(keymaps())
 end
 
 return M

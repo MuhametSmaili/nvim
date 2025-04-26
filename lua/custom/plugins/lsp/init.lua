@@ -118,11 +118,6 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed, auto_update = true })
 
 			-- LSP borders
-			local common_handlers = {
-				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-			}
-
 			require("mason-lspconfig").setup({
 				-- This will loop through the all installed servers
 				-- We have configured servers on a file, here we are just apssing the options
@@ -131,8 +126,7 @@ return {
 						local server_options = servers[server_name] or {}
 						server_options.capabilities =
 							vim.tbl_deep_extend("force", {}, capabilities, server_options.capabilities or {})
-						server_options.handlers =
-							vim.tbl_deep_extend("force", {}, common_handlers, server_options.handlers or {})
+						server_options.handlers = vim.tbl_deep_extend("force", {}, server_options.handlers or {})
 
 						require("lspconfig")[server_name].setup(server_options)
 					end,
@@ -156,7 +150,16 @@ return {
 					enabled = false,
 				},
 				severity_sort = true,
-				float = { border = "rounded" },
+				float = {
+					border = "rounded",
+					source = "if_many",
+					-- Show severity icons as prefixes.
+					prefix = function(diag)
+						local level = vim.diagnostic.severity[diag.severity]
+						local prefix = string.format(" %s ", signs[level])
+						return prefix, "Diagnostic" .. level:gsub("^%l", string.upper)
+					end,
+				},
 				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = signs.Error,

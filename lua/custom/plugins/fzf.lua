@@ -93,99 +93,92 @@ return {
 			"<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
 			desc = "Search tags TODO|FIX|PERF|FIX...",
 		},
-		{ "gr", ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
+		{ "grr", ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
 		{ "z=", "<cmd>FzfLua spell_suggest<cr>", desc = "Spelling suggestions" },
 	},
+	init = function()
+		---@diagnostic disable-next-line: duplicate-set-field
+		vim.ui.select = function(items, opts, on_choice)
+			local ui_select = require("fzf-lua.providers.ui_select")
+
+			-- Register the fzf-lua picker the first time we call select.
+			if not ui_select.is_registered() then
+				ui_select.register(function(ui_opts)
+					if ui_opts.kind == "luasnip" then
+						ui_opts.prompt = "Snippet choice: "
+						ui_opts.winopts = {
+							relative = "cursor",
+							height = 0.35,
+							width = 0.3,
+						}
+					elseif ui_opts.kind == "lsp_message" then
+						ui_opts.winopts = { height = 0.4, width = 0.4 }
+					else
+						ui_opts.winopts = { height = 0.6, width = 0.5 }
+					end
+
+					return ui_opts
+				end)
+			end
+
+			-- Don't show the picker if there's nothing to pick.
+			if #items > 0 then
+				return vim.ui.select(items, opts, on_choice)
+			end
+		end
+	end,
 	opts = function()
 		return {
-			"fzf-native",
+			{ "fzf-native", "hide" },
 			-- "default",
-			defaults = {
-				-- formatter = "path.filename_first",
-			},
 			oldfiles = {
 				include_current_session = true,
+				winopts = {
+					preview = { hidden = true },
+				},
 			},
-			-- previewers = {
-			--   git_diff = {
-			--     pager = "delta --width=$FZF_PREVIEW_COLUMNS",
-			--   },
-			-- },
-			-- git = {
-			-- bcommits = {
-			--   preview_pager = "delta --width=$FZF_PREVIEW_COLUMNS",
-			-- },
-			-- },
+			previewers = {
+				codeaction = { toggle_behavior = "extend" },
+				--   git_diff = {
+				--     pager = "delta --width=$FZF_PREVIEW_COLUMNS",
+				--   },
+				-- },
+				-- git = {
+				-- bcommits = {
+				--   preview_pager = "delta --width=$FZF_PREVIEW_COLUMNS",
+				-- },
+			},
 			winopts = {
-				on_create = function()
-					vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", "<Down>", { silent = true, noremap = true })
-					vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", "<Up>", { silent = true, noremap = true })
-				end,
+				height = 0.7,
+				width = 0.60,
+				preview = {
+					scrollbar = false,
+					layout = "horizontal",
+				},
 				winopts = {
 					relativenumber = true,
 				},
-				on_close = function()
-					print("on_exit")
-					vim.cmd("stopinsert") -- Exit insert mode on close
-				end,
-				on_exit = function()
-					print("on_exit")
-					vim.cmd("stopinsert") -- Ensure cleanup after exit
-				end,
 			},
-			on_close = function()
-				print("on_exit")
-				vim.cmd("stopinsert") -- Exit insert mode on close
-			end,
-			on_exit = function()
-				print("on_exit")
-				vim.cmd("stopinsert") -- Ensure cleanup after exit
-			end,
 			keymap = {
-				-- builtin = {
-				-- 	["<F1>"] = "toggle-help",
-				-- 	["<F2>"] = "toggle-fullscreen",
-				-- 	-- Only valid with the 'builtin' previewer
-				-- 	["<F3>"] = "toggle-preview-wrap",
-				-- 	["<F4>"] = "toggle-preview",
-				-- 	-- Rotate preview clockwise/counter-clockwise
-				-- 	["<F5>"] = "toggle-preview-ccw",
-				-- 	["<F6>"] = "toggle-preview-cw",
-				["<C-d>"] = "preview-page-down",
-				["<C-u>"] = "preview-page-up",
-				-- 	["<S-left>"] = "preview-page-reset",
-				-- },
-				fzf = {
-					-- fzf '--bind=' options
-					-- ["ctrl-z"] = "abort",
-					-- ["ctrl-u"] = "unix-line-discard",
-					-- ["ctrl-f"] = "half-page-down",
-					-- ["ctrl-b"] = "half-page-up",
-					-- ["ctrl-a"] = "beginning-of-line",
-					-- ["ctrl-e"] = "end-of-line",
-					["alt-a"] = "toggle-all",
-					-- Only valid with fzf previewers (bat/cat/git/etc)
-					-- ["f3"] = "toggle-preview-wrap",
-					-- ["f4"] = "toggle-preview",
-					-- ["<C-d>"] = "preview-page-down",
-					-- ["<C-u>"] = "preview-page-up",
-					["ctrl-d"] = "preview-page-down",
-					["ctrl-u"] = "preview-page-up",
-					["ctrl-q"] = "select-all+accept",
+				builtin = {
+					["<C-a>"] = "toggle-fullscreen",
+					["<C-i>"] = "toggle-preview",
+					["<C-f>"] = "preview-page-down",
+					["<C-b>"] = "preview-page-up",
 				},
-			},
-			actions = {
-				files = {
-					true,
-					-- 		["<c-q>"] = function()
-					-- 			require("fzf-lua.actions").toggle_hidden()
-					-- 		end,
+				fzf = {
+					["ctrl-f"] = "preview-page-down",
+					["ctrl-b"] = "preview-page-up",
+					["ctrl-q"] = "select-all+accept",
+					["alt-p"] = "toggle-preview",
 				},
 			},
 			files = {
 				git_icons = true,
 				multiprocess = true,
-				-- ["<c-g>"] = require("fzf-lua").actions.toggle_hidden,
+				winopts = {
+					preview = { hidden = true },
+				},
 			},
 			lsp = {
 				code_actions = {
