@@ -37,6 +37,8 @@ return {
 		picker = {
 			sources = {
 				explorer = {
+					hidden = true,
+					ignored = false,
 					actions = {
 						search_list = function(picker)
 							picker:action("focus_list")

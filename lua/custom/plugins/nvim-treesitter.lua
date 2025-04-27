@@ -11,7 +11,7 @@ return {
 			"nvim-treesitter/nvim-treesitter-context",
 			config = true,
 			opts = {
-				enable = true,
+				enable = false,
 				-- Avoid the sticky context from growing a lot.
 				max_lines = 3,
 				-- Match the context lines to the source code.

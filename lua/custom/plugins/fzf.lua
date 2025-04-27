@@ -12,7 +12,7 @@ return {
 			":FzfLua files<cr>",
 			desc = "Find files",
 		},
-		{ "<leader>s,", "<cmd>FzfLua resume<cr>", desc = "Resume last command" },
+		{ "<leader><space>", "<cmd>FzfLua resume<cr>", desc = "Resume last command" },
 		-- { "<leader>sw", ":lua require'fzf-lua'.live_grep({ multiprocess=true })<CR>", desc = "Find word (live_grep)" },
 		{ "<leader>sw", "<cmd>FzfLua live_grep<cr>", desc = "Find word (grep project)" },
 		{
@@ -161,10 +161,12 @@ return {
 			},
 			keymap = {
 				builtin = {
-					["<C-a>"] = "toggle-fullscreen",
+					["<Esc>"] = "hide",
+					["<a-m>"] = "toggle-fullscreen",
 					["<C-i>"] = "toggle-preview",
 					["<C-f>"] = "preview-page-down",
 					["<C-b>"] = "preview-page-up",
+					["<C-/>"] = "toggle-help",
 				},
 				fzf = {
 					["ctrl-f"] = "preview-page-down",

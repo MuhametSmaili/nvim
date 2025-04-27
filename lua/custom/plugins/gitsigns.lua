@@ -10,8 +10,8 @@ local function keymaps()
 		n = {
 			["<leader>ghd"] = { gitsigns.diffthis, desc = "Diff This" },
 			["<leader>ga"] = { gitsigns.get_actions, desc = "Get git actions" },
-			["gb"] = { gitsigns.blame_line, desc = "View git blame line" },
-			["gh"] = { gitsigns.preview_hunk, desc = "View git hunk per current line" },
+			["<leader>ghb"] = { gitsigns.blame_line, desc = "View git blame line" },
+			["<leader>ghp"] = { gitsigns.preview_hunk, desc = "View git hunk per current line" },
 			["]h"] = { gitsigns.next_hunk, desc = "Next hunk" },
 			["[h"] = { gitsigns.prev_hunk, desc = "Prev hunk" },
 			["<leader>ghr"] = { gitsigns.reset_hunk, desc = "Reset current hunk" },
