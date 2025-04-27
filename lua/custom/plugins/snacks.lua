@@ -49,16 +49,16 @@ return {
 							vim.fn.feedkeys("?", "n")
 						end,
 						copy_vim = function(_, item)
-							require("custom.utils.snacks_picker").make_copy_action('"')(_, item)
+							Custom.explorer.make_copy_action('"')(_, item)
 						end,
 						copy_clip = function(_, item)
-							require("custom.utils.snacks_picker").make_copy_action('"')(_, item)
+							Custom.explorer.make_copy_action('"')(_, item)
 						end,
 						cycle_layouts = function(picker)
-							return require("custom.utils.snacks_picker").set_next_preferred_layout(picker)
+							return Custom.explorer.set_next_preferred_layout(picker)
 						end,
 						explorer_copy_default = function(picker, item)
-							require("custom.utils.snacks_picker").explorer_copy_default(picker, item)
+							Custom.explorer.explorer_copy_default(picker, item)
 						end,
 					},
 					win = {
@@ -82,7 +82,7 @@ return {
 					auto_close = true,
 					layout = {
 						preset = function()
-							return require("custom.utils.snacks_picker").preferred_layout()
+							return Custom.explorer.preferred_layout()
 						end,
 						auto_hide = { "input" },
 						cycle = true,

@@ -1,26 +1,24 @@
-local M = {}
-local layouts = require("snacks.picker.config.layouts")
-
-layouts.vertical = vim.tbl_deep_extend("keep", { layout = { auto_hide = { "preview" } } }, layouts.vertical)
-layouts.ivy_wider_preview = vim.tbl_deep_extend("keep", { layout = { height = 0.95 } }, layouts.ivy)
-layouts.ivy_wider_preview.layout[2][2].width = 0.8
-
-local idx = 1
-local preferred = {
-	"vertical",
-	"ivy_wider_preview",
-}
-
-M.preferred_layout = function()
-	return preferred[1]
+Custom.explorer.preferred_layout = function()
+	return "vertical"
 end
 
-M.set_next_preferred_layout = function(picker)
+Custom.explorer.set_next_preferred_layout = function(picker)
+	local layouts = require("snacks.picker.config.layouts")
+
+	layouts.vertical = vim.tbl_deep_extend("keep", { layout = { auto_hide = { "preview" } } }, layouts.vertical)
+	layouts.ivy_wider_preview = vim.tbl_deep_extend("keep", { layout = { height = 0.95 } }, layouts.ivy)
+	layouts.ivy_wider_preview.layout[2][2].width = 0.8
+
+	local idx = 1
+	local preferred = {
+		"vertical",
+		"ivy_wider_preview",
+	}
 	idx = idx % #preferred + 1
 	picker:set_layout(preferred[idx])
 end
 
-function M.make_copy_action(reg)
+function Custom.explorer.make_copy_action(reg)
 	return function(_, item)
 		local fn = vim.fn
 		local modify = fn.fnamemodify
@@ -66,7 +64,7 @@ function M.make_copy_action(reg)
 	end
 end
 
-function M.explorer_copy_default(picker, item)
+function Custom.explorer.explorer_copy_default(picker, item)
 	if not item then
 		return
 	end
@@ -103,5 +101,3 @@ function M.explorer_copy_default(picker, item)
 		actions.update(picker, { target = to })
 	end)
 end
-
-return M

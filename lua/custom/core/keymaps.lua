@@ -45,6 +45,16 @@ M.keyMaps = {
 
 		-- Toggle pastemode
 		["<leader>up"] = { ":setlocal paste!<CR>", desc = "Toggle paste mode" },
+		["<leader>uf"] = {
+			function()
+				vim.g.autoformat = not vim.g.autoformat
+				vim.notify(
+					string.format("%s formatting", vim.g.autoformat and "Enabling" or "Disabling"),
+					vim.log.levels.INFO
+				)
+			end,
+			desc = "Toggle format",
+		},
 
 		------------------------------
 		-- Resize splits with arrows
@@ -160,10 +170,12 @@ M.keyMaps = {
 ------------------------------
 Custom.set_keymappings(M.keyMaps)
 
+-- Add j k movement to the jumplists
 vim.keymap.set("n", "k", function()
 	return vim.v.count > 0 and "m'" .. vim.v.count .. "k" or "gk"
 end, { expr = true })
-
 vim.keymap.set("n", "j", function()
 	return vim.v.count > 0 and "m'" .. vim.v.count .. "j" or "gj"
 end, { expr = true })
+
+vim.keymap.set({ "n", "v", "o" }, "gy", '"+y', { desc = "Copy to clipboard" })

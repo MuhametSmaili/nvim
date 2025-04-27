@@ -1,4 +1,6 @@
-Custom = {}
+Custom = {
+	explorer = {},
+}
 
 -- Set key-map by table
 -- Give a table with modes as keys for example:
@@ -31,3 +33,5 @@ function Custom.set_keymappings(keymaps)
 		end
 	end
 end
+
+require("custom.utils.snacks_picker")
