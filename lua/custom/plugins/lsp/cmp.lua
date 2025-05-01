@@ -40,7 +40,14 @@ return {
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = { preset = "default", ["<CR>"] = { "accept", "fallback" } },
-
+		cmdline = {
+			enabled = true,
+			completion = {
+				menu = {
+					auto_show = false,
+				},
+			},
+		},
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
@@ -54,6 +61,7 @@ return {
 				auto_show_delay_ms = 500,
 				auto_show = true,
 				window = { border = "rounded" },
+				treesitter_highlighting = true,
 			},
 			ghost_text = {
 				show_with_selection = true,
@@ -73,6 +81,7 @@ return {
 				border = "rounded",
 				-- mini icons text
 				draw = {
+					treesitter = { "lsp" },
 					components = {
 						kind_icon = {
 							text = function(ctx)
