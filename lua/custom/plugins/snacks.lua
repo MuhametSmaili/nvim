@@ -60,6 +60,13 @@ return {
 						explorer_copy_default = function(picker, item)
 							Custom.explorer.explorer_copy_default(picker, item)
 						end,
+						jump_or_confirm = function(picker, item)
+							if item.type == "file" then
+								picker:action({ "pick_win", "jump" })
+							else
+								picker:action("confirm")
+							end
+						end,
 					},
 					win = {
 						list = {
@@ -73,7 +80,7 @@ return {
 								["F"] = { "toggle_focus", desc = "Filter tree" },
 								["y"] = { "copy_vim", desc = "Yank to vim" },
 								["Y"] = { "copy_clip", desc = "Yank to clipboard" },
-								["<cr>"] = { { "pick_win", "jump" }, mode = { "n", "i" }, desc = "Pick window" },
+								["<cr>"] = { "jump_or_confirm", mode = { "n", "i" }, desc = "Pick window" },
 								["<c-w>c"] = { "cycle_layouts", mode = { "i", "n" } }, -- overids the input focus
 								["c"] = "explorer_copy_default",
 							},

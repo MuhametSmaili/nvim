@@ -58,7 +58,11 @@ return {
 		{ "<leader>sm", ":FzfLua marks <cr>", desc = "Search marks" },
 		{ "<leader>sM", ":FzfLua man_pages <cr>", desc = "Search manual pages" },
 		{ "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
-		{ "<leader>ss", ":FzfLua spell_suggest <cr>", desc = "Show spell suggestions" },
+		{
+			"<leader>ss",
+			":FzfLua spell_suggest winopts={height=0.33,width=0.33} winopts.relative=cursor  <cr>",
+			desc = "Show spell suggestions",
+		},
 		{ "<leader>sJ", ":FzfLua jumps <cr>", desc = "Search jumps" },
 		{
 			"<leader>gb",
