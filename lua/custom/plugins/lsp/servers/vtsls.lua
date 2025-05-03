@@ -1,4 +1,6 @@
 return {
+	root_markers = { "package.json" },
+	workspace_required = true,
 	settings = {
 		complete_function_calls = true,
 		vtsls = {

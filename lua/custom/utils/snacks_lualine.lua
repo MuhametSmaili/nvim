@@ -1,6 +1,6 @@
-local Snacks = require("snacks")
-
 local function snacks_status()
+	local Snacks = require("snacks")
+
 	local filetype = vim.bo.filetype
 	local left_side = filetype
 	local right_side = ""
