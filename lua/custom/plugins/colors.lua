@@ -4,7 +4,7 @@
 return {
 	{
 		"sainnhe/everforest",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		lazy = false,
 		opts = {},
 		config = function()
 			vim.cmd("let g:everforest_transparent_background = 1")
@@ -12,7 +12,7 @@ return {
 	},
 	{
 		"loctvl842/monokai-pro.nvim",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		lazy = false,
 		config = function()
 			require("monokai-pro").setup({
 				transparent_background = true,
@@ -21,20 +21,19 @@ return {
 	},
 	{
 		"sho-87/kanagawa-paper.nvim",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		lazy = false,
 		opts = {
 			transparent = true,
 		},
 	},
 	{
 		"datsfilipe/vesper.nvim",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
 		opts = {},
+		lazy = false,
 	},
 	{
 		"olivercederborg/poimandres.nvim",
-		lazy = true,
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		lazy = false,
 		-- priority = 1000,
 		config = function()
 			require("poimandres").setup({
@@ -59,7 +58,7 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		lazy = false,
 		opts = {
 			styles = {
 				transparency = true,
@@ -79,7 +78,6 @@ return {
 	},
 	{
 		"sainnhe/sonokai",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
 		config = function()
 			vim.cmd("let g:sonokai_transparent_background = 1")
 		end,
@@ -145,13 +143,13 @@ return {
 		},
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
-			vim.cmd.colorscheme("catppuccin")
+			-- vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	-- Lazy
 	{
 		"vague2k/vague.nvim",
-		keys = { { "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" } },
+		lazy = false,
 		config = function()
 			require("vague").setup({
 				transparent = true,

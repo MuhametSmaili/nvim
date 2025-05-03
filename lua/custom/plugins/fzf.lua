@@ -52,7 +52,21 @@ return {
 		-- },
 		{ "<leader><tab>", ":FzfLua buffers<cr>", desc = "Find buffers" },
 		{ "<leader>sR", ":FzfLua registers <cr>", desc = "Search registers" },
-		{ "<leader>sc", ":FzfLua colorschemes<cr>", desc = "Search colorschemes" },
+		{
+			"<leader>sc",
+			function()
+				require("fzf-lua").colorschemes({
+					winopts = { height = 0.45, width = 0.20, row = 0, col = 1 },
+					actions = {
+						["default"] = function(selected)
+							local theme = selected[1]
+							Custom.save_colorscheme(theme)
+						end,
+					},
+				})
+			end,
+			desc = "Search colorschemes",
+		},
 		{ "<leader>sh", ":FzfLua help_tags<cr>", desc = "Search help tags" },
 		{ "<leader>sH", ":FzfLua highlights<cr>", desc = "Search highlights" },
 		{ "<leader>sm", ":FzfLua marks <cr>", desc = "Search marks" },

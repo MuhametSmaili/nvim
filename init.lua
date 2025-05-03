@@ -24,7 +24,7 @@ require("lazy").setup({
 	{ import = "custom.plugins.lsp.cmp" },
 }, {
 	defaults = { lazy = true },
-	install = { colorscheme = { "catppuccin" } },
+	install = { colorscheme = { Custom.get_colorscheme("catppuccin") } },
 	checker = { enabled = true },
 	ui = { border = "rounded" },
 	performance = {

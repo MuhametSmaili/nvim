@@ -1,6 +1,7 @@
 Custom = {
 	explorer = {},
 }
+require("custom.utils.snacks_picker")
 
 -- Set key-map by table
 -- Give a table with modes as keys for example:
@@ -34,4 +35,25 @@ function Custom.set_keymappings(keymaps)
 	end
 end
 
-require("custom.utils.snacks_picker")
+local persist = vim.fn.stdpath("data") .. "/colorscheme.txt"
+
+-- read the file, return the first line or fallback to default  theme
+function Custom.get_colorscheme(fallback)
+	local ok, lines = pcall(vim.fn.readfile, persist)
+	if ok and #lines > 0 then
+		return lines[1]
+	end
+	return fallback or "default"
+end
+
+-- write the theme to disk and apply it
+function Custom.save_colorscheme(theme)
+	vim.cmd("colorscheme " .. theme)
+	pcall(vim.fn.writefile, { theme }, persist)
+	vim.notify("Colorscheme saved: " .. theme, vim.log.levels.INFO)
+
+	local ok, lualine = pcall(require, "lualine")
+	if ok then
+		lualine.setup(require("custom.plugins.lualine").opts())
+	end
+end

@@ -15,7 +15,7 @@ return {
 
 		return {
 			options = {
-				theme = "catppuccin",
+				theme = "auto",
 				icons_enabled = true,
 				component_separators = "",
 				section_separators = "",
@@ -48,7 +48,7 @@ return {
 					},
 				},
 			},
-			extensions = { "nvim-tree", "fzf", "lazy", "fugitive", require("lua.custom.utils.snacks_lualine") },
+			extensions = { "nvim-tree", "fzf", "lazy", "fugitive", require("custom.utils.snacks_lualine") },
 		}
 	end,
 }

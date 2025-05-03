@@ -42,3 +42,10 @@ vim.api.nvim_create_autocmd("User", {
 		end
 	end,
 })
+
+-- Set colorscehme
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		vim.cmd("colorscheme " .. Custom.get_colorscheme("catppuccin"))
+	end,
+})
