@@ -13,7 +13,6 @@ return {
 			desc = "Find files",
 		},
 		{ "<leader><space>", "<cmd>FzfLua resume<cr>", desc = "Resume last command" },
-		-- { "<leader>sw", ":lua require'fzf-lua'.live_grep({ multiprocess=true })<CR>", desc = "Find word (live_grep)" },
 		{ "<leader>sw", "<cmd>FzfLua live_grep<cr>", desc = "Find word (grep project)" },
 		{
 			"<leader>sW",
@@ -177,7 +176,6 @@ return {
 	opts = function()
 		return {
 			{ "fzf-native", "hide" },
-			-- "default",
 			oldfiles = {
 				include_current_session = true,
 				winopts = {
@@ -186,14 +184,6 @@ return {
 			},
 			previewers = {
 				codeaction = { toggle_behavior = "extend" },
-				--   git_diff = {
-				--     pager = "delta --width=$FZF_PREVIEW_COLUMNS",
-				--   },
-				-- },
-				-- git = {
-				-- bcommits = {
-				--   preview_pager = "delta --width=$FZF_PREVIEW_COLUMNS",
-				-- },
 			},
 			winopts = {
 				height = 0.7,
