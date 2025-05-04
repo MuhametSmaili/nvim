@@ -2,50 +2,60 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 local smailiGroup = augroup("smaili", { clear = true })
-local HiglightOnYankGroup = augroup("HiglightOnYank", { clear = true })
 
 -- Highlight on yank
 autocmd("TextYankPost", {
-	group = HiglightOnYankGroup,
-	pattern = "*",
-	desc = "Highlight text when yank",
+	group = smailiGroup,
+	desc = "Highlight text on yank",
 	callback = function()
 		vim.highlight.on_yank()
 	end,
 })
 
--- Go the last cursor position on buffer
+-- Go to the last cursor position when reopening buffer
 autocmd("BufReadPost", {
-	callback = function()
-		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-			vim.cmd('normal! g`"')
-		end
-	end,
 	group = smailiGroup,
-	desc = "Go To The Last Cursor Position",
+	desc = "Restore last cursor position",
+	callback = function()
+		vim.defer_fn(function()
+			if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+				vim.cmd('normal! g`"')
+			end
+		end, 0)
+	end,
 })
 
--- Enable code higlighting for markdown files
-vim.cmd("let g:markdown_fenced_languages = ['html', 'javascript', 'typescript', 'vim', 'lua', 'css']")
+-- Enable fenced code highlighting for markdown
+vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "vim", "lua", "css" }
 
---
--- clear neocodeium result when cmp is open
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "BlinkCmpMenuOpen",
+-- Clear NeoCodeium suggestions when CMP menu opens
+autocmd("User", {
 	group = smailiGroup,
+	pattern = "BlinkCmpMenuOpen",
+	desc = "Clear NeoCodeium when CMP menu opens",
 	callback = function()
-		local has_neocodeium, neocodeium = pcall(require, "neocodeium")
-
-		if has_neocodeium then
+		local ok, neocodeium = pcall(require, "neocodeium")
+		if ok then
 			neocodeium.clear()
 		end
 	end,
 })
 
--- Set colorscehme
-vim.api.nvim_create_autocmd("VimEnter", {
+-- Set colorscheme on startup
+autocmd("VimEnter", {
+	group = smailiGroup,
+	desc = "Set custom colorscheme",
 	callback = function()
 		vim.cmd("colorscheme " .. Custom.get_colorscheme("catppuccin"))
+	end,
+})
+
+-- Disable auto-commenting on newline
+autocmd("FileType", {
+	pattern = "*",
+	group = smailiGroup,
+	desc = "Disable auto comment on new lines",
+	callback = function()
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
 	end,
 })

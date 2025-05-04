@@ -39,6 +39,7 @@ return {
 				explorer = {
 					hidden = true,
 					ignored = false,
+					matcher = { sort_empty = false, fuzzy = true },
 					actions = {
 						search_list = function(picker)
 							picker:action("focus_list")
@@ -67,6 +68,24 @@ return {
 								picker:action("confirm")
 							end
 						end,
+						toggle_focus_with_search = function(picker)
+							-- Get the current filter text
+							local filter_text = picker.input.filter.pattern
+
+							-- Set the search register if there's text in the filter
+							if filter_text and filter_text ~= "" then
+								-- Escape special characters for search
+								local search_text = filter_text:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "\\%1")
+								vim.fn.setreg("/", search_text)
+							end
+
+							-- Toggle focus
+							if vim.api.nvim_get_current_win() == picker.input.win.win then
+								picker:focus("list", { show = true })
+							else
+								picker:focus("input", { show = true })
+							end
+						end,
 					},
 					win = {
 						list = {
@@ -83,6 +102,11 @@ return {
 								["<cr>"] = { "jump_or_confirm", mode = { "n", "i" }, desc = "Pick window" },
 								["<c-w>c"] = { "cycle_layouts", mode = { "i", "n" } }, -- overids the input focus
 								["c"] = "explorer_copy_default",
+							},
+						},
+						input = {
+							keys = {
+								["<CR>"] = { "toggle_focus_with_search", mode = "i" },
 							},
 						},
 					},

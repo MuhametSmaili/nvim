@@ -52,18 +52,18 @@ return {
 			desc = "Go to 4 file in grapple list",
 		},
 		{
-			"<leader>m",
+			"<leader>;",
 			function()
 				require("grapple").open_tags()
 			end,
 			desc = "Toggle grapple UI quick/menu",
 		},
-		{
-			"<c-e>",
-			function()
-				require("grapple").open_tags()
-			end,
-			desc = "Toggle grapple UI quick/menu",
-		},
+		-- {
+		-- 	"<c-e>",
+		-- 	function()
+		-- 		require("grapple").open_tags()
+		-- 	end,
+		-- 	desc = "Toggle grapple UI quick/menu",
+		-- },
 	},
 }
