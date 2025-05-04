@@ -67,6 +67,30 @@ return {
 			end,
 			desc = "Search colorschemes",
 		},
+		{
+			"q:",
+			function()
+				require("fzf-lua").command_history({
+					winopts = { height = 0.30, width = 0.10, row = 1, col = 0, layout = "default" },
+					fzf_opts = {
+						["--layout"] = false,
+					},
+				})
+			end,
+			desc = "Search commands",
+		},
+		{
+			"q/",
+			function()
+				require("fzf-lua").search_history({
+					winopts = { height = 0.30, width = 0.10, row = 1, col = 0, layout = "default" },
+					fzf_opts = {
+						["--layout"] = false,
+					},
+				})
+			end,
+			desc = "Search commands",
+		},
 		{ "<leader>sh", ":FzfLua help_tags<cr>", desc = "Search help tags" },
 		{ "<leader>sH", ":FzfLua highlights<cr>", desc = "Search highlights" },
 		{ "<leader>sm", ":FzfLua marks <cr>", desc = "Search marks" },
@@ -74,7 +98,7 @@ return {
 		{ "<leader>sk", ":FzfLua keymaps <cr>", desc = "Search key mappings" },
 		{
 			"<leader>ss",
-			":FzfLua spell_suggest winopts={height=0.33,width=0.33} winopts.relative=cursor  <cr>",
+			":FzfLua spell_suggest winopts={height=0.33,width=0.12} winopts.relative=cursor  <cr>",
 			desc = "Show spell suggestions",
 		},
 		{ "<leader>sJ", ":FzfLua jumps <cr>", desc = "Search jumps" },
@@ -105,6 +129,11 @@ return {
 				)
 			end,
 			desc = "Git grap all GIT history",
+		},
+		{
+			"<c-x><c-f>",
+			"<esc>:FzfLua complete_path winopts={height=1.20,width=0.12} winopts.relative=cursor  <cr>",
+			mode = "i",
 		},
 		{
 			"<leader>st",
