@@ -53,7 +53,12 @@ M.keyMaps = {
 					vim.log.levels.INFO
 				)
 			end,
-			desc = "Toggle format",
+			desc = "Toggle format on save",
+		},
+
+		["<leader>ub"] = {
+			":Gitsigns toggle_current_line_blame<cr>",
+			desc = "Toggle format on save",
 		},
 
 		------------------------------
@@ -178,4 +183,26 @@ vim.keymap.set("n", "j", function()
 	return vim.v.count > 0 and "m'" .. vim.v.count .. "j" or "gj"
 end, { expr = true })
 
+-- Yank to clipboard motion with gy
 vim.keymap.set({ "n", "v", "o" }, "gy", '"+y', { desc = "Copy to clipboard" })
+
+-- Use lowercase for global marks and uppercase for local marks.
+local low = function(i)
+	return string.char(97 + i)
+end
+local upp = function(i)
+	return string.char(65 + i)
+end
+
+for i = 0, 25 do
+	vim.keymap.set("n", "m" .. low(i), "m" .. upp(i))
+end
+for i = 0, 25 do
+	vim.keymap.set("n", "m" .. upp(i), "m" .. low(i))
+end
+for i = 0, 25 do
+	vim.keymap.set("n", "'" .. low(i), "'" .. upp(i))
+end
+for i = 0, 25 do
+	vim.keymap.set("n", "'" .. upp(i), "'" .. low(i))
+end
