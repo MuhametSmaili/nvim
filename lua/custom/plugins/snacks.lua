@@ -15,14 +15,7 @@ return {
 			function()
 				require("snacks").zen()
 			end,
-			desc = "Open center mode",
-		},
-		{
-			"<leader>e",
-			function()
-				require("snacks").explorer()
-			end,
-			desc = "Open explorer",
+			desc = "Toggle center mode",
 		},
 	},
 	---@type snacks.Config
