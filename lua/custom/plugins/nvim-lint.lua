@@ -14,6 +14,7 @@ return {
 			go = { "golangcilint" },
 			yaml = { "yamllint" },
 			proto = { "protolint" },
+			json = {},
 			markdown = {},
 		})
 

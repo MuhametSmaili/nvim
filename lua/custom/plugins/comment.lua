@@ -1,5 +1,14 @@
 return {
-	"folke/ts-comments.nvim",
+	"numToStr/Comment.nvim",
+	dependencies = {
+		"folke/ts-comments.nvim",
+		opts = {
+			allow_empty_lines = true,
+			lang = {
+				robot = "# %s",
+			},
+		},
+	},
 	opts = {},
-	event = "VeryLazy",
+	keys = { "gc", mode = { "n", "v", "x" } },
 }

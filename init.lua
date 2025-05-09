@@ -24,17 +24,16 @@ require("lazy").setup({
 	{ import = "custom.plugins.lsp.cmp" },
 }, {
 	defaults = { lazy = true },
-	install = { colorscheme = { Custom.get_colorscheme("catppuccin") } },
+	install = { colorscheme = { Custom.get_colorscheme(Custom.colorscheme.name) } },
 	checker = { enabled = true },
+	change_detection = { notify = false },
 	ui = { border = "rounded" },
 	performance = {
-		cache = {
-			enabled = true,
-		},
+		cache = { enabled = true },
 		rtp = {
 			disabled_plugins = {
-				-- "matchit",
-				-- "matchparen",
+				"matchit",
+				"matchparen",
 				"netrwPlugin",
 				"gzip",
 				"tarPlugin",

@@ -1,4 +1,8 @@
 Custom = {
+	colorscheme = {
+		transparent = true,
+		name = "catppuccin",
+	},
 	explorer = {},
 }
 require("custom.utils.snacks_picker")

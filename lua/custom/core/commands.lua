@@ -46,7 +46,7 @@ autocmd("VimEnter", {
 	group = smailiGroup,
 	desc = "Set custom colorscheme",
 	callback = function()
-		vim.cmd("colorscheme " .. Custom.get_colorscheme("catppuccin"))
+		vim.cmd("colorscheme " .. Custom.get_colorscheme(Custom.colorscheme.name))
 	end,
 })
 

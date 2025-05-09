@@ -15,38 +15,44 @@ return {
 		lazy = false,
 		config = function()
 			require("monokai-pro").setup({
-				transparent_background = true,
+				transparent_background = Custom.colorscheme.transparent,
 			})
 		end,
 	},
 	{
-		"sho-87/kanagawa-paper.nvim",
+		"oxfist/night-owl.nvim",
+		lazy = false,
+		opts = {
+			transparent_background = Custom.colorscheme.transparent,
+		},
+	},
+	{
+		"webhooked/kanso.nvim",
 		lazy = false,
 		opts = {
 			transparent = true,
 		},
 	},
 	{
+		"sho-87/kanagawa-paper.nvim",
+		lazy = false,
+		opts = {
+			transparent = Custom.colorscheme.transparent,
+		},
+	},
+	{
 		"datsfilipe/vesper.nvim",
-		opts = {},
+		opts = {
+			transparent = Custom.colorscheme.transparent,
+		},
 		lazy = false,
 	},
 	{
 		"olivercederborg/poimandres.nvim",
 		lazy = false,
-		-- priority = 1000,
-		config = function()
-			require("poimandres").setup({
-				-- leave this setup function empty for default config
-				-- or refer to the configuration section
-				-- for configuration options
-			})
-		end,
-
-		-- optionally set the colorscheme within lazy config
-		-- init = function()
-		-- 	vim.cmd("colorscheme poimandres")
-		-- end,
+		opts = {
+			disable_background = Custom.colorscheme.transparent,
+		},
 	},
 	{
 		"sainnhe/gruvbox-material",
@@ -61,7 +67,7 @@ return {
 		lazy = false,
 		opts = {
 			styles = {
-				transparency = true,
+				transparency = Custom.colorscheme.transparent,
 			},
 			before_highlight = function(_, highlight)
 				-- Disable all undercurls
@@ -129,7 +135,7 @@ return {
 				},
 				mini = { enabled = true },
 			},
-			transparent_background = true,
+			transparent_background = Custom.colorscheme.transparent,
 			styles = {
 				-- keywords = { "italic" },
 			},
@@ -141,21 +147,13 @@ return {
 				end,
 			},
 		},
-		config = function(_, opts)
-			require("catppuccin").setup(opts)
-			-- vim.cmd.colorscheme("catppuccin")
-		end,
 	},
 	-- Lazy
 	{
 		"vague2k/vague.nvim",
 		lazy = false,
-		config = function()
-			require("vague").setup({
-				transparent = true,
-				-- optional configuration here
-			})
-			-- vim.cmd.colorscheme("vague")
-		end,
+		opts = {
+			transparent = Custom.colorscheme.transparent,
+		},
 	},
 }
