@@ -1,11 +1,9 @@
 local o = vim.o
-local function pct(w)
-	return math.floor(o.columns * w)
-end
 
 local function float_cfg()
 	local h = math.floor((o.lines - o.cmdheight) * 0.8)
-	local w = pct(0.4)
+	local w = math.floor(o.columns * 0.4)
+
 	return {
 		relative = "editor",
 		border = "rounded",

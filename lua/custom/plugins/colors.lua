@@ -7,17 +7,17 @@ return {
 		lazy = false,
 		opts = {},
 		config = function()
-			vim.cmd("let g:everforest_transparent_background = 1")
+			if Custom.colorscheme.transparent then
+				vim.cmd("let g:everforest_transparent_background = 1")
+			end
 		end,
 	},
 	{
 		"loctvl842/monokai-pro.nvim",
 		lazy = false,
-		config = function()
-			require("monokai-pro").setup({
-				transparent_background = Custom.colorscheme.transparent,
-			})
-		end,
+		opts = {
+			transparent_background = Custom.colorscheme.transparent,
+		},
 	},
 	{
 		"oxfist/night-owl.nvim",
@@ -30,7 +30,7 @@ return {
 		"webhooked/kanso.nvim",
 		lazy = false,
 		opts = {
-			transparent = true,
+			transparent = Custom.colorscheme.transparent,
 		},
 	},
 	{
@@ -56,9 +56,13 @@ return {
 	},
 	{
 		"sainnhe/gruvbox-material",
+		opts = {},
 		config = function()
 			vim.cmd("let g:gruvbox_material_background = 'hard'")
-			vim.cmd("let g:gruvbox_material_transparent_background = 1")
+
+			if Custom.colorscheme.transparent then
+				vim.cmd("let g:gruvbox_material_transparent_background = 1")
+			end
 		end,
 	},
 	{
@@ -85,7 +89,9 @@ return {
 	{
 		"sainnhe/sonokai",
 		config = function()
-			vim.cmd("let g:sonokai_transparent_background = 1")
+			if Custom.colorscheme.transparent then
+				vim.cmd("let g:sonokai_transparent_background = 1")
+			end
 		end,
 		opts = {},
 	},
