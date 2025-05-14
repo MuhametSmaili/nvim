@@ -126,6 +126,9 @@ return {
 				run_on_start = true,
 			})
 
+			----------------------------------
+			-- Diagnostics
+			----------------------------------
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			vim.diagnostic.config({
 				virtual_text = {

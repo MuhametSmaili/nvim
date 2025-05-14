@@ -147,12 +147,23 @@ return {
 			},
 		},
 	},
-	-- Lazy
 	{
 		"vague2k/vague.nvim",
 		lazy = false,
 		opts = {
 			transparent = Custom.colorscheme.transparent,
+		},
+	},
+	{
+		"wtfox/jellybeans.nvim",
+		lazy = false,
+		opts = {
+			transparent = Custom.colorscheme.transparent,
+			italics = true,
+			plugins = {
+				all = true,
+				auto = true,
+			},
 		},
 	},
 }
