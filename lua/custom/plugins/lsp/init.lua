@@ -109,7 +109,6 @@ return {
 				capabilities = vim.lsp.protocol.make_client_capabilities(),
 			})
 
-			require("mason").setup()
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, opts.lsp_servers)
 			vim.list_extend(ensure_installed, opts.tools)
