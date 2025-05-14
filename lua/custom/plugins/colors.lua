@@ -20,13 +20,6 @@ return {
 		},
 	},
 	{
-		"oxfist/night-owl.nvim",
-		lazy = false,
-		opts = {
-			transparent_background = Custom.colorscheme.transparent,
-		},
-	},
-	{
 		"webhooked/kanso.nvim",
 		lazy = false,
 		opts = {
