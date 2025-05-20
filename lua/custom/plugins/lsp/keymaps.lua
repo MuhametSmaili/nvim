@@ -37,13 +37,14 @@ return function(bufnr)
 			------------------------------
 			["gd"] = { ":FzfLua lsp_definitions<CR>", desc = "Peek definition", buffer = bufnr },
 			["gt"] = { ":FzfLua lsp_typedefs<CR>", desc = "Peek definition", buffer = bufnr },
+			["grr"] = { ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
 			["gra"] = {
 				function()
 					require("fzf-lua").lsp_code_actions({
 						winopts = {
 							relative = "cursor",
-							width = 0.6,
-							height = 0.6,
+							width = 0.4,
+							height = 0.4,
 							row = 1,
 							preview = { horizontal = "up:70%" },
 						},

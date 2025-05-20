@@ -54,7 +54,7 @@ return {
 		"echasnovski/mini.surround",
 		version = "*",
 		opts = { search_method = "cover_or_next" },
-		keys = { { "s" } },
+		keys = { { "s", mode = { "n", "v", "x" } } },
 	},
 	{
 		"echasnovski/mini.splitjoin",

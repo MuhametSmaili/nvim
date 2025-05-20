@@ -70,7 +70,7 @@ return {
 			"q:",
 			function()
 				require("fzf-lua").command_history({
-					winopts = { height = 0.30, width = 0.10, row = 1, col = 0, layout = "default" },
+					winopts = { height = 0.30, width = 0.12, row = 1, col = 0, layout = "default" },
 					fzf_opts = {
 						["--layout"] = false,
 					},
@@ -82,7 +82,7 @@ return {
 			"q/",
 			function()
 				require("fzf-lua").search_history({
-					winopts = { height = 0.30, width = 0.10, row = 1, col = 0, layout = "default" },
+					winopts = { height = 0.30, width = 0.12, row = 1, col = 0, layout = "default" },
 					fzf_opts = {
 						["--layout"] = false,
 					},
@@ -139,7 +139,6 @@ return {
 			"<cmd>lua require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true})<CR>",
 			desc = "Search tags TODO|FIX|PERF|FIX...",
 		},
-		{ "grr", ":FzfLua lsp_references<CR>", desc = "Go to refrences" },
 		{ "z=", "<cmd>FzfLua spell_suggest<cr>", desc = "Spelling suggestions" },
 	},
 	init = function()
@@ -203,6 +202,8 @@ return {
 					["<C-i>"] = "toggle-preview",
 					["<C-f>"] = "preview-page-down",
 					["<C-b>"] = "preview-page-up",
+					-- ["<C-y>"] = "select",
+					-- ["<C-n>"] = "down",
 					["<C-/>"] = "toggle-help",
 				},
 				fzf = {

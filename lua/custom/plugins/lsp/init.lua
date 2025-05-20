@@ -8,7 +8,7 @@ return {
 			"mason-org/mason-lspconfig.nvim",
 			"echasnovski/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
+			-- { "j-hui/fidget.nvim", opts = {} },
 			"b0o/SchemaStore.nvim",
 			"saghen/blink.cmp",
 			"rrethy/vim-illuminate",

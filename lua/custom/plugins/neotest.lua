@@ -7,6 +7,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"nvim-neotest/neotest-jest",
 
 			"nvim-neotest/neotest-plenary",
 			"nvim-neotest/neotest-vim-test",
@@ -30,6 +31,14 @@ return {
 					"-race",
 					"-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
 				},
+			}
+			opts.adapters["neotest-jest"] = {
+				jestCommand = "npm test --",
+				jestConfigFile = "custom.jest.config.ts",
+				env = { CI = true },
+				cwd = function()
+					return vim.fn.getcwd()
+				end,
 			}
 		end,
 		config = function(_, opts)
