@@ -1,5 +1,5 @@
 return {
 	"mistweaverco/kulala.nvim",
-	ft = "http",
+	ft = { "http", "rest" },
 	opts = {},
 }
