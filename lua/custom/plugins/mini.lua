@@ -1,3 +1,22 @@
+local function_surround_config = {
+	default = { left = "function %s(%s) {\n", right = "}" },
+	templates = {
+		javascript = { left = "function %s(%s) {\n", right = "}" },
+		typescript = { left = "function %s(%s) {\n", right = "}" },
+		lua = { left = "function %s(%s)\n", right = "end" },
+		python = { left = "def %s(%s):\n" .. string.rep(" ", vim.bo.shiftwidth), right = "" },
+		go = { left = "func %s(%s) {\n", right = "}" },
+	},
+	anonymous = {
+		javascript = { left = "function(%s) {\n", right = "}" },
+		typescript = { left = "function(%s) {\n", right = "}" },
+		lua = { left = "function(%s)\n", right = "end" },
+		python = { left = "lambda %s:\n" .. string.rep(" ", vim.bo.shiftwidth), right = "" },
+		go = { left = "func(%s) {\n", right = "}" },
+		default = { left = "function(%s) {\n", right = "}" },
+	},
+}
+
 return {
 	{
 		"echasnovski/mini.ai",
@@ -53,7 +72,50 @@ return {
 	{
 		"echasnovski/mini.surround",
 		version = "*",
-		opts = { search_method = "cover_or_next" },
+		opts = {
+			search_method = "cover_or_next",
+
+			custom_surroundings = {
+				["F"] = {
+					output = function()
+						local ok, MiniSurround = pcall(require, "mini.surround")
+						if not ok then
+							vim.notify("mini.surround not found", vim.log.levels.ERROR)
+							return nil
+						end
+
+						local name = MiniSurround.user_input("Function name (leave empty for anonymous)")
+						local params = MiniSurround.user_input("Parameters (optional)", "")
+
+						local ft = vim.bo.filetype
+						local indent = string.rep(" ", vim.bo.shiftwidth)
+						local template
+						if not name or name == "" then
+							template = function_surround_config.anonymous[ft]
+								or function_surround_config.anonymous.default
+						else
+							template = function_surround_config.templates[ft] or function_surround_config.default
+						end
+
+						local left = string.format(template.left, name, params)
+						local right = template.right
+						if right ~= "" then
+							right = "\n" .. indent .. right
+						end
+
+						-- Return the surround table and trigger re-indentation
+						vim.schedule(function()
+							vim.api.nvim_command("normal! =='")
+						end)
+
+						return {
+							left = left,
+							right = right,
+						}
+					end,
+				},
+			},
+		},
 		keys = { { "s", mode = { "n", "v", "x" } } },
 	},
 	{
