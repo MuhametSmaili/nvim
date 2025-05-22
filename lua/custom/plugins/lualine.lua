@@ -13,6 +13,19 @@ return {
 		local filename_with_path =
 			{ my_filename, path = 1, symbols = { modified = " ", readonly = "", unnamed = " " } }
 
+		local function arrow()
+			local status = require("arrow.statusline").text_for_statusline_with_icons()
+			return status
+		end
+
+		local arrow_module = {
+			arrow,
+		}
+		local statusline = require("arrow.statusline")
+		arrow_index = statusline.text_for_statusline(_, i)
+		print(index)
+		-- local arrow_filenames = vim.g.arrow_filenames
+
 		return {
 			options = {
 				theme = "auto",
@@ -22,7 +35,7 @@ return {
 			},
 			sections = {
 				lualine_b = {
-					"grapple",
+					arrow_module,
 				},
 				lualine_c = { filename_with_path },
 				lualine_x = {
@@ -48,7 +61,7 @@ return {
 					},
 				},
 			},
-			extensions = { "nvim-tree", "fzf", "lazy", "fugitive", require("custom.utils.snacks_lualine") },
+			extensions = { "nvim-tree", "fzf", "lazy", "fugitive" },
 		}
 	end,
 }
