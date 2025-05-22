@@ -73,8 +73,18 @@ M.keyMaps = {
 		-- Buffers
 		------------------------------
 		-- Navigate
-		["<S-l>"] = ":bnext<CR>",
-		["<S-h>"] = ":bprevious<CR>",
+		["<S-l>"] = {
+			function()
+				return require("arrow.persist").next()
+			end,
+			desc = "Go to next bookmark",
+		},
+		["<S-h>"] = {
+			function()
+				return require("arrow.persist").previous
+			end,
+			desc = "Go to previous bookmark",
+		},
 
 		-- Save
 		["<leader>w"] = ":w<CR>",
