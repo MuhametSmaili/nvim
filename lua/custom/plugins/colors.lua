@@ -67,16 +67,18 @@ return {
 				transparency = Custom.colorscheme.transparent,
 			},
 			before_highlight = function(_, highlight)
-				-- Disable all undercurls
 				if highlight.undercurl then
 					highlight.undercurl = false
 				end
-				--
-				-- Change palette colour
-				-- if highlight.fg == palette.pine then
-				--     highlight.fg = palette.foam
-				-- end
 			end,
+			highlight_groups = {
+				Visual = {
+					bg = "#9ccfd8",
+					fg = "none",
+					blend = 0,
+					inherit = false,
+				},
+			},
 		},
 	},
 	{

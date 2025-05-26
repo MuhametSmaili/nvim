@@ -27,7 +27,7 @@ local function arrow_all_buffers()
 		table.insert(parts, highlighted_label)
 
 		if i < #filenames then
-			table.insert(parts, "%*|")
+			table.insert(parts, "%*")
 		end
 	end
 
@@ -40,12 +40,9 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
 	opts = function()
-		local my_filename = require("lualine.components.filename"):extend()
-		my_filename.apply_icon = require("lualine.components.filetype").apply_icon
-		my_filename.colored = true
-
-		local filename_with_path =
-			{ my_filename, path = 1, symbols = { modified = " ", readonly = "", unnamed = " " } }
+		local fileName = require("lualine.components.filename"):extend()
+		fileName.apply_icon = require("lualine.components.filetype").apply_icon
+		fileName.icon_hl_cache = {}
 
 		return {
 			options = {
@@ -70,27 +67,63 @@ return {
 				lualine_b = {
 					{ arrow_all_buffers },
 				},
-				lualine_c = { filename_with_path },
+				lualine_c = {
+					{
+						fileName,
+						path = 1,
+						symbols = { modified = " ", readonly = "", unnamed = " " },
+						colored = true,
+					},
+				},
 				lualine_x = {
-					"filetype",
 					{
 						"lsp_status",
 						symbols = {
-							spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-							done = "✓",
-							separator = " ",
+							spinner = {
+								"󰫃",
+								"󰫄",
+								"󰫅",
+								"󰫆",
+								"󰫇",
+								"󰫈",
+								"󰫈",
+								"󰫇",
+								"󰫆",
+								"󰫅",
+								"󰫄",
+								"󰫃",
+							},
+							done = "",
 						},
 					},
-					"diagnostics",
+					{
+						"diagnostics",
+						symbols = { error = "◦", warn = "◦", info = "◦", hint = "◦" },
+						padding = { left = 0, right = 1 },
+						fmt = function(str)
+							local count = str:match("%d+")
+							if count then
+								return str:gsub("%d+%s*", "")
+							end
+							return str
+						end,
+					},
 				},
 			},
 			inactive_winbar = {
 				lualine_a = { "filename" },
-				lualine_c = { filename_with_path },
+				lualine_c = {
+					{
+						fileName,
+						path = 1,
+						symbols = { modified = " ", readonly = "", unnamed = " " },
+						colored = true,
+					},
+				},
 				lualine_y = {
 					{
 						"datetime",
-						style = "default", -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
+						style = "default",
 					},
 				},
 			},

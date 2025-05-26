@@ -23,7 +23,7 @@ return {
 		hide_buffer_handbook = true,
 		separate_by_branch = true,
 		per_buffer_config = {
-			sort_automatically = false,
+			-- sort_automatically = false,
 		},
 		global_bookmarks = false,
 		index_keys = "hjkl;afg123456789zxcbnmZXVBNM,afgAFGHJKLwrtyuiopWRTYUIOP",
