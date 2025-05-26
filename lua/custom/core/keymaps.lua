@@ -81,7 +81,7 @@ M.keyMaps = {
 		},
 		["<S-h>"] = {
 			function()
-				return require("arrow.persist").previous
+				return require("arrow.persist").previous()
 			end,
 			desc = "Go to previous bookmark",
 		},

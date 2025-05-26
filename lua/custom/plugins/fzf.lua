@@ -159,7 +159,7 @@ return {
 					elseif ui_opts.kind == "lsp_message" then
 						ui_opts.winopts = { height = 0.4, width = 0.4 }
 					else
-						ui_opts.winopts = { height = 0.6, width = 0.5 }
+						ui_opts.winopts = { height = 0.5, width = 0.4 }
 					end
 
 					return ui_opts
