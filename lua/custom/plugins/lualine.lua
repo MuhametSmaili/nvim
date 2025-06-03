@@ -109,6 +109,20 @@ return {
 						end,
 					},
 				},
+				lualine_y = {
+					{ "filetype", icon_only = false, separator = "", padding = { left = 1, right = 1 } },
+				},
+				lualine_z = {
+					{
+						"progress",
+						separator = " ",
+						-- padding = { left = 1, right = 0 },
+						fmt = function(str)
+							local lines = vim.api.nvim_buf_line_count(0)
+							return str .. "/" .. lines
+						end,
+					},
+				},
 			},
 			inactive_winbar = {
 				lualine_a = { "filename" },
