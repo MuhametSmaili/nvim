@@ -3,15 +3,23 @@ return {
 	dependencies = {
 		{ "echasnovski/mini.icons" },
 	},
+	cmd = { "Arrow" },
 	keys = {
 		{ "m", mode = "n" },
-		{ "<leader>;", mode = "n" },
+		{ "<leader>;", mode = "n", desc = "Open arrow picker" },
+		{
+			"<leader><CR>",
+			":Arrow open<cr>",
+			mode = "n",
+			desc = "Open arrow picker",
+		},
 		{
 			"<leader>a",
 			function()
 				return require("arrow.persist").toggle()
 			end,
 			mode = "n",
+			desc = "Add to arrow",
 		},
 	},
 	opts = {

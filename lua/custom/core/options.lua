@@ -105,9 +105,3 @@ vim.o.winborder = "rounded"
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
-vim.filetype.add({
-	extension = {
-		["http"] = "http",
-	},
-})

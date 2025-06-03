@@ -5,6 +5,7 @@ function ToggleVirtualText()
 	virtual_text_enabled = not virtual_text_enabled
 	vim.diagnostic.config({
 		virtual_text = virtual_text_enabled,
+		virtual_lines = virtual_text_enabled,
 	})
 	print("Virtual Text: " .. (virtual_text_enabled and "On" or "Off"))
 end

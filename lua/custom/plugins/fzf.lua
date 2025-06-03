@@ -5,7 +5,6 @@
 return {
 	"ibhagwan/fzf-lua",
 	cmd = "FzfLua",
-	lazy = false,
 	keys = {
 		{
 			"<C-p>",
