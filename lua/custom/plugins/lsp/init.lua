@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = "BufReadPost",
+		event = "VeryLazy",
 		cmd = { "Mason" },
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = { ui = { border = "rounded" } }, build = ":MasonUpdate" },
@@ -10,7 +10,6 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			-- { "j-hui/fidget.nvim", opts = {} },
 			"b0o/SchemaStore.nvim",
-			"saghen/blink.cmp",
 			"rrethy/vim-illuminate",
 		},
 		opts = {
@@ -94,7 +93,7 @@ return {
 			----------------------------------
 			-- Get server names from after/lsp
 			local servers = {}
-			local lsp_servers_path = vim.fn.stdpath("config") .. "/after/lsp"
+			local lsp_servers_path = vim.fn.stdpath("config") .. "/lsp"
 
 			for file in vim.fs.dir(lsp_servers_path) do
 				local name = file:match("(.+)%.lua$")
@@ -105,10 +104,6 @@ return {
 			----------------------------------
 			-- Add servers automaticlly
 			----------------------------------
-			vim.lsp.config("*", {
-				capabilities = vim.lsp.protocol.make_client_capabilities(),
-			})
-
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, opts.lsp_servers)
 			vim.list_extend(ensure_installed, opts.tools)
@@ -131,13 +126,13 @@ return {
 			----------------------------------
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			vim.diagnostic.config({
-				virtual_text = {
-					spacing = 4,
-					source = "if_many",
-					prefix = "●",
-				},
+				-- virtual_text = {
+				-- 	spacing = 4,
+				-- 	source = "if_many",
+				-- 	prefix = "●",
+				-- },
 				underline = true,
-				virtual_lines = false,
+				virtual_lines = true,
 				update_in_insert = false,
 				document_highlight = {
 					enabled = true,
